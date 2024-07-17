@@ -13,7 +13,7 @@
 #ifndef MLX_FUNCS_H
 # define MLX_FUNCS_H
 
-#include "struct.h"
+# include "struct.h"
 
 void	pixel_put(t_data *data, int x, int y, int color);
 int		close_window(void *mlx_struct);

@@ -21,11 +21,9 @@
 # define PLANE_HEIGHT 200
 # define PLANE_WIDTH 320
 
-
 # define W					119
 # define A					97
 # define S					115
 # define D					100
-
 
 #endif

@@ -13,7 +13,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -22,14 +22,14 @@ typedef struct	s_data
 	int		endian;
 }			t_data;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
 	t_data	*img_data;
 }			t_mlx;
 
-typedef	struct	s_pressed_key
+typedef struct s_pressed_key
 {
 	int	forward;
 	int	backward;
@@ -37,21 +37,21 @@ typedef	struct	s_pressed_key
 	int	right;
 }		t_pressed_key;
 
-typedef struct	s_point
+typedef struct s_point
 {
 	double	x;
 	double	y;
 	int		map_point;
 }		t_point;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_point	pos;
 	double	angle;
 	double	fov;
 }			t_player;
 
-typedef	struct	s_map
+typedef struct s_map
 {
 	int	*map;
 	int	map_height;

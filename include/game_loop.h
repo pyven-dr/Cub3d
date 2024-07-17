@@ -13,7 +13,7 @@
 #ifndef GAME_LOOP_H
 # define GAME_LOOP_H
 
-#include "struct.h"
+# include "struct.h"
 
 void	game_loop(t_mlx *mlx_data, t_pressed_key *keys);
 int		key_press(int key, void *keys_param);
