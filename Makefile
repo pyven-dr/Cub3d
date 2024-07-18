@@ -13,19 +13,21 @@ IFLAGS = \
 		 -I $(LIBFT_DIR)/$(INCLUDE_DIR) \
 		 -I $(MLX_DIR)
 
+RENDER_SRC = render_frame.c \
+			 find_closest_wall.c \
+			 trace_column.c \
+			 find_h_wall.c \
+			 find_v_wall.c
+
 SRC = main.c \
 	  pixel_put.c \
 	  window.c \
 	  new_image.c \
 	  game_loop.c \
 	  keys.c \
-	  find_h_wall.c \
-	  find_v_wall.c \
 	  ft_abs.c \
-	  render_frame.c \
-	  find_closest_wall.c \
 	  normalize_angle.c \
-	  trace_column.c \
+	  $(addprefix render/, $(RENDER_SRC)) \
 
 BUILD_DIR = .build
 
