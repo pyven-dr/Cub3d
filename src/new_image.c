@@ -18,7 +18,7 @@
 int	new_image(t_mlx *mlx)
 {
 	mlx->img_data->img = mlx_new_image(mlx->mlx_ptr, \
-										HEIGHT, WIDTH);
+										WIDTH, HEIGHT);
 	if (mlx->img_data->img == NULL)
 		return (1);
 	mlx->img_data->addr = mlx_get_data_addr(mlx->img_data->img, \

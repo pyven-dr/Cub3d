@@ -25,6 +25,7 @@ SRC = main.c \
 	  render_frame.c \
 	  find_closest_wall.c \
 	  normalize_angle.c \
+	  trace_column.c \
 
 BUILD_DIR = .build
 

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "render.h"
+#include "const_values.h"
 #include <math.h>
 
 int find_closest_wall(t_point ver_wall, t_point hor_wall, double ray_angle, t_point player_pos)
@@ -20,6 +21,10 @@ int find_closest_wall(t_point ver_wall, t_point hor_wall, double ray_angle, t_po
 
 	dist_ver = ft_abs((int)((player_pos.x - ver_wall.x) / cos(ray_angle)));
 	dist_hor = ft_abs((int)((player_pos.x - hor_wall.x) / cos(ray_angle)));
+	if (dist_ver < 0)
+		dist_ver = HEIGHT;
+	if (dist_hor < 0)
+		dist_hor = HEIGHT;
 	if (dist_ver < dist_hor)
 		return (dist_ver);
 	return (dist_hor);

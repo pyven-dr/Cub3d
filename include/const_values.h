@@ -13,8 +13,8 @@
 #ifndef CONST_VALUES_H
 # define CONST_VALUES_H
 
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1920
+# define HEIGHT 1080
 # define WIN_NAME "Cub3d"
 
 # define FOV 60

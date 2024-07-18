@@ -36,7 +36,7 @@ int main(void)
 	map.map_width = 6;
 	map.map = map_array;
 
-	player.angle = M_PI;
+	player.angle = 0;
 	player.pos.x = 160;
 	player.pos.y = 160;
 	player.fov = FOV * (M_PI / 180);
