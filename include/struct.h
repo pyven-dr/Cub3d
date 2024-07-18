@@ -29,13 +29,13 @@ typedef struct s_mlx
 	t_data	*img_data;
 }			t_mlx;
 
-typedef struct s_pressed_key
+typedef struct s_keys
 {
 	int	forward;
 	int	backward;
 	int	left;
 	int	right;
-}		t_pressed_key;
+}		t_keys;
 
 typedef struct s_point
 {

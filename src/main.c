@@ -20,11 +20,11 @@
 
 int main(void)
 {
-	t_mlx			mlx_data;
-	t_data			img_data;
-	t_pressed_key	key;
-	t_player		player;
-	t_map			map;
+	t_mlx		mlx_data;
+	t_data		img_data;
+	t_keys		key;
+	t_player	player;
+	t_map		map;
 	int map_array[] = {1, 1, 1, 1, 1, 1,
 					   1, 0, 0, 0, 0, 1,
 					   1, 0, 0, 0, 0, 1,

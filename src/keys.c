@@ -15,9 +15,9 @@
 
 int	key_press(int key, void *keys_param)
 {
-	t_pressed_key *keys;
+	t_keys *keys;
 
-	keys = (t_pressed_key *)keys_param;
+	keys = (t_keys *)keys_param;
 	if (key == W)
 		keys->forward = 1;
 	else if (key == S)
@@ -31,9 +31,9 @@ int	key_press(int key, void *keys_param)
 
 int	key_release(int key, void *keys_param)
 {
-	t_pressed_key *keys;
+	t_keys *keys;
 
-	keys = (t_pressed_key *)keys_param;
+	keys = (t_keys *)keys_param;
 	if (key == W)
 		keys->forward = 0;
 	else if (key == S)

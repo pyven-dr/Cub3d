@@ -15,14 +15,12 @@
 #include "render.h"
 #include "math.h"
 
-#include <stdio.h>
 static int	fix_fisheye(int wall_dist, double angle, double player_angle)
 {
 	double angle_fix;
 
 	angle_fix = player_angle - angle;
 	angle_fix = normalize_angle(angle_fix);
-	printf("%f\n", angle_fix);
 	return (ceil(wall_dist * cos(angle_fix)));
 }
 
@@ -40,9 +38,7 @@ int render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 	{
 		closest_wall = find_closest_wall(find_v_wall(angle, player, map), \
 						find_h_wall(angle, player, map), angle, player->pos);
-		printf("%d\n", closest_wall);
 		closest_wall = fix_fisheye(closest_wall, angle, player->angle);
-		printf("%d\n", closest_wall);
 		trace_column(closest_wall, i, mlx_data);
 		i++;
 		angle = normalize_angle(angle + angle_inc);

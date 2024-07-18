@@ -17,14 +17,14 @@
 
 #include <stdio.h>
 
-void controls(t_mlx *mlx_data, t_pressed_key *keys)
+void controls(t_mlx *mlx_data, t_keys *keys)
 {
 	mlx_hook(mlx_data->mlx_win, 17, 0, close_window, mlx_data);
 	mlx_hook(mlx_data->mlx_win, 2, 1L << 0, key_press, keys);
 	mlx_hook(mlx_data->mlx_win, 3, 1L << 1, key_release, keys);
 }
 
-int	check_keys(t_pressed_key *keys)
+int	check_keys(t_keys *keys)
 {
 	if (keys->forward == 1)
 		printf("Forward\n");
@@ -37,7 +37,7 @@ int	check_keys(t_pressed_key *keys)
 	return (0);
 }
 
-void	game_loop(t_mlx *mlx_data, t_pressed_key *keys)
+void	game_loop(t_mlx *mlx_data, t_keys *keys)
 {
 	controls(mlx_data, keys);
 	mlx_loop_hook(mlx_data->mlx_ptr, check_keys, keys);
