@@ -25,23 +25,23 @@ t_point	find_v_wall(double ray_angle, t_player *player, t_map *map)
 	nTan = -tan(ray_angle);
 	if (ray_angle > M_PI_2 && ray_angle < 3 * M_PI_2)
 	{
-		first_inter.x = (((int)player->pos.x >> 6) << 6) - 0.0001;
-		first_inter.y = (player->pos.y - first_inter.x) * nTan + player->pos.y;
+		first_inter.x = (((int)player->pos->x >> 6) << 6) - 0.0001;
+		first_inter.y = (player->pos->x - first_inter.x) * nTan + player->pos->y;
 		xa = -64;
 		ya = -xa * nTan;
 	}
 	else if (ray_angle < M_PI_2 || ray_angle > 3 * M_PI_2)
 	{
-		first_inter.x = (((int)player->pos.x >> 6) << 6) + 64;
-		first_inter.y = (player->pos.y - first_inter.x) * nTan + player->pos.y;
+		first_inter.x = (((int)player->pos->x >> 6) << 6) + 64;
+		first_inter.y = (player->pos->x - first_inter.x) * nTan + player->pos->y;
 		xa = 64;
 		ya = -xa * nTan;
 	}
 	else
 	{
-		first_inter.y = player->pos.y;
-		first_inter.x = player->pos.x;
-		dof = 8;
+		first_inter.y = player->pos->y;
+		first_inter.x = player->pos->x;
+		dof = map->map_width;
 	}
 	while (dof < map->map_width)
 	{

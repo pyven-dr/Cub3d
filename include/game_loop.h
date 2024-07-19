@@ -15,7 +15,7 @@
 
 # include "struct.h"
 
-void	game_loop(t_mlx *mlx_data, t_pressed_key *keys);
+void	game_loop(t_game_data *game_data);
 int		key_press(int key, void *keys_param);
 int		key_release(int key, void *keys_param);
 int		render_frame(t_map *map, t_player *player, t_mlx *mlx_data);

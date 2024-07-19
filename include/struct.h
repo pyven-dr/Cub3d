@@ -46,7 +46,10 @@ typedef struct s_point
 
 typedef struct s_player
 {
-	t_point	pos;
+	t_keys	*keys;
+	t_point	*pos;
+	int		delta_x;
+	int		delta_y;
 	double	angle;
 	double	fov;
 }			t_player;
@@ -57,5 +60,12 @@ typedef struct s_map
 	int	map_height;
 	int	map_width;
 }		t_map;
+
+typedef struct s_game_data
+{
+	t_player	*player;
+	t_mlx		*mlx_data;
+	t_map		*map;
+}				t_game_data;
 
 #endif

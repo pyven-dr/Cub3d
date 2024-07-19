@@ -10,21 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "struct.h"
 #include "mlx_funcs.h"
 #include "game_loop.h"
 #include "const_values.h"
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
 
 int main(void)
 {
+	t_game_data	game_data;
+	t_map		map;
+	t_player	player;
+	t_point		player_pos;
+	t_keys		keys;
 	t_mlx		mlx_data;
 	t_data		img_data;
-	t_keys		key;
-	t_player	player;
-	t_map		map;
+
 	int map_array[] = {1, 1, 1, 1, 1, 1,
 					   1, 0, 0, 0, 0, 1,
 					   1, 0, 0, 0, 0, 1,
@@ -35,28 +37,28 @@ int main(void)
 	map.map_height = 6;
 	map.map_width = 6;
 	map.map = map_array;
+	game_data.map = &map;
 
-	player.angle = 0;
-	player.pos.x = 160;
-	player.pos.y = 160;
+	player.angle = 3.369556;
+	player.delta_x = (int)(cos(player.angle) * 1.5);
+	player.delta_y = (int)(sin(player.angle) * 1.5);
+	player_pos.x = 183;
+	player_pos.y = 64;
 	player.fov = FOV * (M_PI / 180);
+	player.pos = &player_pos;
 
-	key.backward = 0;
-	key.forward = 0;
-	key.left = 0;
-	key.right = 0;
+	keys.backward = 0;
+	keys.forward = 0;
+	keys.left = 0;
+	keys.right = 0;
+	player.keys = &keys;
+
+	game_data.player = &player;
+	img_data.img = NULL;
 	mlx_data.img_data = &img_data;
-	if (create_window(&mlx_data) == 1)
+	game_data.mlx_data = &mlx_data;
+	if (create_window(game_data.mlx_data) == 1)
 		return (1);
-	if (new_image(&mlx_data) == 1)
-	{
-		mlx_destroy_window(mlx_data.mlx_ptr, mlx_data.mlx_win);
-		mlx_destroy_display(mlx_data.mlx_ptr);
-		free(mlx_data.mlx_ptr);
-		return (1);
-	}
-	render_frame(&map, &player, &mlx_data);
-	mlx_put_image_to_window(mlx_data.mlx_ptr, mlx_data.mlx_win, mlx_data.img_data->img, 0, 0);
-	game_loop(&mlx_data, &key);
+	game_loop(&game_data);
 	return (0);
 }

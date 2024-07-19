@@ -14,7 +14,7 @@
 #include "game_loop.h"
 #include "render.h"
 #include "math.h"
-
+#include <stdio.h>
 static int	fix_fisheye(int wall_dist, double angle, double player_angle)
 {
 	double angle_fix;
