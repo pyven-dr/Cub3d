@@ -59,13 +59,13 @@ void	move_player(t_player *player, t_map *map)
 
 void	rotate_player(t_player *player)
 {
-	if (player->keys->left == 1)
+	if (player->keys->right == 1)
 	{
 		player->angle = normalize_angle(player->angle + 0.01);
 		player->delta_x = (int)(cos(player->angle) * 1.5);
 		player->delta_y = (int)(sin(player->angle) * 1.5);
 	}
-	if (player->keys->right == 1)
+	if (player->keys->left == 1)
 	{
 		player->angle = normalize_angle(player->angle - 0.01);
 		player->delta_x = (int)(cos(player->angle) * 1.5);

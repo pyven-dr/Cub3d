@@ -38,6 +38,7 @@ int render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 	{
 		closest_wall = find_closest_wall(find_v_wall(angle, player, map), \
 						find_h_wall(angle, player, map), angle, player->pos);
+		printf("wall %d\n", closest_wall);
 		closest_wall = fix_fisheye(closest_wall, angle, player->angle);
 		trace_column(closest_wall, i, mlx_data);
 		i++;

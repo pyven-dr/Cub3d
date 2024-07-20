@@ -46,11 +46,15 @@ t_point	find_v_wall(double ray_angle, t_player *player, t_map *map)
 	while (dof < map->map_width)
 	{
 		first_inter.map_point = ((int)(first_inter.y) >> 6) * map->map_width + ((int)(first_inter.x) >> 6);
-		if (first_inter.map_point > 0 && first_inter.map_point < map->map_width * map->map_height && map->map[first_inter.map_point] == 1)
+		if (first_inter.map_point >= 0 && first_inter.map_point < map->map_width * map->map_height - 1 && map->map[first_inter.map_point] == 1)
 			return (first_inter);
 		first_inter.x += xa;
 		first_inter.y += ya;
 		dof++;
 	}
+	if (first_inter.x < 0)
+		first_inter.x = map->map_width * 64 * 2;
+	if (first_inter.y < 0)
+		first_inter.y = map->map_height * 64 * 2;
 	return (first_inter);
 }
