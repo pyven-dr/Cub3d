@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
 #include "const_values.h"
+#include "struct.h"
 
 int	key_press(int key, void *keys_param)
 {
-	t_keys *keys;
+	t_keys	*keys;
 
 	keys = (t_keys *)keys_param;
 	if (key == W)
@@ -31,7 +31,7 @@ int	key_press(int key, void *keys_param)
 
 int	key_release(int key, void *keys_param)
 {
-	t_keys *keys;
+	t_keys	*keys;
 
 	keys = (t_keys *)keys_param;
 	if (key == W)

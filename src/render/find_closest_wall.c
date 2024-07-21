@@ -10,21 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
 #include "const_values.h"
+#include "render.h"
 #include <math.h>
 
 #include <stdio.h>
-int find_closest_wall(t_point ver_wall, t_point hor_wall, double ray_angle, t_point *player_pos)
+int	find_closest_wall(t_point ver, t_point hor, double angle, t_point *p_pos)
 {
-	double dist_ver;
-	double dist_hor;
+	double	dist_ver;
+	double	dist_hor;
 
-	 printf(" x : %f %f\n", ver_wall.x, ver_wall.y);
-	printf("y : %f %f\n", hor_wall.x, hor_wall.y);
-	dist_ver = sqrt((ver_wall.x - player_pos->x) * (ver_wall.x - player_pos->x) + (ver_wall.y - player_pos->y) * (ver_wall.y - player_pos->y));
-	dist_hor = sqrt((hor_wall.x - player_pos->x) * (hor_wall.x - player_pos->x) + (hor_wall.y - player_pos->y) * (hor_wall.y - player_pos->y));
-	printf("dist : %f %f %f %f %f\n\n", dist_hor, dist_ver, ray_angle, player_pos->x, player_pos->y);
+	printf(" x : %f %f\n", ver.x, ver.y);
+	printf("y : %f %f\n", hor.x, hor.y);
+	dist_ver = sqrt((ver.x - p_pos->x) * (ver.x - p_pos->x) + \
+					(ver.y - p_pos->y) * (ver.y - p_pos->y));
+	dist_hor = sqrt((hor.x - p_pos->x) * (hor.x - p_pos->x) + \
+					(hor.y - p_pos->y) * (hor.y - p_pos->y));
+	printf("dist : %f %f %f %f %f\n\n", dist_hor, dist_ver, angle, p_pos->x, p_pos->y);
 	if (dist_ver < 0)
 		dist_ver = HEIGHT;
 	if (dist_hor < 0)

@@ -20,5 +20,7 @@ int		key_press(int key, void *keys_param);
 int		key_release(int key, void *keys_param);
 int		render_frame(t_map *map, t_player *player, t_mlx *mlx_data);
 double	normalize_angle(double angle);
+void	move_player(t_player *player, t_map *map);
+void	rotate_player(t_player *player);
 
 #endif

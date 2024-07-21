@@ -12,11 +12,11 @@
 
 #include "math.h"
 
-double normalize_angle(double angle)
+double	normalize_angle(double angle)
 {
 	if (angle > 2 * M_PI)
 		angle -= 2 * M_PI;
 	if (angle < 0)
 		angle += 2 * M_PI;
-	return angle;
+	return (angle);
 }

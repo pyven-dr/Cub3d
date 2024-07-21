@@ -27,6 +27,8 @@ SRC = main.c \
 	  keys.c \
 	  ft_abs.c \
 	  normalize_angle.c \
+	  move_player.c \
+	  rotate_player.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 
 BUILD_DIR = .build

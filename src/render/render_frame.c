@@ -13,18 +13,18 @@
 #include "const_values.h"
 #include "game_loop.h"
 #include "render.h"
-#include "math.h"
-#include <stdio.h>
+#include <math.h>
+
 static int	fix_fisheye(int wall_dist, double angle, double player_angle)
 {
-	double angle_fix;
+	double	angle_fix;
 
 	angle_fix = player_angle - angle;
 	angle_fix = normalize_angle(angle_fix);
-	return (ceil(wall_dist * cos(angle_fix)));
+	return ((int)ceil(wall_dist * cos(angle_fix)));
 }
 
-int render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
+int	render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 {
 	double	angle;
 	double	angle_inc;
@@ -38,7 +38,6 @@ int render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 	{
 		closest_wall = find_closest_wall(find_v_wall(angle, player, map), \
 						find_h_wall(angle, player, map), angle, player->pos);
-		printf("wall %d\n", closest_wall);
 		closest_wall = fix_fisheye(closest_wall, angle, player->angle);
 		trace_column(closest_wall, i, mlx_data);
 		i++;

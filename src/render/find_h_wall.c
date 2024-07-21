@@ -13,51 +13,54 @@
 #include "struct.h"
 #include <math.h>
 
-#include <stdio.h>
+static t_point	find_inter(t_point inter, t_map *map, double xa, double ya)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->map_height)
+	{
+		inter.map_point = ((int)(inter.y) >> 6) * map->map_width + \
+							((int)(inter.x) >> 6);
+		if (inter.map_point >= 0 && inter.map_point < map->map_width * \
+			map->map_height - 1 && map->map[inter.map_point] == 1)
+			return (inter);
+		inter.x += xa;
+		inter.y += ya;
+		i++;
+	}
+	if (inter.x < 0)
+		inter.x = map->map_width * 64 * 2;
+	if (inter.y < 0)
+		inter.y = map->map_height * 64 * 2;
+	return (inter);
+}
+
 t_point	find_h_wall(double ray_angle, t_player *player, t_map *map)
 {
-	t_point first_inter;
+	t_point	inter;
 	double	xa;
 	double	ya;
-	double	aTan;
-	int		dof;
+	double	atan;
 
-	dof = 0;
-	aTan = -1 / tan(ray_angle);
+	atan = -1 / tan(ray_angle);
 	if (ray_angle > M_PI)
 	{
-		first_inter.y = (((int)player->pos->y >> 6) << 6) - 0.0001;
-		first_inter.x = (player->pos->y - first_inter.y) * aTan + player->pos->x;
+		inter.y = (((int)player->pos->y >> 6) << 6) - 0.0001;
 		ya = -64;
-		xa = -ya * aTan;
 	}
 	else if (ray_angle < M_PI)
 	{
-		first_inter.y = (((int)player->pos->y >> 6) << 6) + 64;
-		first_inter.x = (player->pos->y - first_inter.y) * aTan + player->pos->x;
-		printf("%f %f %f %f\n", player->pos->y, first_inter.y, aTan, player->pos->x);
+		inter.y = (((int)player->pos->y >> 6) << 6) + 64;
 		ya = 64;
-		xa = -ya * aTan;
 	}
 	else
 	{
-		first_inter.x = player->pos->x;
-		first_inter.y = player->pos->y;
-		dof = map->map_height;
+		inter.x = player->pos->x;
+		inter.y = player->pos->y;
+		return (inter);
 	}
-	while (dof < map->map_height)
-	{
-		first_inter.map_point = ((int)(first_inter.y) >> 6) * map->map_width + ((int)(first_inter.x) >> 6);
-		printf("%f %f %d %f\n", first_inter.x, first_inter.y, first_inter.map_point, ray_angle);
-		if (first_inter.map_point >= 0 && first_inter.map_point < map->map_width * map->map_height - 1 && map->map[first_inter.map_point] == 1)
-			return (printf("\n"), first_inter);
-		first_inter.x += xa;
-		first_inter.y += ya;
-		dof++;
-	}
-	if (first_inter.x < 0)
-		first_inter.x = map->map_width * 64 * 2;
-	if (first_inter.y < 0)
-		first_inter.y = map->map_height * 64 * 2;
-	return (first_inter);
+	inter.x = (player->pos->y - inter.y) * atan + player->pos->x;
+	xa = -ya * atan;
+	return (find_inter(inter, map, xa, ya));
 }
