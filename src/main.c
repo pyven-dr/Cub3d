@@ -39,11 +39,11 @@ int main(void)
 	map.map = map_array;
 	game_data.map = &map;
 
-	player.angle = 3.369556;
+	player.angle = 0;
 	player.delta_x = (int)(cos(player.angle) * 1.5);
 	player.delta_y = (int)(sin(player.angle) * 1.5);
-	player_pos.x = 183;
-	player_pos.y = 64;
+	player_pos.x = 2*64 + 32;
+	player_pos.y = 2*64 + 32;
 	player.fov = FOV * (M_PI / 180);
 	player.pos = &player_pos;
 

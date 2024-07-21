@@ -14,19 +14,15 @@
 #include "render.h"
 #include <math.h>
 
-#include <stdio.h>
-int	find_closest_wall(t_point ver, t_point hor, double angle, t_point *p_pos)
+int	find_closest_wall(t_point ver, t_point hor, t_point *p_pos)
 {
 	double	dist_ver;
 	double	dist_hor;
 
-	printf(" x : %f %f\n", ver.x, ver.y);
-	printf("y : %f %f\n", hor.x, hor.y);
 	dist_ver = sqrt((ver.x - p_pos->x) * (ver.x - p_pos->x) + \
 					(ver.y - p_pos->y) * (ver.y - p_pos->y));
 	dist_hor = sqrt((hor.x - p_pos->x) * (hor.x - p_pos->x) + \
 					(hor.y - p_pos->y) * (hor.y - p_pos->y));
-	printf("dist : %f %f %f %f %f\n\n", dist_hor, dist_ver, angle, p_pos->x, p_pos->y);
 	if (dist_ver < 0)
 		dist_ver = HEIGHT;
 	if (dist_hor < 0)
