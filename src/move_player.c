@@ -28,21 +28,19 @@ void	move_player(t_player *player, t_map *map)
 	if (player->keys->forward == 1)
 	{
 		player->pos->x += player->delta_x;
+		if (check_out_map(player, map) == 1)
+			player->pos->x -= player->delta_x;
 		player->pos->y += player->delta_y;
 		if (check_out_map(player, map) == 1)
-		{
-			player->pos->x -= player->delta_x;
 			player->pos->y -= player->delta_y;
-		}
 	}
 	if (player->keys->backward == 1)
 	{
 		player->pos->x -= player->delta_x;
+		if (check_out_map(player, map) == 1)
+			player->pos->x += player->delta_x;
 		player->pos->y -= player->delta_y;
 		if (check_out_map(player, map) == 1)
-		{
-			player->pos->x += player->delta_x;
 			player->pos->y += player->delta_y;
-		}
 	}
 }

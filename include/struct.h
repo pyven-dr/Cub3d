@@ -48,8 +48,8 @@ typedef struct s_player
 {
 	t_keys	*keys;
 	t_point	*pos;
-	int		delta_x;
-	int		delta_y;
+	double	delta_x;
+	double	delta_y;
 	double	angle;
 	double	fov;
 }			t_player;

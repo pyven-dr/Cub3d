@@ -41,6 +41,5 @@ void	game_loop(t_game_data *game_data)
 {
 	controls(game_data->mlx_data, game_data->player->keys);
 	mlx_loop_hook(game_data->mlx_data->mlx_ptr, render, game_data);
-	//render(game_data);
 	mlx_loop(game_data->mlx_data->mlx_ptr);
 }
