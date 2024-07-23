@@ -14,11 +14,11 @@
 
 static int	check_out_map(t_player *player, t_map *map)
 {
-	if (map->map[((int)(player->pos->y + 32) >> 6) * map->map_width + \
-		((int)(player->pos->x + 32) >> 6)] == 1)
+	if (map->map[((int)(player->pos->y) >> 6) * map->map_width + \
+		((int)(player->pos->x) >> 6)] == 1)
 		return (1);
-	if (map->map[((int)(player->pos->y - 32) >> 6) * map->map_width + \
-		((int)(player->pos->x - 32) >> 6)] == 1)
+	if (map->map[((int)(player->pos->y) >> 6) * map->map_width + \
+		((int)(player->pos->x) >> 6)] == 1)
 		return (1);
 	return (0);
 }
