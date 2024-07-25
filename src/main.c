@@ -59,6 +59,8 @@ int main(void)
 	game_data.mlx_data = &mlx_data;
 	if (create_window(game_data.mlx_data) == 1)
 		return (1);
+	if (new_image(game_data.mlx_data) == 1)
+		return (1);
 	game_loop(&game_data);
 	return (0);
 }

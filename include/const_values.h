@@ -18,8 +18,8 @@
 # define WIN_NAME "Cub3d"
 
 # define FOV 60
-# define PLANE_HEIGHT 200
 # define PLANE_WIDTH 320
+# define PLANE_HEIGHT 200
 
 # define W					119
 # define A					97

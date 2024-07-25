@@ -16,8 +16,8 @@
 # include "struct.h"
 
 void	game_loop(t_game_data *game_data);
-int		key_press(int key, void *keys_param);
-int		key_release(int key, void *keys_param);
+int		key_press(int key, t_keys *keys);
+int		key_release(int key, t_keys *keys);
 int		render_frame(t_map *map, t_player *player, t_mlx *mlx_data);
 double	normalize_angle(double angle);
 void	move_player(t_player *player, t_map *map);

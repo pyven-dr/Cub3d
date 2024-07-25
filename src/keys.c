@@ -13,11 +13,8 @@
 #include "const_values.h"
 #include "struct.h"
 
-int	key_press(int key, void *keys_param)
+int	key_press(int key, t_keys *keys)
 {
-	t_keys	*keys;
-
-	keys = (t_keys *)keys_param;
 	if (key == W)
 		keys->forward = 1;
 	else if (key == S)
@@ -29,11 +26,8 @@ int	key_press(int key, void *keys_param)
 	return (0);
 }
 
-int	key_release(int key, void *keys_param)
+int	key_release(int key, t_keys *keys)
 {
-	t_keys	*keys;
-
-	keys = (t_keys *)keys_param;
 	if (key == W)
 		keys->forward = 0;
 	else if (key == S)
