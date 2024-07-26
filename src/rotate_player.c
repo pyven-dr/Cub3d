@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "const_values.h"
 #include "game_loop.h"
 #include <math.h>
 
 void	rotate_player(t_player *player)
 {
 	if (player->keys->right == 1)
-		player->angle = normalize_angle(player->angle + 0.01);
+		player->angle = normalize_angle(player->angle + ROTATION_SPEED);
 	if (player->keys->left == 1)
-		player->angle = normalize_angle(player->angle - 0.01);
-	player->delta_x = cos(player->angle) * 2;
-	player->delta_y = sin(player->angle) * 2;
+		player->angle = normalize_angle(player->angle - ROTATION_SPEED);
+	player->delta_x = cos(player->angle) * MOVE_SPEED;
+	player->delta_y = sin(player->angle) * MOVE_SPEED;
 }
