@@ -14,7 +14,7 @@
 #include "render.h"
 #include <math.h>
 
-int	find_closest_wall(t_point ver, t_point hor, t_point *p_pos)
+double	find_closest_wall(t_point ver, t_point hor, t_point *p_pos)
 {
 	double	dist_ver;
 	double	dist_hor;
@@ -28,6 +28,6 @@ int	find_closest_wall(t_point ver, t_point hor, t_point *p_pos)
 	if (dist_hor < 0)
 		dist_hor = HEIGHT;
 	if (dist_ver < dist_hor)
-		return ((int)dist_ver);
-	return ((int)dist_hor);
+		return (dist_ver);
+	return (dist_hor);
 }

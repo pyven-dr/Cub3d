@@ -15,7 +15,7 @@
 #include "render.h"
 #include <math.h>
 
-static int	fix_fisheye(int wall_dist, double angle, double player_angle)
+static int	fix_fisheye(double wall_dist, double angle, double player_angle)
 {
 	double	angle_fix;
 
@@ -28,7 +28,7 @@ int	render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 {
 	double	angle;
 	double	angle_inc;
-	int		closest_wall;
+	double	closest_wall;
 	int		i;
 
 	i = 0;
