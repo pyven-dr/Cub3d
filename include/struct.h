@@ -52,6 +52,7 @@ typedef struct s_player
 	double	delta_y;
 	double	angle;
 	double	fov;
+	int		plane_dist;
 }			t_player;
 
 typedef struct s_map
