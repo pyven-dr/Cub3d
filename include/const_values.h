@@ -20,10 +20,8 @@
 # define FOV 60
 # define PLANE_WIDTH 1920
 # define PLANE_HEIGHT 1080
-# define PLANE_DIST 277
 
-# define	COLLISION_OFFSET 10
-
+# define COLLISION_OFFSET 10
 # define ROTATION_SPEED 0.035
 # define MOVE_SPEED 3.5
 
