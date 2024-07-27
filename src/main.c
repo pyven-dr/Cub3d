@@ -45,6 +45,7 @@ int main(void)
 	player_pos.x = 1*64 + 32;
 	player_pos.y = 1*64 + 32;
 	player.fov = FOV * (M_PI / 180);
+	player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(player.fov / 2));
 	player.pos = &player_pos;
 
 	keys.backward = 0;
