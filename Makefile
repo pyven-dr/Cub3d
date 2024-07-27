@@ -13,6 +13,11 @@ IFLAGS = \
 		 -I $(LIBFT_DIR)/$(INCLUDE_DIR) \
 		 -I $(MLX_DIR)
 
+GAME_LOOP_SRC = game_loop.c \
+				keys.c \
+				move_player.c \
+				rotate_player.c
+
 RENDER_SRC = render_frame.c \
 			 find_closest_wall.c \
 			 trace_column.c \
@@ -23,13 +28,9 @@ SRC = main.c \
 	  pixel_put.c \
 	  window.c \
 	  new_image.c \
-	  game_loop.c \
-	  keys.c \
-	  ft_abs.c \
 	  normalize_angle.c \
-	  move_player.c \
-	  rotate_player.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
+	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
 
 BUILD_DIR = .build
 
