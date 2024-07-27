@@ -30,7 +30,7 @@ static void	draw_column_pixels(t_mlx *mlx_data, int j, int w_start, int wall_h)
 	}
 }
 
-void	trace_column(double distance, int column_numb, t_mlx *mlx_data)
+void	trace_column(double dist, int col_numb, t_mlx *mlx_data, int pln_dist)
 {
 	int		j;
 	double	slice_height;
@@ -38,17 +38,17 @@ void	trace_column(double distance, int column_numb, t_mlx *mlx_data)
 	int		column_size;
 
 	column_size = WIDTH / PLANE_WIDTH;
-	if (distance == 0)
+	if (dist == 0)
 		slice_height = PLANE_HEIGHT;
 	else
-		slice_height = (64 / distance) * PLANE_DIST;
-	slice_height = slice_height * (540.0 / 200.0);
+		slice_height = 64 / dist * pln_dist;
+	slice_height = slice_height * ((double)HEIGHT / (double)PLANE_HEIGHT);
 	if (slice_height > HEIGHT)
 		slice_height = HEIGHT;
 	start_wall = (HEIGHT >> 1) - ((int)slice_height >> 1);
-	j = column_numb * column_size;
-	column_numb = j + column_size;
-	while (j < column_numb)
+	j = col_numb * column_size;
+	col_numb = j + column_size;
+	while (j < col_numb)
 	{
 		draw_column_pixels(mlx_data, j, start_wall, (int)slice_height);
 		j++;
