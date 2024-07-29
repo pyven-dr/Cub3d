@@ -18,8 +18,8 @@
 # define WIN_NAME "Cub3d"
 
 # define FOV 60
-# define PLANE_WIDTH 1920
-# define PLANE_HEIGHT 1080
+# define PLANE_WIDTH 320
+# define PLANE_HEIGHT 200
 
 # define COLLISION_OFFSET 10
 # define ROTATION_SPEED 0.035
@@ -29,5 +29,6 @@
 # define A					97
 # define S					115
 # define D					100
+# define ESCAPE				65307
 
 #endif

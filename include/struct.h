@@ -35,6 +35,7 @@ typedef struct s_keys
 	int	backward;
 	int	left;
 	int	right;
+	int	esc;
 }		t_keys;
 
 typedef struct s_point
@@ -43,6 +44,20 @@ typedef struct s_point
 	double	y;
 	int		map_point;
 }		t_point;
+
+typedef enum e_orient
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}	t_orient;
+
+typedef struct s_inter
+{
+	double		distance;
+	t_orient	orientation;
+}			t_inter;
 
 typedef struct s_player
 {

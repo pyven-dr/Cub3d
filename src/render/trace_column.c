@@ -12,8 +12,22 @@
 
 #include "const_values.h"
 #include "mlx_funcs.h"
+#include <stdio.h>
 
-static void	draw_column_pixels(t_mlx *mlx_data, int j, int w_start, int wall_h)
+static void draw_wall_color(t_mlx *mlx_data, int i, int j, t_inter inter)
+{
+	//printf("%d\n", inter.orientation);
+	if (inter.orientation == NORTH)
+		pixel_put(mlx_data->img_data, j, i, 0xff0011);
+	if (inter.orientation == SOUTH)
+		pixel_put(mlx_data->img_data, j, i, 0x18ff03);
+	if (inter.orientation == EAST)
+		pixel_put(mlx_data->img_data, j, i, 0x0320ff);
+	if (inter.orientation == WEST)
+		pixel_put(mlx_data->img_data, j, i, 0xf2ff03);
+}
+
+static void	draw_column_pixels(t_mlx *mlx_data, int j, int w_start, int wall_h, t_inter inter)
 {
 	int	i;
 
@@ -21,16 +35,16 @@ static void	draw_column_pixels(t_mlx *mlx_data, int j, int w_start, int wall_h)
 	while (i < HEIGHT)
 	{
 		if (i < w_start)
-			pixel_put(mlx_data->img_data, j, i, 0x0062ff);
+			pixel_put(mlx_data->img_data, j, i, 0x000000);
 		else if (i >= w_start && i <= w_start + wall_h)
-			pixel_put(mlx_data->img_data, j, i, 0xff0011);
+			draw_wall_color(mlx_data, i, j, inter);
 		else
-			pixel_put(mlx_data->img_data, j, i, 0x05f21d);
+			pixel_put(mlx_data->img_data, j, i, 0xffffff);
 		i++;
 	}
 }
 
-void	trace_column(double dist, int col_numb, t_mlx *mlx_data, int pln_dist)
+void	trace_column(t_inter inter, int col_numb, t_mlx *mlx_data, int pln_dist)
 {
 	int		j;
 	double	slice_height;
@@ -38,10 +52,10 @@ void	trace_column(double dist, int col_numb, t_mlx *mlx_data, int pln_dist)
 	int		column_size;
 
 	column_size = WIDTH / PLANE_WIDTH;
-	if (dist == 0)
+	if (inter.distance == 0)
 		slice_height = PLANE_HEIGHT;
 	else
-		slice_height = 64 / dist * pln_dist;
+		slice_height = 64 / inter.distance * pln_dist;
 	slice_height = slice_height * ((double)HEIGHT / (double)PLANE_HEIGHT);
 	if (slice_height > HEIGHT)
 		slice_height = HEIGHT;
@@ -50,7 +64,7 @@ void	trace_column(double dist, int col_numb, t_mlx *mlx_data, int pln_dist)
 	col_numb = j + column_size;
 	while (j < col_numb)
 	{
-		draw_column_pixels(mlx_data, j, start_wall, (int)slice_height);
+		draw_column_pixels(mlx_data, j, start_wall, (int)slice_height, inter);
 		j++;
 	}
 }

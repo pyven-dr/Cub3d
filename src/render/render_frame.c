@@ -15,30 +15,30 @@
 #include "render.h"
 #include <math.h>
 
-static double	fix_fisheye(double wall_dist, double angle, double player_angle)
+static void	fix_fisheye(t_inter	*wall_dist, double angle, double player_angle)
 {
 	double	angle_fix;
 
-	angle_fix = player_angle - angle;
+	angle_fix = angle - player_angle;
 	angle_fix = normalize_angle(angle_fix);
-	return (wall_dist * cos(angle_fix));
+	wall_dist->distance *= cos(angle_fix);
 }
 
 int	render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 {
 	double	angle;
 	double	angle_inc;
-	double	closest_wall;
+	t_inter	closest_wall;
 	int		i;
 
 	i = 0;
 	angle_inc = player->fov / PLANE_WIDTH;
 	angle = normalize_angle(player->angle - (player->fov / 2));
+
 	while (i < PLANE_WIDTH)
 	{
-		closest_wall = find_closest_wall(find_v_wall(angle, player, map), \
-						find_h_wall(angle, player, map), player->pos);
-		closest_wall = fix_fisheye(closest_wall, angle, player->angle);
+		closest_wall = find_closest_wall(angle, player, map);
+		fix_fisheye(&closest_wall, angle, player->angle);
 		trace_column(closest_wall, i, mlx_data, player->plane_dist);
 		i++;
 		angle = normalize_angle(angle + angle_inc);

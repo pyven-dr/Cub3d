@@ -23,6 +23,8 @@ void	controls(t_mlx *mlx_data, t_keys *keys)
 
 int	render(t_game_data	*game_data)
 {
+	if (game_data->player->keys->esc == 1)
+		close_window(game_data->mlx_data);
 	move_player(game_data->player, game_data->map);
 	rotate_player(game_data->player);
 	render_frame(game_data->map, game_data->player, game_data->mlx_data);

@@ -14,20 +14,53 @@
 #include "render.h"
 #include <math.h>
 
-double	find_closest_wall(t_point ver, t_point hor, t_point *p_pos)
+void	find_orientation_ver(t_inter *inter, double ray_angle)
 {
-	double	dist_ver;
-	double	dist_hor;
+	if (ray_angle > M_PI_2 && ray_angle < 3 * M_PI_2)
+		inter->orientation = WEST;
+	else if (ray_angle < M_PI_2 || ray_angle > 3 * M_PI_2)
+		inter->orientation = EAST;
+}
 
-	dist_ver = sqrt((ver.x - p_pos->x) * (ver.x - p_pos->x) + \
+void	find_orientation_hor(t_inter *inter, double ray_angle)
+{
+	if (ray_angle > M_PI)
+		inter->orientation = NORTH;
+	else if (ray_angle < M_PI)
+		inter->orientation = SOUTH;
+}
+
+t_inter	find_distance(t_point ver, t_point hor, t_point *p_pos, double angle)
+{
+	t_inter	dist_ver;
+	t_inter	dist_hor;
+
+	dist_ver.distance = sqrt((ver.x - p_pos->x) * (ver.x - p_pos->x) + \
 					(ver.y - p_pos->y) * (ver.y - p_pos->y));
-	dist_hor = sqrt((hor.x - p_pos->x) * (hor.x - p_pos->x) + \
+	dist_hor.distance = sqrt((hor.x - p_pos->x) * (hor.x - p_pos->x) + \
 					(hor.y - p_pos->y) * (hor.y - p_pos->y));
-	if (dist_ver < 0)
-		dist_ver = HEIGHT;
-	if (dist_hor < 0)
-		dist_hor = HEIGHT;
-	if (dist_ver < dist_hor)
+	if (dist_ver.distance < 0)
+		dist_ver.distance = HEIGHT;
+	if (dist_hor.distance < 0)
+		dist_hor.distance = HEIGHT;
+	if (dist_ver.distance < dist_hor.distance)
+	{
+		find_orientation_ver(&dist_ver, angle);
 		return (dist_ver);
+	}
+	find_orientation_hor(&dist_hor, angle);
 	return (dist_hor);
 }
+
+t_inter	find_closest_wall(double ray_angle, t_player *player, t_map *map)
+{
+	t_point	ver_inter;
+	t_point	hor_inter;
+	t_inter	closest_inter;
+
+	ver_inter = find_v_wall(ray_angle, player, map);
+	hor_inter = find_h_wall(ray_angle, player, map);
+	closest_inter = find_distance(ver_inter, hor_inter, player->pos, ray_angle);
+	return (closest_inter);
+}
+

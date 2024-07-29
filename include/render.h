@@ -17,7 +17,7 @@
 
 t_point	find_v_wall(double ray_angle, t_player *player, t_map *map);
 t_point	find_h_wall(double ray_angle, t_player *player, t_map *map);
-double	find_closest_wall(t_point ver, t_point hor, t_point *p_pos);
-void	trace_column(double dist, int col_numb, t_mlx *mlx_data, int pln_dist);
+t_inter	find_closest_wall(double ray_angle, t_player *player, t_map *map);
+void	trace_column(t_inter inter, int col_numb, t_mlx *mlx_data, int pln_dist);
 
 #endif

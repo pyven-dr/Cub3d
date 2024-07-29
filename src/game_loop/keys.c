@@ -23,6 +23,8 @@ int	key_press(int key, t_keys *keys)
 		keys->right = 1;
 	else if (key == A)
 		keys->left = 1;
+	else if (key == ESCAPE)
+		keys->esc = 1;
 	return (0);
 }
 
