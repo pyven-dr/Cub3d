@@ -22,7 +22,9 @@ RENDER_SRC = render_frame.c \
 			 find_closest_wall.c \
 			 trace_column.c \
 			 find_h_wall.c \
-			 find_v_wall.c
+			 find_v_wall.c \
+			 find_orientation.c \
+			 draw_pixels.c
 
 SRC = main.c \
 	  pixel_put.c \

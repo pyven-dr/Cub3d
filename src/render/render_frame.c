@@ -32,7 +32,8 @@ int	render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
 	i = 0;
 	while (i < PLANE_WIDTH)
 	{
-		angle = normalize_angle(atan2((i - 0.5) - PLANE_WIDTH / 2.0, player->plane_dist) + player->angle);
+		angle = normalize_angle(atan2((i - 0.5) - PLANE_WIDTH / 2.0, \
+				player->plane_dist) + player->angle);
 		closest_wall = find_closest_wall(angle, player, map);
 		fix_fisheye(&closest_wall, angle, player->angle);
 		trace_column(closest_wall, i, mlx_data, player->plane_dist);
