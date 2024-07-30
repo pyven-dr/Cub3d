@@ -12,11 +12,9 @@
 
 #include "const_values.h"
 #include "mlx_funcs.h"
-#include <stdio.h>
 
 static void draw_wall_color(t_mlx *mlx_data, int i, int j, t_inter inter)
 {
-	//printf("%d\n", inter.orientation);
 	if (inter.orientation == NORTH)
 		pixel_put(mlx_data->img_data, j, i, 0xff0011);
 	if (inter.orientation == SOUTH)
