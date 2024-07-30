@@ -26,13 +26,15 @@ RENDER_SRC = render_frame.c \
 			 find_orientation.c \
 			 draw_pixels.c
 
+MLX_FUNCS_SRC = pixel_put.c \
+			   window.c \
+			   new_image.c
+
 SRC = main.c \
-	  pixel_put.c \
-	  window.c \
-	  new_image.c \
 	  normalize_angle.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
+	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
 
 BUILD_DIR = .build
 
