@@ -27,6 +27,12 @@ static t_inter	find_dist(t_point ver, t_point hor, t_point *pos, double angle)
 		dist_ver.distance = HEIGHT;
 	if (dist_hor.distance < 0)
 		dist_hor.distance = HEIGHT;
+	if (dist_ver.distance - dist_hor.distance < 0.001 && \
+		dist_ver.distance - dist_hor.distance > 0)
+	{
+		find_orientation_ver(&dist_ver, angle);
+		return (dist_ver);
+	}
 	if (dist_ver.distance < dist_hor.distance)
 	{
 		find_orientation_ver(&dist_ver, angle);

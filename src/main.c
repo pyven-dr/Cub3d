@@ -42,11 +42,11 @@ int main(void)
 	map.map = map_array;
 	game_data.map = &map;
 
-	player.angle = 0;
+	player.angle = 3.938185;
 	player.delta_x = (int)(cos(player.angle) * 1.5);
 	player.delta_y = (int)(sin(player.angle) * 1.5);
-	player_pos.x = 1*64 + 32;
-	player_pos.y = 4*64 + 32;
+	player_pos.x = 193.969050;
+	player_pos.y = 384.276566;
 	player.fov = FOV * (M_PI / 180);
 	player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(player.fov / 2));
 	player.pos = &player_pos;
