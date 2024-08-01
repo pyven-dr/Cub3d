@@ -14,42 +14,26 @@
 #include "render.h"
 #include <math.h>
 
-static t_inter	find_dist(t_point ver, t_point hor, t_point *pos, double angle)
+static t_inter	find_dist(t_point inter_point, t_point *pos)
 {
-	t_inter	dist_ver;
-	t_inter	dist_hor;
+	t_inter	inter;
 
-	dist_ver.distance = sqrt((ver.x - pos->x) * (ver.x - pos->x) + \
-					(ver.y - pos->y) * (ver.y - pos->y));
-	dist_hor.distance = sqrt((hor.x - pos->x) * (hor.x - pos->x) + \
-					(hor.y - pos->y) * (hor.y - pos->y));
-	if (dist_ver.distance < 0)
-		dist_ver.distance = HEIGHT;
-	if (dist_hor.distance < 0)
-		dist_hor.distance = HEIGHT;
-	if (dist_ver.distance - dist_hor.distance < 0.001 && \
-		dist_ver.distance - dist_hor.distance > 0)
-	{
-		find_orientation_ver(&dist_ver, angle);
-		return (dist_ver);
-	}
-	if (dist_ver.distance < dist_hor.distance)
-	{
-		find_orientation_ver(&dist_ver, angle);
-		return (dist_ver);
-	}
-	find_orientation_hor(&dist_hor, angle);
-	return (dist_hor);
+	inter.distance = sqrt((inter_point.x - pos->x) * (inter_point.x - pos->x) \
+						+ (inter_point.y - pos->y) * (inter_point.y - pos->y));
+	if (inter.distance < 0)
+		inter.distance = HEIGHT;
+	inter.point = &inter_point;
+	return (inter);
 }
 
 t_inter	find_closest_wall(double angle, t_player *player, t_map *map)
 {
-	t_point	ver_inter;
-	t_point	hor_inter;
+	t_inter	ver_inter;
+	t_inter	hor_inter;
 	t_inter	closest_inter;
 
-	ver_inter = find_v_wall(angle, player, map);
-	hor_inter = find_h_wall(angle, player, map);
-	closest_inter = find_dist(ver_inter, hor_inter, player->pos, angle);
+	ver_inter = find_dist(find_v_wall(angle, player, map), player->pos);
+	hor_inter = find_dist(find_h_wall(angle, player, map), player->pos);
+	closest_inter = find_closest_inter(ver_inter, hor_inter, map, angle);
 	return (closest_inter);
 }

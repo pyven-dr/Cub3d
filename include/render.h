@@ -23,5 +23,6 @@ void	trace_column(t_inter inter, int col_numb, t_mlx *mlx_data, \
 void	find_orientation_ver(t_inter *inter, double ray_angle);
 void	find_orientation_hor(t_inter *inter, double ray_angle);
 void	draw_column(t_mlx *mlx_data, int j, int wall_h, t_inter inter);
+t_inter	find_closest_inter(t_inter ver, t_inter hor, t_map *map, double angle);
 
 #endif
