@@ -35,18 +35,18 @@ int main(void)
 					   1, 0, 0, 0, 0, 1,
 					   1, 0, 0, 0, 0, 1,
 					   1, 0, 0, 0, 0, 1,
-					   1, 1, 1, 1, 1, 1,};
+					   1, 1, 1, 1, 1, 1};
 
 	map.map_height = 9;
 	map.map_width = 6;
 	map.map = map_array;
 	game_data.map = &map;
 
-	player.angle = 0.753185;
+	player.angle = 3.938185;
 	player.delta_x = (int)(cos(player.angle) * 1.5);
 	player.delta_y = (int)(sin(player.angle) * 1.5);
-	player_pos.x = 105.029710;
-	player_pos.y = 330.156018;
+	player_pos.x = 193.969050;
+	player_pos.y = 384.276566;
 	player.fov = FOV * (M_PI / 180);
 	player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(player.fov / 2));
 	player.pos = &player_pos;
