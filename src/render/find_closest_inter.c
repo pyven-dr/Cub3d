@@ -24,28 +24,28 @@ static int	get_map_point(double x, double y, t_map *map)
 			((int)floor(x) >> 6)]);
 }
 
-t_inter	*find_clos_inter(t_inter *ver, t_inter *hor, t_map *map, double angle)
+t_inter	find_clos_inter(t_inter ver, t_inter hor, t_map *map, double angle)
 {
-	if (fabs(ver->distance - hor->distance) < 0.01)
+	if (fabs(ver.distance - hor.distance) < 0.01)
 	{
-		if (get_map_point(hor->point->x + 32, hor->point->y, map) != 1 || \
-			get_map_point(hor->point->x - 32, hor->point->y, map) != 1)
+		if (get_map_point(hor.point.x + 32, hor.point.y, map) != 1 || \
+			get_map_point(hor.point.x - 32, hor.point.y, map) != 1)
 		{
-			find_orientation_ver(ver, angle);
+			find_orientation_ver(&ver, angle);
 			return (ver);
 		}
-		if (get_map_point(hor->point->x, hor->point->y + 32, map) != 1 || \
-			get_map_point(hor->point->x, hor->point->y - 32, map) != 1)
+		if (get_map_point(hor.point.x, hor.point.y + 32, map) != 1 || \
+			get_map_point(hor.point.x, hor.point.y - 32, map) != 1)
 		{
-			find_orientation_hor(hor, angle);
+			find_orientation_hor(&hor, angle);
 			return (hor);
 		}
 	}
-	if (ver->distance < hor->distance)
+	if (ver.distance < hor.distance)
 	{
-		find_orientation_ver(ver, angle);
+		find_orientation_ver(&ver, angle);
 		return (ver);
 	}
-	find_orientation_hor(hor, angle);
+	find_orientation_hor(&hor, angle);
 	return (hor);
 }

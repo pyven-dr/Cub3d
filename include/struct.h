@@ -55,7 +55,7 @@ typedef enum e_orient
 
 typedef struct s_inter
 {
-	t_point		*point;
+	t_point		point;
 	double		distance;
 	t_orient	orientation;
 }			t_inter;

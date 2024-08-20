@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 DFLAGS = -MD -MP
 
-LFLAGS = -Lmlx -lmlx -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LFLAGS = -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -L/usr/X11R6/lib -lXext -lX11 -lz -lm
 
 INCLUDE_DIR = include
 
@@ -64,7 +64,7 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
-	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX) $(LFLAGS)
 
 -include $(DEP)
 
