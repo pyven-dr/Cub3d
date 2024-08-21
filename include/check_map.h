@@ -1,13 +1,15 @@
 #ifndef CHECK_MAP_H
 # define CHECK_MAP_H
 
+#include "struct.h"
+
 typedef struct s_true_map
 {
 	char	**map;
-    char    *no;
-    char    *so;
-    char    *ea;
-    char    *we;
+    t_data  north;
+    t_data  south;
+    t_data  east;
+    t_data  west;
     int     floor;
     int     floor_r;
     int     floor_g;
@@ -17,6 +19,7 @@ typedef struct s_true_map
     int     ceiling_g;
     int     ceiling_b;
 	int     map_height;
+    int     map_width;
     int     number_player;
 }	t_true_map;
 

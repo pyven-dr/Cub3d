@@ -97,12 +97,14 @@ static void	print_all(t_true_map *true_map)
 	int i;
 
 	i = 0;
-	dprintf(2, "NO = [%s]\n", true_map->no);
-	dprintf(2, "SO = [%s]\n", true_map->so);
-	dprintf(2, "EA = [%s]\n", true_map->ea);
-	dprintf(2, "WE = [%s]\n", true_map->we);
+	dprintf(2, "NO = [%s]\n", true_map->north.path);
+	dprintf(2, "SO = [%s]\n", true_map->south.path);
+	dprintf(2, "EA = [%s]\n", true_map->east.path);
+	dprintf(2, "WE = [%s]\n", true_map->west.path);
 	dprintf(2, "F = [%x]\n", true_map->floor);
 	dprintf(2, "C = [%x]\n", true_map->ceiling);
+	dprintf(2, "MAP HEIGHT = [%d]\n", true_map->map_height);
+	dprintf(2, "MAP WIDTH = [%d]\n", true_map->map_width);
 	dprintf(2, "----MAP----\n");
 	while (i < true_map->map_height)
 	{
@@ -112,10 +114,23 @@ static void	print_all(t_true_map *true_map)
 	dprintf(2, "\n");
 }
 
+static int	fill_path(char *line, char **path)
+{
+	int i = 2;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] && line[i + 1] && line[i] != '.' && line[i + 1] != '/')
+		return (-1);
+	*path = ft_strdup(line + i);
+	if (path == NULL)
+		return (-1);
+	end_line(*path);
+	return (0);
+}
+
 static int	check_textures_map(int fd, t_true_map *true_map) // Ajout des textures dans cub, a voir car pour le moment c'est gere si on met nimp dans le debut, genre aJSKJdbad NO ./path
 {
 	char	*line;
-	int		i;
 	int		j;
 
 	j = 0;
@@ -124,52 +139,27 @@ static int	check_textures_map(int fd, t_true_map *true_map) // Ajout des texture
 		return (-1);
 	while (line)
 	{
-		i = 0;
-		while(line[i] && line[i + 1] && line[i + 2])
+		if(line[0] && line[1])
 		{
-			if (line[i] == 'N' && line[i + 1] == 'O')
-			{
-				while (line[i] != '.')
-					i++;
-				true_map->no = ft_strdup(line + i);
-				if (true_map->no == NULL)
+			if (line[0] == 'N' && line[1] == 'O')
+				if (fill_path(line, &true_map->north.path) == -1)
 					return (-1);
-				end_line(true_map->no);
-			}
-			if (line[i] == 'S' && line[i + 1] == 'O')
-			{
-				while (line[i] != '.')
-					i++;
-				true_map->so = ft_strdup(line + i);
-				if (true_map->so == NULL)
+			if (line[0] == 'S' && line[1] == 'O')
+				if (fill_path(line, &true_map->south.path) == -1)
 					return (-1);
-				end_line(true_map->so);
-			}
-			if (line[i] == 'E' && line[i + 1] == 'A')
-			{
-				while (line[i] != '.')
-					i++;
-				true_map->ea = ft_strdup(line + i);
-				if (true_map->ea == NULL)
+			if (line[0] == 'E' && line[1] == 'A')
+				if (fill_path(line, &true_map->east.path) == -1)
 					return (-1);
-				end_line(true_map->ea);
-			}
-			if (line[i] == 'W' && line[i + 1] == 'E')
-			{
-				while (line[i] != '.')
-					i++;
-				true_map->we = ft_strdup(line + i);
-				if (true_map->we == NULL)
+			if (line[0] == 'W' && line[1] == 'E')
+				if (fill_path(line, &true_map->west.path) == -1)
 					return (-1);
-				end_line(true_map->we);
-			}
-			if (line[i] == 'F')
-				if (convert_color(1, line + i, true_map) == -1)
+			if (line[0] == 'F')
+				if (convert_color(1, line + 1, true_map) == -1)
 					return (-1);
-			if (line[i] == 'C')
-				if (convert_color(2, line + i, true_map) == -1)
-					return (-1);
-			if (line[0] == ' ' | line[0] == '1')
+			if (line[0] == 'C')
+				if (convert_color(2, line + 1, true_map) == -1)
+			 		return (-1);
+			while (line[0] == ' ' || line[0] == '1')
 			{
 				true_map->map[j] = ft_strdup(line);
 				if (!true_map->map[j])
@@ -182,22 +172,19 @@ static int	check_textures_map(int fd, t_true_map *true_map) // Ajout des texture
 				if (line[0] != ' ' && line[0] != '1') // CHECK SI SAUT DE LIGNE PDT LA MAP
 					return (-1);
 			}
-			i++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	print_all(true_map);
 	return (1);
-
 }
 
 static void	init_map(t_true_map *true_map)
 {
-	true_map->no = NULL;
-	true_map->so = NULL;
-	true_map->ea = NULL;
-	true_map->we = NULL;
+	true_map->north.path = NULL;
+	true_map->south.path = NULL;
+	true_map->east.path = NULL;
+	true_map->west.path = NULL;
 	true_map->ceiling = 0;
 	true_map->ceiling_r = 0;
 	true_map->ceiling_g = 0;
@@ -207,6 +194,7 @@ static void	init_map(t_true_map *true_map)
 	true_map->floor_g = 0;
 	true_map->floor_b = 0;
 	true_map->map_height = 0;
+	true_map->map_width = 0;
 	true_map->number_player = 0;
 }
 
@@ -268,6 +256,8 @@ static int	control_map(t_true_map *true_map)
 			}
 			x++;
 		}
+		if (x > true_map->map_width)
+			true_map->map_width = x;
 		y++;
 	}
 	if (true_map->number_player > 1)
@@ -303,5 +293,6 @@ int	pre_parsing(int argc, char **argv, t_true_map *true_map)
 		dprintf(2, "map error");
 		return (-1);
 	}
+	print_all(true_map);
 	return (0);
 }
