@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:16:06 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 22:16:06 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/21 21:59:41 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 	char	*path;
+	int		width;
+	int		height;
 }			t_data;
 
 typedef struct s_mlx
@@ -63,7 +65,7 @@ typedef struct s_inter
 typedef struct s_player
 {
 	t_keys	*keys;
-	t_point	*pos;
+	t_point	pos;
 	double	delta_x;
 	double	delta_y;
 	double	angle;
@@ -71,38 +73,31 @@ typedef struct s_player
 	int		plane_dist;
 }			t_player;
 
-typedef struct s_map
-{
-	int	*map;
-	int	map_height;
-	int	map_width;
-}		t_map;
-
-typedef struct s_true_map
+typedef struct s_map_data
 {
 	char	**map;
-	t_data	north;
-	t_data	south;
-	t_data	east;
-	t_data	west;
-	int		floor;
-	int		floor_r;
-	int		floor_g;
-	int		floor_b;
-	int		ceiling;
-	int		ceiling_r;
-	int		ceiling_g;
-	int		ceiling_b;
-	int		map_height;
-	int		map_width;
-	int		number_player;
-}	t_true_map;
+    t_data  north;
+    t_data  south;
+    t_data  east;
+    t_data  west;
+    int     floor;
+    int     floor_r;
+    int     floor_g;
+    int     floor_b;
+    int     ceiling;
+    int     ceiling_r;
+    int     ceiling_g;
+    int     ceiling_b;
+	int     map_height;
+    int     map_width;
+    int     number_player;
+}	t_map_data;
 
 typedef struct s_game_data
 {
-	t_player	*player;
-	t_mlx		*mlx_data;
-	t_true_map	*map;
+	t_player	player;
+	t_mlx		mlx_data;
+	t_map_data	map_data;
 }				t_game_data;
 
 #endif

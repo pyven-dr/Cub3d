@@ -3,6 +3,6 @@
 
 #include "struct.h"
 
-int	pre_parsing(int argc, char **argv, t_true_map *true_map);
+int	pre_parsing(int argc, char **argv, t_game_data *game_data);
 
 #endif
