@@ -20,6 +20,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	char	*path;
 }			t_data;
 
 typedef struct s_mlx
@@ -42,7 +43,6 @@ typedef struct s_point
 {
 	double	x;
 	double	y;
-	int		map_point;
 }		t_point;
 
 typedef enum e_orient
@@ -78,11 +78,31 @@ typedef struct s_map
 	int	map_width;
 }		t_map;
 
+typedef struct s_true_map
+{
+	char	**map;
+	t_data  north;
+	t_data  south;
+	t_data  east;
+	t_data  west;
+	int     floor;
+	int     floor_r;
+	int     floor_g;
+	int     floor_b;
+	int     ceiling;
+	int     ceiling_r;
+	int     ceiling_g;
+	int     ceiling_b;
+	int     map_height;
+	int     map_width;
+	int     number_player;
+}	t_true_map;
+
 typedef struct s_game_data
 {
 	t_player	*player;
 	t_mlx		*mlx_data;
-	t_map		*map;
+	t_true_map	*map;
 }				t_game_data;
 
 #endif

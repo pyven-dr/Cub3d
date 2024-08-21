@@ -25,7 +25,8 @@ RENDER_SRC = render_frame.c \
 			 find_v_wall.c \
 			 find_orientation.c \
 			 draw_pixels.c \
-			 find_closest_inter.c
+			 find_closest_inter.c \
+			 get_map_point.c
 
 MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \

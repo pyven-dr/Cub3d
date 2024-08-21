@@ -29,9 +29,6 @@ int	close_window(void *mlx_struct)
 
 int	create_window(t_mlx *mlx_data)
 {
-	mlx_data->mlx_ptr = mlx_init();
-	if (mlx_data->mlx_ptr == NULL)
-		return (1);
 	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx_ptr, WIDTH, \
 									HEIGHT, WIN_NAME);
 	if (mlx_data->mlx_win == NULL)

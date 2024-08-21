@@ -12,25 +12,22 @@
 
 #include "const_values.h"
 #include "struct.h"
+#include "render.h"
 
-static int	check_out_map(t_player *player, t_map *map)
+static int	check_out_map(t_player *player, t_true_map *map)
 {
-	if (map->map[((int)(player->pos->y + COLLISION_OFFSET) >> 6) * \
-		map->map_width + ((int)(player->pos->x) >> 6)] == 1)
+	if (get_map_point(player->pos->x, player->pos->y + COLLISION_OFFSET, map) == '1')
 		return (1);
-	if (map->map[((int)(player->pos->y - COLLISION_OFFSET) >> 6) * \
-		map->map_width + ((int)(player->pos->x) >> 6)] == 1)
+	if (get_map_point(player->pos->x, player->pos->y - COLLISION_OFFSET, map) == '1')
 		return (1);
-	if (map->map[((int)(player->pos->y) >> 6) * map->map_width + \
-		((int)(player->pos->x + COLLISION_OFFSET) >> 6)] == 1)
+	if (get_map_point(player->pos->x + COLLISION_OFFSET, player->pos->y, map) == '1')
 		return (1);
-	if (map->map[((int)(player->pos->y) >> 6) * map->map_width + \
-		((int)(player->pos->x - COLLISION_OFFSET) >> 6)] == 1)
+	if (get_map_point(player->pos->x - COLLISION_OFFSET, player->pos->y, map) == '1')
 		return (1);
 	return (0);
 }
 
-void	move_player(t_player *player, t_map *map)
+void	move_player(t_player *player, t_true_map *map)
 {
 	if (player->keys->forward == 1)
 	{

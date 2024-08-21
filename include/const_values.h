@@ -13,16 +13,16 @@
 #ifndef CONST_VALUES_H
 # define CONST_VALUES_H
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 960
+# define HEIGHT 540
 # define WIN_NAME "Cub3d"
 
 # define FOV 60
-# define PLANE_WIDTH 1920
-# define PLANE_HEIGHT 1080
+# define PLANE_WIDTH 960
+# define PLANE_HEIGHT 540
 
 # define COLLISION_OFFSET 10
-# define ROTATION_SPEED 0.035
+# define ROTATION_SPEED 0.015
 # define MOVE_SPEED 3.5
 
 # define W					119

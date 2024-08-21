@@ -24,7 +24,7 @@ static double	fix_fisheye(t_inter wall, double angle, double player_angle)
 	return (wall.distance);
 }
 
-int	render_frame(t_map *map, t_player *player, t_mlx *mlx_data)
+int	render_frame(t_true_map *map, t_player *player, t_mlx *mlx_data)
 {
 	double	angle;
 	t_inter	closest_wall;

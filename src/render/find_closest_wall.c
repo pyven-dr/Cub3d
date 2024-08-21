@@ -26,7 +26,7 @@ static t_inter	find_dist(t_point inter_point, t_point *pos)
 	return (inter);
 }
 
-t_inter	find_closest_wall(double angle, t_player *player, t_map *map)
+t_inter	find_closest_wall(double angle, t_player *player, t_true_map *map)
 {
 	t_inter	ver_inter;
 	t_inter	hor_inter;
