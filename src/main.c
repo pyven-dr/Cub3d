@@ -20,21 +20,6 @@
 #include <stdlib.h>
 #include "mlx.h"
 
-int get_pixel_color(t_data img_data, int x, int y)
-{
-	int	offset;
-	int	color;
-
-	offset = (y * img_data.line_length) + (x * (img_data.bits_per_pixel / 8));
-	if (img_data.endian == 0)
-		color = *(unsigned int *)(img_data.addr + offset);
-	else
-		color = ((unsigned char)(img_data.addr[offset + 0]) << 16) |
-				((unsigned char)(img_data.addr[offset + 1]) << 8) |
-				(unsigned char)(img_data.addr[offset + 2]);
-	return (color);
-}
-
 int main(int argc, char **argv)
 {
 	t_game_data	game_data;
