@@ -20,6 +20,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	char	*path;
 }			t_data;
 
 typedef struct s_mlx
