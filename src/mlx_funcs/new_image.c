@@ -17,12 +17,12 @@
 
 int	new_image(t_mlx *mlx)
 {
-	mlx->img_data->img = mlx_new_image(mlx->mlx_ptr, \
+	mlx->img_data.img = mlx_new_image(mlx->mlx_ptr, \
 										WIDTH, HEIGHT);
-	if (mlx->img_data->img == NULL)
+	if (mlx->img_data.img == NULL)
 		return (1);
-	mlx->img_data->addr = mlx_get_data_addr(mlx->img_data->img, \
-		&mlx->img_data->bits_per_pixel, &mlx->img_data->line_length, \
-		&mlx->img_data->endian);
+	mlx->img_data.addr = mlx_get_data_addr(mlx->img_data.img, \
+		&mlx->img_data.bits_per_pixel, &mlx->img_data.line_length, \
+		&mlx->img_data.endian);
 	return (0);
 }

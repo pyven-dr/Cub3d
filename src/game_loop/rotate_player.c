@@ -16,9 +16,9 @@
 
 void	rotate_player(t_player *player)
 {
-	if (player->keys->right == 1)
+	if (player->keys.right == 1)
 		player->angle = normalize_angle(player->angle + ROTATION_SPEED);
-	if (player->keys->left == 1)
+	if (player->keys.left == 1)
 		player->angle = normalize_angle(player->angle - ROTATION_SPEED);
 	player->delta_x = cos(player->angle) * MOVE_SPEED;
 	player->delta_y = sin(player->angle) * MOVE_SPEED;

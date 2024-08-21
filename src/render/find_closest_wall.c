@@ -26,14 +26,14 @@ static t_inter	find_dist(t_point inter_point, t_point *pos)
 	return (inter);
 }
 
-t_inter	find_closest_wall(double angle, t_player *player, t_true_map *map)
+t_inter	find_closest_wall(double angle, t_player *player, t_map_data *map)
 {
 	t_inter	ver_inter;
 	t_inter	hor_inter;
 	t_inter	closest_inter;
 
-	ver_inter = find_dist(find_v_wall(angle, player, map), player->pos);
-	hor_inter = find_dist(find_h_wall(angle, player, map), player->pos);
+	ver_inter = find_dist(find_v_wall(angle, player, map), &player->pos);
+	hor_inter = find_dist(find_h_wall(angle, player, map), &player->pos);
 	closest_inter = find_clos_inter(ver_inter, hor_inter, map, angle);
 	return (closest_inter);
 }

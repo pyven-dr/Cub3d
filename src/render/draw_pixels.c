@@ -17,13 +17,13 @@
 static void	draw_wall_color(t_mlx *mlx_data, int i, int j, t_inter inter)
 {
 	if (inter.orientation == NORTH)
-		pixel_put(mlx_data->img_data, j, i, 0xff0011);
+		pixel_put(&mlx_data->img_data, j, i, 0xff0011);
 	if (inter.orientation == SOUTH)
-		pixel_put(mlx_data->img_data, j, i, 0x18ff03);
+		pixel_put(&mlx_data->img_data, j, i, 0x18ff03);
 	if (inter.orientation == EAST)
-		pixel_put(mlx_data->img_data, j, i, 0x0320ff);
+		pixel_put(&mlx_data->img_data, j, i, 0x0320ff);
 	if (inter.orientation == WEST)
-		pixel_put(mlx_data->img_data, j, i, 0xf2ff03);
+		pixel_put(&mlx_data->img_data, j, i, 0xf2ff03);
 }
 
 void	draw_column(t_mlx *mlx_data, int j, int wall_h, t_inter inter)
@@ -36,11 +36,11 @@ void	draw_column(t_mlx *mlx_data, int j, int wall_h, t_inter inter)
 	while (i < HEIGHT)
 	{
 		if (i < start_wall)
-			pixel_put(mlx_data->img_data, j, i, 0x000000);
+			pixel_put(&mlx_data->img_data, j, i, 0x000000);
 		else if (i >= start_wall && i <= start_wall + wall_h)
 			draw_wall_color(mlx_data, i, j, inter);
 		else
-			pixel_put(mlx_data->img_data, j, i, 0xffffff);
+			pixel_put(&mlx_data->img_data, j, i, 0xffffff);
 		i++;
 	}
 }

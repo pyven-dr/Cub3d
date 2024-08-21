@@ -24,7 +24,7 @@ static double	fix_fisheye(t_inter wall, double angle, double player_angle)
 	return (wall.distance);
 }
 
-int	render_frame(t_true_map *map, t_player *player, t_mlx *mlx_data)
+int	render_frame(t_game_data *game_data)
 {
 	double	angle;
 	t_inter	closest_wall;
@@ -34,10 +34,10 @@ int	render_frame(t_true_map *map, t_player *player, t_mlx *mlx_data)
 	while (i < PLANE_WIDTH)
 	{
 		angle = normalize_angle(atan2((i - 0.5) - PLANE_WIDTH / 2.0, \
-				player->plane_dist) + player->angle);
-		closest_wall = find_closest_wall(angle, player, map);
-		closest_wall.distance = fix_fisheye(closest_wall, angle, player->angle);
-		trace_column(closest_wall, i, mlx_data, player->plane_dist);
+				game_data->player.plane_dist) + game_data->player.angle);
+		closest_wall = find_closest_wall(angle, &game_data->player, &game_data->map_data);
+		closest_wall.distance = fix_fisheye(closest_wall, angle, game_data->player.angle);
+		trace_column(closest_wall, i, &game_data->mlx_data, game_data->player.plane_dist);
 		i++;
 	}
 	return (0);

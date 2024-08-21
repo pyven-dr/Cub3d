@@ -254,6 +254,7 @@ static int	control_player(t_game_data *game_data, int y, int x) // CHECK SI PLUS
 		game_data->player.fov = FOV * (M_PI / 180);
 		game_data->player.delta_x = (int)(cos(game_data->player.angle) * 1.5);
 		game_data->player.delta_y = (int)(sin(game_data->player.angle) * 1.5);
+		game_data->player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(game_data->player.fov / 2));
 		return (1);
 	}
 	return (0);

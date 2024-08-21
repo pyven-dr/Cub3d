@@ -20,7 +20,7 @@ int	close_window(void *mlx_struct)
 	t_mlx	*mlx_data;
 
 	mlx_data = (t_mlx *)mlx_struct;
-	mlx_destroy_image(mlx_data->mlx_ptr, mlx_data->img_data->img);
+	mlx_destroy_image(mlx_data->mlx_ptr, mlx_data->img_data.img);
 	mlx_destroy_window(mlx_data->mlx_ptr, mlx_data->mlx_win);
 	mlx_destroy_display(mlx_data->mlx_ptr);
 	free(mlx_data->mlx_ptr);

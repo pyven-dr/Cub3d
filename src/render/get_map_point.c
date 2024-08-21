@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <math.h>
 
-char	get_map_point(double x, double y, t_true_map *map)
+char	get_map_point(double x, double y, t_map_data *map)
 {
 	if ((int)floor(y) >> 6 >= map->map_height || (int)floor(y) >> 6 < 0)
 		return (3);

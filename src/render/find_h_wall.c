@@ -14,7 +14,7 @@
 #include "render.h"
 #include <math.h>
 
-static t_point	find_inter(t_point inter, t_true_map *map, double xa, double ya)
+static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ static t_point	find_inter(t_point inter, t_true_map *map, double xa, double ya)
 	return (inter);
 }
 
-t_point	find_h_wall(double ray_angle, t_player *player, t_true_map *map)
+t_point	find_h_wall(double ray_angle, t_player *player, t_map_data *map)
 {
 	t_point	inter;
 	double	xa;
@@ -44,21 +44,21 @@ t_point	find_h_wall(double ray_angle, t_player *player, t_true_map *map)
 	atan = -1 / tan(ray_angle);
 	if (ray_angle > M_PI)
 	{
-		inter.y = (((int)player->pos->y >> 6) << 6) - 0.0001;
+		inter.y = (((int)player->pos.y >> 6) << 6) - 0.0001;
 		ya = -64;
 	}
 	else if (ray_angle < M_PI)
 	{
-		inter.y = (((int)player->pos->y >> 6) << 6) + 64;
+		inter.y = (((int)player->pos.y >> 6) << 6) + 64;
 		ya = 64;
 	}
 	else
 	{
-		inter.x = player->pos->x;
-		inter.y = player->pos->y;
+		inter.x = player->pos.x;
+		inter.y = player->pos.y;
 		return (inter);
 	}
-	inter.x = (player->pos->y - inter.y) * atan + player->pos->x;
+	inter.x = (player->pos.y - inter.y) * atan + player->pos.x;
 	xa = -ya * atan;
 	return (find_inter(inter, map, xa, ya));
 }

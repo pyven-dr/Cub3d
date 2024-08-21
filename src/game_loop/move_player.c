@@ -14,41 +14,41 @@
 #include "struct.h"
 #include "render.h"
 
-static int	check_out_map(t_player *player, t_true_map *map)
+static int	check_out_map(t_player *player, t_map_data *map)
 {
-	if (get_map_point(player->pos->x, player->pos->y + COLLISION_OFFSET, \
+	if (get_map_point(player->pos.x, player->pos.y + COLLISION_OFFSET, \
 		map) == '1')
 		return (1);
-	if (get_map_point(player->pos->x, player->pos->y - COLLISION_OFFSET, \
+	if (get_map_point(player->pos.x, player->pos.y - COLLISION_OFFSET, \
 		map) == '1')
 		return (1);
-	if (get_map_point(player->pos->x + COLLISION_OFFSET, player->pos->y, \
+	if (get_map_point(player->pos.x + COLLISION_OFFSET, player->pos.y, \
 		map) == '1')
 		return (1);
-	if (get_map_point(player->pos->x - COLLISION_OFFSET, player->pos->y, \
+	if (get_map_point(player->pos.x - COLLISION_OFFSET, player->pos.y, \
 		map) == '1')
 		return (1);
 	return (0);
 }
 
-void	move_player(t_player *player, t_true_map *map)
+void	move_player(t_player *player, t_map_data *map)
 {
-	if (player->keys->forward == 1)
+	if (player->keys.forward == 1)
 	{
-		player->pos->x += player->delta_x;
+		player->pos.x += player->delta_x;
 		if (check_out_map(player, map) == 1)
-			player->pos->x -= player->delta_x;
-		player->pos->y += player->delta_y;
+			player->pos.x -= player->delta_x;
+		player->pos.y += player->delta_y;
 		if (check_out_map(player, map) == 1)
-			player->pos->y -= player->delta_y;
+			player->pos.y -= player->delta_y;
 	}
-	if (player->keys->backward == 1)
+	if (player->keys.backward == 1)
 	{
-		player->pos->x -= player->delta_x;
+		player->pos.x -= player->delta_x;
 		if (check_out_map(player, map) == 1)
-			player->pos->x += player->delta_x;
-		player->pos->y -= player->delta_y;
+			player->pos.x += player->delta_x;
+		player->pos.y -= player->delta_y;
 		if (check_out_map(player, map) == 1)
-			player->pos->y += player->delta_y;
+			player->pos.y += player->delta_y;
 	}
 }

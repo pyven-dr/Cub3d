@@ -14,7 +14,7 @@
 #include "struct.h"
 #include <math.h>
 
-t_inter	find_clos_inter(t_inter ver, t_inter hor, t_true_map *map, double angle)
+t_inter	find_clos_inter(t_inter ver, t_inter hor, t_map_data *map, double angle)
 {
 	if (fabs(ver.distance - hor.distance) < 0.01)
 	{

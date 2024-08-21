@@ -23,19 +23,19 @@ void	controls(t_mlx *mlx_data, t_keys *keys)
 
 int	render(t_game_data	*game_data)
 {
-	if (game_data->player->keys->esc == 1)
-		close_window(game_data->mlx_data);
-	move_player(game_data->player, game_data->map);
-	rotate_player(game_data->player);
-	render_frame(game_data->map, game_data->player, game_data->mlx_data);
-	mlx_put_image_to_window(game_data->mlx_data->mlx_ptr, \
-	game_data->mlx_data->mlx_win, game_data->mlx_data->img_data->img, 0, 0);
+	if (game_data->player.keys.esc == 1)
+		close_window(&game_data->mlx_data);
+	move_player(&game_data->player, &game_data->map_data);
+	rotate_player(&game_data->player);
+	render_frame(game_data);
+	mlx_put_image_to_window(game_data->mlx_data.mlx_ptr, \
+	game_data->mlx_data.mlx_win, game_data->mlx_data.img_data.img, 0, 0);
 	return (0);
 }
 
 void	game_loop(t_game_data *game_data)
 {
-	controls(game_data->mlx_data, game_data->player->keys);
-	mlx_loop_hook(game_data->mlx_data->mlx_ptr, render, game_data);
-	mlx_loop(game_data->mlx_data->mlx_ptr);
+	controls(&game_data->mlx_data, &game_data->player.keys);
+	mlx_loop_hook(game_data->mlx_data.mlx_ptr, render, game_data);
+	mlx_loop(game_data->mlx_data.mlx_ptr);
 }

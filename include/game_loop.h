@@ -18,9 +18,9 @@
 void	game_loop(t_game_data *game_data);
 int		key_press(int key, t_keys *keys);
 int		key_release(int key, t_keys *keys);
-int		render_frame(t_true_map *map, t_player *player, t_mlx *mlx_data);
+int		render_frame(t_game_data *game_data);
 double	normalize_angle(double angle);
-void	move_player(t_player *player, t_true_map *map);
+void	move_player(t_player *player, t_map_data *map);
 void	rotate_player(t_player *player);
 
 #endif
