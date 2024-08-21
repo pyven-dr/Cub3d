@@ -34,10 +34,6 @@ MLX_FUNCS_SRC = pixel_put.c \
 CHECK_MAP_SRC = pre_parsing.c
 
 SRC = main.c \
-	  normalize_angle.c \
-	  $(addprefix render/, $(RENDER_SRC)) \
-	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
-	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
 	  $(addprefix check_map/, $(CHECK_MAP_SRC))
 
 BUILD_DIR = .build
