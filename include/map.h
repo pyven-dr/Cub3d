@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pixel_put.c                                        :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 21:25:50 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 21:25:50 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/08/23 01:30:26 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/08/23 01:30:26 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAP_H
+#define MAP_H
+
 #include "mlx_funcs.h"
 
-void	pixel_put(t_data *data, int x, int y, int color)
+typedef struct s_color
 {
-	char	*dst;
+	int     hexa;
+	int     r;
+	int     g;
+	int     b;
+}			t_color;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
+typedef struct s_map_data
+{
+	char	**map;
+	t_data  north;
+	t_data  south;
+	t_data  east;
+	t_data  west;
+	t_color	floor;
+	t_color	ceiling;
+	int     map_height;
+	int     map_width;
+	int     number_player;
+}	t_map_data;
+
+
+#endif

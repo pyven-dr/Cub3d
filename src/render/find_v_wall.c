@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "game_loop.h"
 #include "render.h"
 #include <math.h>
 

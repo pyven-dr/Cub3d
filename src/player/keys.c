@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "struct.h"
+#include "game_loop.h"
 
 int	key_press(int key, t_keys *keys)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "mlx_funcs.h"
 
 int	get_pixel_color(t_data img_data, int x, int y)
 {

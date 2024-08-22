@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
+#include "game_loop.h"
 #include "render.h"
 #include "textures.h"
 
@@ -24,7 +25,7 @@ void	trace_column(t_inter inter, int col_numb, t_game_data *game_data)
 	if (inter.distance == 0)
 		slice_height = PLANE_HEIGHT;
 	else
-		slice_height = 64 / inter.distance * game_data->player.plane_dist;
+		slice_height = 64 / inter.distance * game_data->p.plane_dist;
 	slice_height = slice_height * ((double)HEIGHT / (double)PLANE_HEIGHT);
 	j = col_numb * column_size;
 	col_numb = j + column_size;

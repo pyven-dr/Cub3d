@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
 #include "mlx_funcs.h"
 #include "game_loop.h"
 #include "check_map.h"
@@ -26,11 +25,11 @@ int main(int argc, char **argv)
 		return (1);
 	if (pre_parsing(argc, argv, &game_data) == -1)
 		return (1);
-	game_data.player.keys.backward = 0;
-	game_data.player.keys.forward = 0;
-	game_data.player.keys.left = 0;
-	game_data.player.keys.right = 0;
-	game_data.player.keys.esc = 0;
+	game_data.p.keys.backward = 0;
+	game_data.p.keys.forward = 0;
+	game_data.p.keys.left = 0;
+	game_data.p.keys.right = 0;
+	game_data.p.keys.esc = 0;
 
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);

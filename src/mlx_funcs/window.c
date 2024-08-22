@@ -12,7 +12,7 @@
 
 #include "const_values.h"
 #include "mlx.h"
-#include "struct.h"
+#include "mlx_funcs.h"
 #include <stdlib.h>
 
 int	close_window(void *mlx_struct)

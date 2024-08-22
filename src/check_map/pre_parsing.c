@@ -17,6 +17,8 @@
 #include <math.h>
 #include "mlx.h"
 #include "const_values.h"
+#include "map.h"
+#include "game_loop.h"
 
 static int	check_cub(char *file)	// a verifier si on peut faire des ..cub ou quoi en nom de map
 {
@@ -233,19 +235,19 @@ static int	control_player(t_game_data *game_data, int y, int x)
 		game_data->map_data.map[y][x] == 'E' || game_data->map_data.map[y][x] == 'W')
 	{
 		if (game_data->map_data.map[y][x] == 'N')
-			game_data->player.angle = (M_PI) / 2;
+			game_data->p.angle = (M_PI) / 2;
 		if (game_data->map_data.map[y][x] == 'S')
-			game_data->player.angle = (3 * M_PI) / 2;
+			game_data->p.angle = (3 * M_PI) / 2;
 		if (game_data->map_data.map[y][x] == 'E')
-			game_data->player.angle = (M_PI);		
+			game_data->p.angle = (M_PI);
 		if (game_data->map_data.map[y][x] == 'W')
-			game_data->player.angle = (0);
-		game_data->player.pos.x = x * 64;
-		game_data->player.pos.y = y * 64;
-		game_data->player.fov = FOV * (M_PI / 180);
-		game_data->player.delta_x = (int)(cos(game_data->player.angle) * 1.5);
-		game_data->player.delta_y = (int)(sin(game_data->player.angle) * 1.5);
-		game_data->player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(game_data->player.fov / 2));
+			game_data->p.angle = (0);
+		game_data->p.pos.x = x * 64;
+		game_data->p.pos.y = y * 64;
+		game_data->p.fov = FOV * (M_PI / 180);
+		game_data->p.delta_x = (int)(cos(game_data->p.angle) * 1.5);
+		game_data->p.delta_y = (int)(sin(game_data->p.angle) * 1.5);
+		game_data->p.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(game_data->p.fov / 2));
 		return (1);
 	}
 	return (0);
@@ -330,9 +332,9 @@ int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 		dprintf(2, "map error");
 		return (-1);
 	}
-	dprintf(2, "PLAYER X : [%f]\n", game_data->player.pos.x);
-	dprintf(2, "PLAYER Y : [%f]\n", game_data->player.pos.y);
-	dprintf(2, "PLAYER ANGLE : [%f]\n", game_data->player.angle);
+	dprintf(2, "PLAYER X : [%f]\n", game_data->p.pos.x);
+	dprintf(2, "PLAYER Y : [%f]\n", game_data->p.pos.y);
+	dprintf(2, "PLAYER ANGLE : [%f]\n", game_data->p.angle);
 	print_all(&game_data->map_data);
 	if (fill_nsew_struct(game_data) == -1)
 		return (-1);

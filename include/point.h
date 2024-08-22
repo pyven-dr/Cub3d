@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pixel_put.c                                        :+:      :+:    :+:   */
+/*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 21:25:50 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 21:25:50 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/08/23 01:37:07 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/08/23 01:37:07 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_funcs.h"
+#ifndef POINT_H
+# define POINT_H
 
-void	pixel_put(t_data *data, int x, int y, int color)
+typedef struct s_point
 {
-	char	*dst;
+	double	x;
+	double	y;
+}		t_point;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
+#endif

@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
+#include "game_loop.h"
 #include "mlx_funcs.h"
-#include "struct.h"
+#include "render.h"
 #include "textures.h"
 
 static void	draw_wall_color(t_game_data *game_data, int i, int j, t_inter inter)

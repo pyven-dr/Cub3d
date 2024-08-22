@@ -13,7 +13,27 @@
 #ifndef RENDER_H
 # define RENDER_H
 
-# include "struct.h"
+#include "point.h"
+#include "player.h"
+#include "game_loop.h"
+
+typedef enum e_orient
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	t_orient;
+
+typedef struct s_inter
+{
+	t_point		point;
+	double		distance;
+	t_orient	orientation;
+	double		pos_texture;
+}			t_inter;
+
+struct t_map_data;
 
 t_point	find_v_wall(double ray_angle, t_player *player, t_map_data *map);
 t_point	find_h_wall(double ray_angle, t_player *player, t_map_data *map);

@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/23 01:26:01 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/08/23 01:26:01 by pyven-dr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PLAYER_H
+# define PLAYER_H
+
+#include "map.h"
+#include "point.h"
+
+typedef struct s_keys
+{
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
+	int	esc;
+}		t_keys;
+
+typedef struct s_player
+{
+	t_keys	keys;
+	t_point	pos;
+	double	delta_x;
+	double	delta_y;
+	double	angle;
+	double	fov;
+	int		plane_dist;
+}			t_player;
+
+int		key_press(int key, t_keys *keys);
+int		key_release(int key, t_keys *keys);
+void	move_player(t_player *player, t_map_data *map);
+void	rotate_player(t_player *player);
+
+#endif

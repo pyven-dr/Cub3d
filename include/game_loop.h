@@ -13,14 +13,18 @@
 #ifndef GAME_LOOP_H
 # define GAME_LOOP_H
 
-# include "struct.h"
+#include "player.h"
+#include "map.h"
+
+typedef struct s_game_data
+{
+	t_player	p;
+	t_mlx		mlx_data;
+	t_map_data	map_data;
+}				t_game_data;
 
 void	game_loop(t_game_data *game_data);
-int		key_press(int key, t_keys *keys);
-int		key_release(int key, t_keys *keys);
 int		render_frame(t_game_data *game_data);
 double	normalize_angle(double angle);
-void	move_player(t_player *player, t_map_data *map);
-void	rotate_player(t_player *player);
 
 #endif

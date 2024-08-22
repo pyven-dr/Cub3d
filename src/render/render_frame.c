@@ -34,11 +34,11 @@ int	render_frame(t_game_data *game_data)
 	while (i < PLANE_WIDTH)
 	{
 		angle = normalize_angle(atan2((i - 0.5) - PLANE_WIDTH / 2.0, \
-				game_data->player.plane_dist) + game_data->player.angle);
-		closest_wall = find_closest_wall(angle, &game_data->player, \
+				game_data->p.plane_dist) + game_data->p.angle);
+		closest_wall = find_closest_wall(angle, &game_data->p, \
 									&game_data->map_data);
 		closest_wall.distance = fix_fisheye(closest_wall, angle, \
-								game_data->player.angle);
+								game_data->p.angle);
 		trace_column(closest_wall, i, game_data);
 		i++;
 	}
