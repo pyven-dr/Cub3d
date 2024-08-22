@@ -13,8 +13,8 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 
-#include "map.h"
-#include "point.h"
+# include "map.h"
+# include "point.h"
 
 typedef struct s_keys
 {

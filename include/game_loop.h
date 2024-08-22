@@ -13,8 +13,8 @@
 #ifndef GAME_LOOP_H
 # define GAME_LOOP_H
 
-#include "player.h"
-#include "map.h"
+# include "player.h"
+# include "map.h"
 
 typedef struct s_game_data
 {

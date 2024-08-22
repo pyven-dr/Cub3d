@@ -11,31 +11,30 @@
 /* ************************************************************************** */
 
 #ifndef MAP_H
-#define MAP_H
+# define MAP_H
 
-#include "mlx_funcs.h"
+# include "mlx_funcs.h"
 
 typedef struct s_color
 {
-	int     hexa;
-	int     r;
-	int     g;
-	int     b;
+	int		hexa;
+	int		r;
+	int		g;
+	int		b;
 }			t_color;
 
 typedef struct s_map_data
 {
 	char	**map;
-	t_data  north;
-	t_data  south;
-	t_data  east;
-	t_data  west;
+	t_data	north;
+	t_data	south;
+	t_data	east;
+	t_data	west;
 	t_color	floor;
 	t_color	ceiling;
-	int     map_height;
-	int     map_width;
-	int     number_player;
-}	t_map_data;
-
+	int		map_height;
+	int		map_width;
+	int		number_player;
+}			t_map_data;
 
 #endif
