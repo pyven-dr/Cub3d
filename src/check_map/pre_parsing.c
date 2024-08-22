@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:25:48 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/22 17:22:02 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/22 18:32:01 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ static int	file_to_struct(t_game_data *game_data, t_data *nsew)
 	return (0);
 }
 
-static int	check_textures_map(int fd, t_map_data *map_data) // Ajout des textures dans cub, a voir car pour le moment c'est gere si on met nimp dans le debut, genre aJSKJdbad NO ./path
+static int	check_textures_map(int fd, t_map_data *map_data)
 {
 	char	*line;
 	int		j;
@@ -144,40 +144,57 @@ static int	check_textures_map(int fd, t_map_data *map_data) // Ajout des texture
 		{
 //			dprintf(2, "pete avant fill text\n");
 			if (line[0] == 'N' && line[1] == 'O')
+			{
 				if (fill_path(line, &map_data->north.path) == -1)
 					return (-1);
+			}
 //			dprintf(2, "pete apres no\n");
-			if (line[0] == 'S' && line[1] == 'O')
+			else if (line[0] == 'S' && line[1] == 'O')
+			{
 				if (fill_path(line, &map_data->south.path) == -1)
 					return (-1);
-			if (line[0] == 'E' && line[1] == 'A')
+			}
+			else if (line[0] == 'E' && line[1] == 'A')
+			{
 				if (fill_path(line, &map_data->east.path) == -1)
 					return (-1);
-			if (line[0] == 'W' && line[1] == 'E')
+			}
+			else if (line[0] == 'W' && line[1] == 'E')
+			{
 				if (fill_path(line, &map_data->west.path) == -1)
 					return (-1);
+			}
 //			dprintf(2, "pete apres fill text\n");
-			if (line[0] == 'F')
+			else if (line[0] == 'F')
+			{
 				if (convert_color(line + 1, &map_data->floor) == -1)
 					return (-1);
-			if (line[0] == 'C')
+			}
+			else if (line[0] == 'C')
+			{
 				if (convert_color(line + 1, &map_data->ceiling) == -1)
 			 		return (-1);
-			while (line[0] == ' ' || line[0] == '1')
-			{
-				if (map_data->east.path == NULL || map_data->north.path == NULL || map_data->west.path == NULL || map_data->south.path == NULL)
-					return (-1);
-				map_data->map[j] = ft_strdup(line);
-				if (!map_data->map[j])
-					return (-1);
-				j++;
-				free(line);
-				line = get_next_line(fd);
-				if (!line)
-					break ;
-				if (line[0] != ' ' && line[0] != '1') // CHECK SI SAUT DE LIGNE PDT LA MAP
-					return (-1);
 			}
+			else if (line[0] == ' ' || line[0] == '1')
+			{
+				while (line[0] == ' ' || line[0] == '1')
+				{
+					if (map_data->east.path == NULL || map_data->north.path == NULL || map_data->west.path == NULL || map_data->south.path == NULL)
+						return (-1);
+					map_data->map[j] = ft_strdup(line);
+					if (!map_data->map[j])
+						return (-1);
+					j++;
+					free(line);
+					line = get_next_line(fd);
+					if (!line)
+						break ;
+					if (line[0] != ' ' && line[0] != '1') // CHECK SI SAUT DE LIGNE PDT LA MAP
+						return (-1);
+				}
+			}
+			else
+				return (-1);
 		}
 		free(line);
 		line = get_next_line(fd);
@@ -226,8 +243,8 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 	map_data->map[map_data->map_height + 1] = NULL;
 	return (0);
 }
-
 static int	control_player(t_game_data *game_data, int y, int x)
+
 {
 	if (game_data->map_data.map[y][x] == 'N' || game_data->map_data.map[y][x] == 'S' ||
 		game_data->map_data.map[y][x] == 'E' || game_data->map_data.map[y][x] == 'W')
@@ -281,7 +298,7 @@ static int	control_map(t_game_data *game_data)
 			game_data->map_data.map_width = x;
 		y++;
 	}
-	if (game_data->map_data.number_player > 1)
+	if (game_data->map_data.number_player != 1)
 		return (-1);
 	return (0);
 }
