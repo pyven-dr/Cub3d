@@ -27,11 +27,12 @@ RENDER_SRC = render_frame.c \
 			 draw_pixels.c \
 			 find_closest_inter.c \
 			 get_map_point.c \
-			 get_pixel_color.c \
 
 MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
 			   new_image.c
+
+TEXTURES_SRC = get_pixel_color.c \
 
 CHECK_MAP_SRC = pre_parsing.c
 
@@ -40,7 +41,8 @@ SRC = main.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
 	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
-	  $(addprefix check_map/, $(CHECK_MAP_SRC))
+	  $(addprefix check_map/, $(CHECK_MAP_SRC)) \
+	  $(addprefix textures/, $(TEXTURES_SRC))
 
 BUILD_DIR = .build
 
