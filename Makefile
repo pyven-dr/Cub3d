@@ -24,7 +24,6 @@ RENDER_SRC = render_frame.c \
 			 find_h_wall.c \
 			 find_v_wall.c \
 			 find_orientation.c \
-			 draw_pixels.c \
 			 find_closest_inter.c \
 			 get_map_point.c \
 
@@ -33,6 +32,8 @@ MLX_FUNCS_SRC = pixel_put.c \
 			   new_image.c
 
 TEXTURES_SRC = get_pixel_color.c \
+			   draw_pixels.c \
+			   get_texture_color.c \
 
 CHECK_MAP_SRC = pre_parsing.c
 

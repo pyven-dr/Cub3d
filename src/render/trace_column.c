@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "mlx_funcs.h"
 #include "render.h"
+#include "textures.h"
 
 void	trace_column(t_inter inter, int col_numb, t_game_data *game_data)
 {
@@ -26,8 +26,6 @@ void	trace_column(t_inter inter, int col_numb, t_game_data *game_data)
 	else
 		slice_height = 64 / inter.distance * game_data->player.plane_dist;
 	slice_height = slice_height * ((double)HEIGHT / (double)PLANE_HEIGHT);
-	//if (slice_height > HEIGHT)
-		//slice_height = HEIGHT;
 	j = col_numb * column_size;
 	col_numb = j + column_size;
 	while (j < col_numb)

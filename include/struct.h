@@ -60,6 +60,7 @@ typedef struct s_inter
 	t_point		point;
 	double		distance;
 	t_orient	orientation;
+	double		pos_texture;
 }			t_inter;
 
 typedef struct s_player
