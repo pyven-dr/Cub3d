@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:25:48 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/21 22:04:28 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/22 17:22:02 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,50 +41,34 @@ int	create_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
-static int	convert_color(int fc, char *line, t_map_data *map_data)
+static int	convert_color(char *line, t_color *color)
 {
+	if (color->hexa != 0)
+		return (-1);
 	while (*line < '0' || *line > '9')
 		line++;
 	//dprintf(2, "line : [%c]", *line);
-	if (fc == 1)
-	{
-		map_data->floor_r = ft_atoi(line);
-		//dprintf(2, "floor_r = %d\n", map_data->floor_r);
-		if (map_data->floor_r < 0 || map_data->floor_r > 255)
-			return (-1); // Erreur d'entree de couleur
-		while (line && *line != ',')
-			line++;
-		map_data->floor_g = ft_atoi(++line);
-		//dprintf(2, "floor_g = %d\n", map_data->floor_g);
-		if (map_data->floor_g < 0 || map_data->floor_g > 255)
-			return (-1); // Erreur d'entree de couleur
-		while (line && *line != ',')
-			line++;
-		map_data->floor_b = ft_atoi(++line);
-		//dprintf(2, "floor_b = %d\n", map_data->floor_b);
-		if (map_data->floor_b < 0 || map_data->floor_b > 255)
-			return (-1); // Erreur d'entree de couleur
-		while (line && *line != ',')
-			line++;
-		map_data->floor = create_rgb(map_data->floor_r, map_data->floor_g, map_data->floor_b);
-	}
-	else
-	{
-		map_data->ceiling_r = ft_atoi(++line);
-		if (map_data->ceiling_r < 0 || map_data->ceiling_r > 255)
-			return (-1); // Erreur d'entree de couleur
-		while (line && *line != ',')
-			line++;
-		map_data->ceiling_g = ft_atoi(++line);
-		if (map_data->ceiling_g < 0 || map_data->ceiling_g > 255)
-			return (-1); // Erreur d'entree de couleur
-		while (line && *line != ',')
-			line++;
-		map_data->ceiling_b = ft_atoi(++line);
-		if (map_data->ceiling_b < 0 || map_data->ceiling_b > 255)
-			return (-1); // Erreur d'entree de couleur
-		map_data->ceiling = create_rgb(map_data->ceiling_r, map_data->ceiling_g, map_data->ceiling_b);
-	}
+	color->r = ft_atoi(line);
+	//dprintf(2, "color->r = %d\n", color->r);
+	if (color->r < 0 || color->r > 255)
+		return (-1); // Erreur d'entree de couleur
+	while (line && *line != ',')
+		line++;
+	color->g = ft_atoi(++line);
+	//dprintf(2, "color->g = %d\n", color->g);
+	if (color->g < 0 || color->g > 255)
+		return (-1); // Erreur d'entree de couleur
+	while (line && *line != ',')
+		line++;
+	color->b = ft_atoi(++line);
+	//dprintf(2, "color->b = %d\n", color->b);
+	if (color->b < 0 || color->b > 255)
+		return (-1); // Erreur d'entree de couleur
+	while (*line >= '0' && *line <= '9')
+		line++;
+	if (*line != '\n' && *line != '\0')
+		return (-1);
+	color->hexa = create_rgb(color->r, color->g, color->b);
 	return (0);
 }
 
@@ -104,8 +88,8 @@ static void	print_all(t_map_data *map_data)
 	dprintf(2, "SO = [%s]\n", map_data->south.path);
 	dprintf(2, "EA = [%s]\n", map_data->east.path);
 	dprintf(2, "WE = [%s]\n", map_data->west.path);
-	dprintf(2, "F = [%x]\n", map_data->floor);
-	dprintf(2, "C = [%x]\n", map_data->ceiling);
+	dprintf(2, "F = [%x]\n", map_data->floor.hexa);
+	dprintf(2, "C = [%x]\n", map_data->ceiling.hexa);
 	dprintf(2, "MAP_DATA HEIGHT = [%d]\n", map_data->map_height);
 	dprintf(2, "MAP_DATA WIDTH = [%d]\n", map_data->map_width);
 	
@@ -120,7 +104,11 @@ static void	print_all(t_map_data *map_data)
 
 static int	fill_path(char *line, char **path)
 {
-	int i = 2;
+	int i;
+
+	i = 2;
+	if (*path != NULL) // JE SAIS PAS PQ IL PLANTE SI JE METS LA LIGNE POUR CONTROLER SI Y'A DEJA UN PATH
+		return (-1);
 	while (line[i] && line[i] == ' ')
 		i++;
 	if (line[i] && line[i + 1] && line[i] != '.' && line[i + 1] != '/')
@@ -154,9 +142,11 @@ static int	check_textures_map(int fd, t_map_data *map_data) // Ajout des texture
 	{
 		if(line[0] && line[1])
 		{
+//			dprintf(2, "pete avant fill text\n");
 			if (line[0] == 'N' && line[1] == 'O')
 				if (fill_path(line, &map_data->north.path) == -1)
 					return (-1);
+//			dprintf(2, "pete apres no\n");
 			if (line[0] == 'S' && line[1] == 'O')
 				if (fill_path(line, &map_data->south.path) == -1)
 					return (-1);
@@ -166,11 +156,12 @@ static int	check_textures_map(int fd, t_map_data *map_data) // Ajout des texture
 			if (line[0] == 'W' && line[1] == 'E')
 				if (fill_path(line, &map_data->west.path) == -1)
 					return (-1);
+//			dprintf(2, "pete apres fill text\n");
 			if (line[0] == 'F')
-				if (convert_color(1, line + 1, map_data) == -1)
+				if (convert_color(line + 1, &map_data->floor) == -1)
 					return (-1);
 			if (line[0] == 'C')
-				if (convert_color(2, line + 1, map_data) == -1)
+				if (convert_color(line + 1, &map_data->ceiling) == -1)
 			 		return (-1);
 			while (line[0] == ' ' || line[0] == '1')
 			{
@@ -200,14 +191,14 @@ static void	init_map(t_map_data *map_data)
 	map_data->south.path = NULL;
 	map_data->east.path = NULL;
 	map_data->west.path = NULL;
-	map_data->ceiling = 0;
-	map_data->ceiling_r = 0;
-	map_data->ceiling_g = 0;
-	map_data->ceiling_b = 0;
-	map_data->floor = 0;
-	map_data->floor_r = 0;
-	map_data->floor_g = 0;
-	map_data->floor_b = 0;
+	map_data->ceiling.hexa = 0;
+	map_data->ceiling.r = 0;
+	map_data->ceiling.g = 0;
+	map_data->ceiling.b = 0;
+	map_data->floor.hexa = 0;
+	map_data->floor.r = 0;
+	map_data->floor.g = 0;
+	map_data->floor.b = 0;
 	map_data->map_height = 0;
 	map_data->map_width = 0;
 	map_data->number_player = 0;
@@ -228,7 +219,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 		line = get_next_line(fd);
 	}
 	if (close(fd) == -1)
-		return (-1);
+		return (free(line), -1);
 	map_data->map = malloc(sizeof(char *) * (map_data->map_height + 2));
 	if (!map_data->map)
 		return (-1);
@@ -236,7 +227,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 	return (0);
 }
 
-static int	control_player(t_game_data *game_data, int y, int x) // CHECK SI PLUSIEURS POSITIONS DE DEPART PLAYER
+static int	control_player(t_game_data *game_data, int y, int x)
 {
 	if (game_data->map_data.map[y][x] == 'N' || game_data->map_data.map[y][x] == 'S' ||
 		game_data->map_data.map[y][x] == 'E' || game_data->map_data.map[y][x] == 'W')
@@ -254,6 +245,7 @@ static int	control_player(t_game_data *game_data, int y, int x) // CHECK SI PLUS
 		game_data->player.fov = FOV * (M_PI / 180);
 		game_data->player.delta_x = (int)(cos(game_data->player.angle) * 1.5);
 		game_data->player.delta_y = (int)(sin(game_data->player.angle) * 1.5);
+		game_data->player.plane_dist = (int)((PLANE_WIDTH / 2.0) / tan(game_data->player.fov / 2));
 		return (1);
 	}
 	return (0);
@@ -293,6 +285,7 @@ static int	control_map(t_game_data *game_data)
 		return (-1);
 	return (0);
 }
+
 static int	fill_nsew_struct(t_game_data *game_data)
 {
 	if (file_to_struct(game_data, &game_data->map_data.north) == -1)
@@ -317,16 +310,19 @@ int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 	init_map(&game_data->map_data);
 	if (check_cub(argv[1]) == -1)
 		return (-1);
+	dprintf(2, "CHECK CUB OK\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	if (pre_count_map(fd, &game_data->map_data) == -1)
 		return (-1);
+	dprintf(2, "CHECK PRE_COUNT OK\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (-1);
+		return (free(game_data->map_data.map), -1);
 	if (check_textures_map(fd, &game_data->map_data) == -1)
 		return (-1);
+	dprintf(2, "CHECK TEXTURES OK\n");
 	if (close(fd) == -1)
 		return (-1);
 	if (control_map(game_data) == -1)
