@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:16:06 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/21 21:59:41 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/22 16:09:07 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	t_data	img_data;
+	t_data	*img_data;
 }			t_mlx;
 
 typedef struct s_keys
@@ -64,7 +64,7 @@ typedef struct s_inter
 
 typedef struct s_player
 {
-	t_keys	keys;
+	t_keys	*keys;
 	t_point	pos;
 	double	delta_x;
 	double	delta_y;
@@ -73,6 +73,14 @@ typedef struct s_player
 	int		plane_dist;
 }			t_player;
 
+typedef struct s_color
+{
+	int     hexa;
+    int     r;
+    int     g;
+    int     b;
+}			t_color;
+
 typedef struct s_map_data
 {
 	char	**map;
@@ -80,14 +88,8 @@ typedef struct s_map_data
     t_data  south;
     t_data  east;
     t_data  west;
-    int     floor;
-    int     floor_r;
-    int     floor_g;
-    int     floor_b;
-    int     ceiling;
-    int     ceiling_r;
-    int     ceiling_g;
-    int     ceiling_b;
+    t_color	floor;
+    t_color	ceiling;
 	int     map_height;
     int     map_width;
     int     number_player;
