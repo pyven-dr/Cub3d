@@ -29,7 +29,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	t_data	*img_data;
+	t_data	img_data;
 }			t_mlx;
 
 typedef struct s_keys
@@ -64,7 +64,7 @@ typedef struct s_inter
 
 typedef struct s_player
 {
-	t_keys	*keys;
+	t_keys	keys;
 	t_point	pos;
 	double	delta_x;
 	double	delta_y;
