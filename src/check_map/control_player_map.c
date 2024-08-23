@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:12:25 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/23 02:13:40 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/23 03:20:40 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	control_player(t_game_data *g_data, int y, int x)
 	|| g_data->map_data.map[y][x] == 'E' || g_data->map_data.map[y][x] == 'W')
 	{
 		if (g_data->map_data.map[y][x] == 'N')
-			g_data->p.angle = M_PI_2;
-		if (g_data->map_data.map[y][x] == 'S')
 			g_data->p.angle = 3 * M_PI_2;
+		if (g_data->map_data.map[y][x] == 'S')
+			g_data->p.angle = M_PI_2;
 		if (g_data->map_data.map[y][x] == 'E')
 			g_data->p.angle = 0;
 		if (g_data->map_data.map[y][x] == 'W')
