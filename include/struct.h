@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:16:06 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/23 01:33:08 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/24 01:20:46 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_map_data
 	int     map_height;
     int     map_width;
     int     number_player;
+	int		pb;
 }	t_map_data;
 
 typedef struct s_game_data

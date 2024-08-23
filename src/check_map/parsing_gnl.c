@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:17:08 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/23 02:52:43 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/24 01:26:14 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int	parsing_gnl(int fd, t_map_data *map_data)
 			if (return_value == 1)
 				;
 			else if (return_value == -1)
+			{
+				free(line);
+				free(map_data->map);
+				map_data->map = NULL;
 				return (-1);
+			}
 			else if (line[0] == ' ' || line[0] == '1')
 			{
 				while (line[0] == ' ' || line[0] == '1')
@@ -40,24 +45,26 @@ int	parsing_gnl(int fd, t_map_data *map_data)
 						|| map_data->north.path == NULL
 						|| map_data->west.path == NULL
 						|| map_data->south.path == NULL)
-						return (-1);
+						return (free(line), -1);
 					map_data->map[j] = ft_strdup(line);
 					if (!map_data->map[j])
-						return (-1);
+						return (free(line), -1);
+					map_data->pb++;
 					j++;
 					free(line);
 					line = get_next_line(fd);
 					if (!line)
 						break ;
 					if (line[0] != ' ' && line[0] != '1')
-						return (-1);
+						return (free(line), -1);
 				}
 			}
 			else
-				return (-1);
+				return (free(line), -1);
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	return (1);
 }

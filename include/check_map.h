@@ -12,4 +12,5 @@ int     parsing_gnl(int fd, t_map_data *map_data);
 int     fill_nsew_struct(t_game_data *game_data);
 int     check_textures_colors(char *line, t_map_data *map_data);
 int     fill_path(char *line, char **path);
+void	free_parsing(t_game_data *game_data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/21 22:01:29 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/24 01:16:56 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 	game_data.mlx_data.mlx_ptr = mlx_init();
 	if (pre_parsing(argc, argv, &game_data) == -1)
 		return (-1);
+	free_parsing(&game_data);
 	dprintf(2, "TT OK\n");
 	return (0);
 }
