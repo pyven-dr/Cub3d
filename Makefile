@@ -31,7 +31,15 @@ MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
 			   new_image.c
 
-CHECK_MAP_SRC = pre_parsing.c
+CHECK_MAP_SRC = pre_parsing.c \
+				parsing_gnl.c \
+				init_parsing.c \
+				fill_nsew_struct.c \
+				convert_color.c \
+				control_player_map.c \
+				control_cub.c \
+				check_if_textures_or_colors.c \
+				fill_path.c
 
 SRC = main.c \
 	  $(addprefix check_map/, $(CHECK_MAP_SRC))

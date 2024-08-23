@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:16:06 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/22 16:09:07 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/23 01:33:08 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_map_data
 
 typedef struct s_game_data
 {
-	t_player	player;
+	t_player	p;
 	t_mlx		mlx_data;
 	t_map_data	map_data;
 }				t_game_data;
