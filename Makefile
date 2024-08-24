@@ -36,7 +36,15 @@ PLAYER_SRC = keys.c \
              move_player.c \
              rotate_player.c
 
-CHECK_MAP_SRC = pre_parsing.c
+CHECK_MAP_SRC = pre_parsing.c \
+				parsing_gnl.c \
+				init_parsing.c \
+				fill_path.c \
+				fill_nsew_struct.c \
+				convert_color.c \
+				control_player_map.c \
+				control_cub.c \
+				check_if_textures_or_colors.c
 
 SRC = main.c \
 	  normalize_angle.c \
