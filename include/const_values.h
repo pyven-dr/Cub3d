@@ -23,12 +23,18 @@
 
 # define COLLISION_OFFSET 10
 # define ROTATION_SPEED 0.035
+# define HOR_ROTATION_SPEED 0.1
 # define MOVE_SPEED 5.5
+# define FLY_SPEED 0.1
 
 # define W					119
 # define A					97
 # define S					115
 # define D					100
+# define UP_ARROW			65362
+# define DOWN_ARROW			65364
+# define CTRL				65507
+# define SPACE				32
 # define ESCAPE				65307
 
 #endif

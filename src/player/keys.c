@@ -23,6 +23,14 @@ int	key_press(int key, t_keys *keys)
 		keys->right = 1;
 	else if (key == A)
 		keys->left = 1;
+	else if (key == UP_ARROW)
+		keys->up = 1;
+	else if (key == DOWN_ARROW)
+		keys->down = 1;
+	else if (key == CTRL)
+		keys->crouch = 1;
+	else if (key == SPACE)
+		keys->fly = 1;
 	else if (key == ESCAPE)
 		keys->esc = 1;
 	return (0);
@@ -38,5 +46,13 @@ int	key_release(int key, t_keys *keys)
 		keys->right = 0;
 	else if (key == A)
 		keys->left = 0;
+	else if (key == UP_ARROW)
+		keys->up = 0;
+	else if (key == DOWN_ARROW)
+		keys->down = 0;
+	else if (key == CTRL)
+		keys->crouch = 0;
+	else if (key == SPACE)
+		keys->fly = 0;
 	return (0);
 }

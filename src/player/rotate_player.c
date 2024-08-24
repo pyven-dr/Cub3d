@@ -22,4 +22,8 @@ void	rotate_player(t_player *player)
 		player->angle = normalize_angle(player->angle - ROTATION_SPEED);
 	player->delta_x = cos(player->angle) * MOVE_SPEED;
 	player->delta_y = sin(player->angle) * MOVE_SPEED;
+	if (player->keys.up == 1)
+		player->vert_offset += HOR_ROTATION_SPEED;
+	if (player->keys.down == 1)
+		player->vert_offset -= HOR_ROTATION_SPEED;
 }

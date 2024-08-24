@@ -29,12 +29,14 @@ MLX_FUNCS_SRC = pixel_put.c \
 			   new_image.c
 
 TEXTURES_SRC = get_pixel_color.c \
-			   draw_pixels.c \
+			   draw_column.c \
 			   get_texture_color.c \
+			   draw_pixel.c
 
 PLAYER_SRC = keys.c \
              move_player.c \
-             rotate_player.c
+             rotate_player.c \
+             player_size.c
 
 CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \

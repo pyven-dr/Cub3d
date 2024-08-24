@@ -22,6 +22,10 @@ typedef struct s_keys
 	int	backward;
 	int	left;
 	int	right;
+	int	up;
+	int	down;
+	int	fly;
+	int	crouch;
 	int	esc;
 }		t_keys;
 
@@ -32,6 +36,8 @@ typedef struct s_player
 	double	delta_x;
 	double	delta_y;
 	double	angle;
+	double	vert_offset;
+	double	player_size;
 	double	fov;
 	int		plane_dist;
 }			t_player;
@@ -40,5 +46,6 @@ int		key_press(int key, t_keys *keys);
 int		key_release(int key, t_keys *keys);
 void	move_player(t_player *player, t_map_data *map);
 void	rotate_player(t_player *player);
+void	player_size(t_player *player);
 
 #endif

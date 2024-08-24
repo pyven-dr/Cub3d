@@ -29,7 +29,11 @@ int main(int argc, char **argv)
 	game_data.p.keys.forward = 0;
 	game_data.p.keys.left = 0;
 	game_data.p.keys.right = 0;
+	game_data.p.keys.up = 0;
+	game_data.p.keys.down = 0;
 	game_data.p.keys.esc = 0;
+	game_data.p.vert_offset = 1;
+	game_data.p.player_size = 1;
 
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
