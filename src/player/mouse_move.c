@@ -33,7 +33,8 @@ int	mouse_move(int x, int y, t_game_data *game_data)
 	else
 	{
 		game_data->p.keys.mouse.is_recentering = 1;
-		mlx_mouse_move(game_data->mlx_data.mlx_ptr, game_data->mlx_data.mlx_win,WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_move(game_data->mlx_data.mlx_ptr, \
+		game_data->mlx_data.mlx_win, WIDTH / 2, HEIGHT / 2);
 	}
 	return (0);
 }
