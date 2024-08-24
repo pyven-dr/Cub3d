@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 04:18:28 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/24 05:24:03 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int main(int argc, char **argv)
 
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
+	game_data.p.keys.mouse.x = mlx_mouse_get_pos(game_data.mlx_data.mlx_ptr, game_data.mlx_data.mlx_win, &game_data.p.keys.mouse.x, &game_data.p.keys.mouse.y);
+	mlx_mouse_hide(game_data.mlx_data.mlx_ptr, game_data.mlx_data.mlx_win);
+	//game_data.p.keys.mouse.x = game_data.map_data.map_width / 2;
+	
 	if (new_image(&game_data.mlx_data) == 1)
 		return (1);
 	game_loop(&game_data);

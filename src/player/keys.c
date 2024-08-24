@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 02:08:48 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/13 02:08:48 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/24 03:42:12 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "const_values.h"
 #include "game_loop.h"
+#include <stdio.h>
 
 int	key_press(int key, t_keys *keys)
 {
