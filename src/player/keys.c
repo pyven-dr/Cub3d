@@ -12,7 +12,6 @@
 
 #include "const_values.h"
 #include "game_loop.h"
-#include <stdio.h>
 
 int	key_press(int key, t_keys *keys)
 {

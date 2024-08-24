@@ -20,6 +20,7 @@ typedef struct s_mouse
 {
 	int	x;
 	int	y;
+	int	is_recentering;
 }		t_mouse;
 
 typedef struct s_keys
