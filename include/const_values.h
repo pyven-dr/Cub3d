@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const_values.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 23:15:25 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 23:15:25 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/25 21:56:34 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@
 # define CTRL				65507
 # define SPACE				32
 # define ESCAPE				65307
+# define ALT                65513
 
 #endif

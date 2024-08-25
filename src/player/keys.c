@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 02:08:48 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/13 02:08:48 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/25 22:00:18 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	key_press(int key, t_keys *keys)
 {
+	/*#include <stdio.h>
+	dprintf(2, "ALT : %d", key);*/
 	if (key == W)
 		keys->forward = 1;
 	else if (key == S)
@@ -33,6 +35,18 @@ int	key_press(int key, t_keys *keys)
 		keys->fly = 1;
 	else if (key == ESCAPE)
 		keys->esc = 1;
+	else if (key == ALT)
+	{
+		if (keys->alt == 1)
+			keys->alt = 0;
+		else
+		{
+			keys->alt = 1;
+			keys->mouse.is_recentering = 0;
+			keys->mouse.x = WIDTH / 2;
+			keys->mouse.y = HEIGHT / 2;
+		}
+	}
 	return (0);
 }
 

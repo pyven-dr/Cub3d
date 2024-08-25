@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:26:01 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 21:29:44 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 21:54:04 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_keys
 	int	fly;
 	int	crouch;
 	int	esc;
+	int	alt;
 	t_mouse	mouse;
 }		t_keys;
 
