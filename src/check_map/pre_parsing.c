@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:25:48 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/24 01:20:34 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/26 01:00:05 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 	game_data->map_data.south.img = NULL;
 	game_data->map_data.east.img = NULL;
 	game_data->map_data.west.img = NULL;
-	
 	if (argc != 2)
 		return (-1);
 	init_map(&game_data->map_data);
@@ -67,7 +66,6 @@ int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 		return (free_parsing(game_data), -1);
 	if (control_map(game_data) == -1)
 	{
-		//dprintf(2, "map error");
 		return (free_parsing(game_data), -1);
 	}
 	if (fill_nsew_struct(game_data) == -1)

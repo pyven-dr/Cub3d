@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 02:08:48 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 22:49:37 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/26 00:54:00 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_player_control(int key, t_keys *keys)
 	else if (key == A)
 		keys->left = 1;
 	else if (key == D)
-		keys->right = 1;	
+		keys->right = 1;
 	else if (key == RIGHT_ARROW)
 		keys->look_right = 1;
 	else if (key == LEFT_ARROW)
