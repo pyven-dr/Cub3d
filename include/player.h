@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:26:01 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/23 01:26:01 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/24 03:43:48 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include "map.h"
 # include "point.h"
 
+typedef struct s_mouse
+{
+	int	x;
+	int	y;
+	int	is_recentering;
+}		t_mouse;
+
 typedef struct s_keys
 {
 	int	forward;
@@ -23,6 +30,7 @@ typedef struct s_keys
 	int	left;
 	int	right;
 	int	esc;
+	t_mouse	mouse;
 }		t_keys;
 
 typedef struct s_player

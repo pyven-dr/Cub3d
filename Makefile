@@ -34,7 +34,8 @@ TEXTURES_SRC = get_pixel_color.c \
 
 PLAYER_SRC = keys.c \
              move_player.c \
-             rotate_player.c
+             rotate_player.c \
+			 mouse_move.c
 
 CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \

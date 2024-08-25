@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 04:18:28 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/24 05:24:03 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "check_map.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include "const_values.h"
 
 int main(int argc, char **argv)
 {
@@ -30,9 +31,15 @@ int main(int argc, char **argv)
 	game_data.p.keys.left = 0;
 	game_data.p.keys.right = 0;
 	game_data.p.keys.esc = 0;
+	game_data.p.keys.mouse.is_recentering = 0;
 
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
+	game_data.p.keys.mouse.x = WIDTH / 2;
+	game_data.p.keys.mouse.y = HEIGHT / 2;
+	mlx_mouse_hide(game_data.mlx_data.mlx_ptr, game_data.mlx_data.mlx_win);
+	mlx_mouse_move(game_data.mlx_data.mlx_ptr, game_data.mlx_data.mlx_win, WIDTH / 2, HEIGHT / 2);
+
 	if (new_image(&game_data.mlx_data) == 1)
 		return (1);
 	game_loop(&game_data);

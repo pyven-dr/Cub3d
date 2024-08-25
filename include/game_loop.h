@@ -26,5 +26,6 @@ typedef struct s_game_data
 void	game_loop(t_game_data *game_data);
 int		render_frame(t_game_data *game_data);
 double	normalize_angle(double angle);
+int		mouse_move(int x, int y, t_game_data *game_data);
 
 #endif
