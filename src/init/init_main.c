@@ -6,12 +6,13 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 00:30:35 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/26 00:42:27 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/26 01:04:04 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_loop.h"
 #include "const_values.h"
+#include <stddef.h>
 
 void	init_game_data(t_game_data *game_data)
 {
@@ -28,4 +29,8 @@ void	init_game_data(t_game_data *game_data)
 	game_data->p.keys.mouse.is_recentering = 0;
 	game_data->p.keys.mouse.x = WIDTH / 2;
 	game_data->p.keys.mouse.y = HEIGHT / 2;
+	game_data->map_data.north.img = NULL;
+	game_data->map_data.south.img = NULL;
+	game_data->map_data.east.img = NULL;
+	game_data->map_data.west.img = NULL;
 }
