@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 02:08:48 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 22:00:18 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 22:49:37 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 int	key_press(int key, t_keys *keys)
 {
-	/*#include <stdio.h>
-	dprintf(2, "ALT : %d", key);*/
 	if (key == W)
 		keys->forward = 1;
 	else if (key == S)
 		keys->backward = 1;
-	else if (key == D)
-		keys->right = 1;
 	else if (key == A)
 		keys->left = 1;
+	else if (key == D)
+		keys->right = 1;	
+	else if (key == RIGHT_ARROW)
+		keys->look_right = 1;
+	else if (key == LEFT_ARROW)
+		keys->look_left = 1;
 	else if (key == UP_ARROW)
 		keys->up = 1;
 	else if (key == DOWN_ARROW)
@@ -56,10 +58,10 @@ int	key_release(int key, t_keys *keys)
 		keys->forward = 0;
 	else if (key == S)
 		keys->backward = 0;
-	else if (key == D)
-		keys->right = 0;
-	else if (key == A)
-		keys->left = 0;
+	else if (key == RIGHT_ARROW)
+		keys->look_right = 0;
+	else if (key == LEFT_ARROW)
+		keys->look_left = 0;
 	else if (key == UP_ARROW)
 		keys->up = 0;
 	else if (key == DOWN_ARROW)
@@ -68,5 +70,9 @@ int	key_release(int key, t_keys *keys)
 		keys->crouch = 0;
 	else if (key == SPACE)
 		keys->fly = 0;
+	else if (key == A)
+		keys->left = 0;
+	else if (key == D)
+		keys->right = 0;
 	return (0);
 }

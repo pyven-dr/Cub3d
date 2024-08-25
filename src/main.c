@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 22:02:53 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 22:11:09 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main(int argc, char **argv)
 		return (1);
 	game_data.p.keys.backward = 0;
 	game_data.p.keys.forward = 0;
-	game_data.p.keys.left = 0;
-	game_data.p.keys.right = 0;
+	game_data.p.keys.look_left = 0;
+	game_data.p.keys.look_right = 0;
 	game_data.p.keys.esc = 0;
 	game_data.p.keys.up = 0;
 	game_data.p.keys.down = 0;

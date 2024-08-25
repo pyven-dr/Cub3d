@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 23:15:25 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 21:56:34 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 22:09:15 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@
 # define SPACE				32
 # define ESCAPE				65307
 # define ALT                65513
+# define RIGHT_ARROW        65363
+# define LEFT_ARROW         65361
+
 
 #endif

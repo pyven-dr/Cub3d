@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:48:18 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/21 10:48:18 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/08/25 22:52:01 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "const_values.h"
 #include "render.h"
 #include "game_loop.h"
+#include <math.h>
 
 static int	check_out_map(t_player *player, t_map_data *map)
 {
@@ -50,5 +51,23 @@ void	move_player(t_player *player, t_map_data *map)
 		player->pos.y -= player->delta_y;
 		if (check_out_map(player, map) == 1)
 			player->pos.y += player->delta_y;
+	}
+	if (player->keys.right == 1)
+	{
+		player->pos.x -= player->delta_y;
+		if (check_out_map(player, map) == 1)
+			player->pos.x += player->delta_y;
+		player->pos.y += player->delta_x;
+		if (check_out_map(player, map) == 1)
+			player->pos.y -= player->delta_x;
+	}
+	if (player->keys.left == 1)
+	{
+		player->pos.x += player->delta_y;
+		if (check_out_map(player, map) == 1)
+			player->pos.x -= player->delta_y;
+		player->pos.y -= player->delta_x;
+		if (check_out_map(player, map) == 1)
+			player->pos.y += player->delta_x;
 	}
 }
