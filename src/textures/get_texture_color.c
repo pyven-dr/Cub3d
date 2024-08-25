@@ -14,15 +14,13 @@
 #include "render.h"
 #include "textures.h"
 
-int	get_texture_color(t_data tex_data, t_inter inter, double pos_tex)
+int	get_texture_color(const t_data *tex_data, t_inter inter, double pos_tex)
 {
 	int	tex_x;
-	int	tex_y;
 
 	if (inter.orientation == NORTH || inter.orientation == SOUTH)
-		tex_x = (int)inter.point.x % 64;
+		tex_x = (int)inter.point.x & 63;
 	else
-		tex_x = (int)inter.point.y % 64;
-	tex_y = (int)pos_tex & 63;
-	return (get_pixel_color(tex_data, tex_x, tex_y));
+		tex_x = (int)inter.point.y & 63;
+	return (get_pixel_color(tex_data, tex_x, pos_tex));
 }

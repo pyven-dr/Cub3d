@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:26:01 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/24 03:43:48 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 21:54:04 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ typedef struct s_keys
 	int	backward;
 	int	left;
 	int	right;
+	int	up;
+	int	down;
+	int	fly;
+	int	crouch;
 	int	esc;
+	int	alt;
 	t_mouse	mouse;
 }		t_keys;
 
@@ -40,6 +45,8 @@ typedef struct s_player
 	double	delta_x;
 	double	delta_y;
 	double	angle;
+	double	vert_offset;
+	double	player_size;
 	double	fov;
 	int		plane_dist;
 }			t_player;
@@ -48,5 +55,5 @@ int		key_press(int key, t_keys *keys);
 int		key_release(int key, t_keys *keys);
 void	move_player(t_player *player, t_map_data *map);
 void	rotate_player(t_player *player);
-
+void	player_size(t_player *player);
 #endif
