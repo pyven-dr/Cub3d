@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 23:15:25 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 22:09:15 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/26 00:57:34 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define PLANE_HEIGHT 1080
 
 # define COLLISION_OFFSET 10
-# define ROTATION_SPEED 0.035
-# define HOR_ROTATION_SPEED 0.1
+# define ROTATION_SPEED 0.015
+# define HOR_ROTATION_SPEED 0.05
 # define MOVE_SPEED 5.5
 # define FLY_SPEED 0.1
 
@@ -39,6 +39,5 @@
 # define ALT                65513
 # define RIGHT_ARROW        65363
 # define LEFT_ARROW         65361
-
 
 #endif
