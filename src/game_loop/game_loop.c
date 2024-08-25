@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 00:37:14 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/24 05:34:13 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 21:30:26 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	render(t_game_data	*game_data)
 	if (game_data->p.keys.esc == 1)
 		close_window(&game_data->mlx_data);
 	move_player(&game_data->p, &game_data->map_data);
+	player_size(&game_data->p);
 	rotate_player(&game_data->p);
 	render_frame(game_data);
 	mlx_put_image_to_window(game_data->mlx_data.mlx_ptr, \

@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:26:01 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 21:26:37 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 21:29:44 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ typedef struct s_keys
 	int	backward;
 	int	left;
 	int	right;
+	int	up;
+	int	down;
+	int	fly;
+	int	crouch;
 	int	esc;
 	t_mouse	mouse;
 }		t_keys;
