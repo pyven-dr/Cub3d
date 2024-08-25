@@ -17,22 +17,19 @@
 
 int	mouse_move(int x, int y, t_game_data *game_data)
 {
-	int	new_x;
-
-	(void)y;
 	if (game_data->p.keys.alt == 1)
 	{
-		mlx_mouse_hide(game_data->mlx_data.mlx_ptr, game_data->mlx_data.mlx_win);
-		new_x = x - game_data->p.keys.mouse.x;
-		game_data->p.angle = game_data->p.angle + (new_x / 2000.);
+		mlx_mouse_hide(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.mlx_win);
+		game_data->p.angle += ((x - game_data->p.keys.mouse.x) / 10.0) \
+								* ROTATION_SPEED;
 		game_data->p.angle = normalize_angle(game_data->p.angle);
+		game_data->p.vert_offset -= (y - game_data->p.keys.mouse.y) \
+									/ 10.0 * HOR_ROTATION_SPEED;
 		game_data->p.delta_x = cos(game_data->p.angle) * MOVE_SPEED;
 		game_data->p.delta_y = sin(game_data->p.angle) * MOVE_SPEED;
 		if (game_data->p.keys.mouse.is_recentering == 1)
-		{
 			game_data->p.keys.mouse.is_recentering = 0;
-			return (0);
-		}
 		else
 		{
 			game_data->p.keys.mouse.is_recentering = 1;
@@ -41,6 +38,7 @@ int	mouse_move(int x, int y, t_game_data *game_data)
 		}
 	}
 	else
-		mlx_mouse_show(game_data->mlx_data.mlx_ptr, game_data->mlx_data.mlx_win);
+		mlx_mouse_show(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.mlx_win);
 	return (0);
 }
