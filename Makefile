@@ -15,9 +15,6 @@ IFLAGS = \
 
 GAME_LOOP_SRC = game_loop.c \
 
-INIT_SRC =	init_main.c \
-			init_parsing.c
-
 RENDER_SRC = render_frame.c \
 			 find_closest_wall.c \
 			 trace_column.c \
@@ -44,6 +41,7 @@ PLAYER_SRC = keys.c \
 
 CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \
+				init_parsing.c \
 				fill_path.c \
 				fill_nsew_struct.c \
 				convert_color.c \
@@ -58,8 +56,7 @@ SRC = main.c \
 	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
 	  $(addprefix check_map/, $(CHECK_MAP_SRC)) \
 	  $(addprefix textures/, $(TEXTURES_SRC)) \
-	  $(addprefix player/, $(PLAYER_SRC)) \
-	  $(addprefix init/, $(INIT_SRC))
+	  $(addprefix player/, $(PLAYER_SRC))
 
 BUILD_DIR = .build
 

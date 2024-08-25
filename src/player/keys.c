@@ -6,14 +6,14 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 02:08:48 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 23:05:29 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/25 22:49:37 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "const_values.h"
 #include "game_loop.h"
 
-int	key_press(int key, t_keys *keys)
+int	key_player_control(int key, t_keys *keys)
 {
 	if (key == W)
 		keys->forward = 1;
@@ -35,7 +35,12 @@ int	key_press(int key, t_keys *keys)
 		keys->crouch = 1;
 	else if (key == SPACE)
 		keys->fly = 1;
-	else if (key == ESCAPE)
+	return (0);
+}
+
+int	key_press(int key, t_keys *keys)
+{
+	if (key == ESCAPE)
 		keys->esc = 1;
 	else if (key == ALT)
 	{
@@ -49,6 +54,8 @@ int	key_press(int key, t_keys *keys)
 			keys->mouse.y = HEIGHT / 2;
 		}
 	}
+	else
+		key_player_control(key, keys);
 	return (0);
 }
 
