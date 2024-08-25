@@ -13,7 +13,7 @@
 #include "const_values.h"
 #include "game_loop.h"
 
-int	key_press(int key, t_keys *keys)
+int	key_player_control(int key, t_keys *keys)
 {
 	if (key == W)
 		keys->forward = 1;
@@ -35,7 +35,12 @@ int	key_press(int key, t_keys *keys)
 		keys->crouch = 1;
 	else if (key == SPACE)
 		keys->fly = 1;
-	else if (key == ESCAPE)
+	return (0);
+}
+
+int	key_press(int key, t_keys *keys)
+{
+	if (key == ESCAPE)
 		keys->esc = 1;
 	else if (key == ALT)
 	{
@@ -49,6 +54,8 @@ int	key_press(int key, t_keys *keys)
 			keys->mouse.y = HEIGHT / 2;
 		}
 	}
+	else
+		key_player_control(key, keys);
 	return (0);
 }
 
