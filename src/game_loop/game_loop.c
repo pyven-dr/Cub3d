@@ -33,7 +33,8 @@ int	render(t_game_data	*game_data)
 		rotate_player(&game_data->p);
 		render_frame(game_data);
 		if (game_data->p.keys.hood == 1)
-			display_img(&game_data->map_data.hood, &game_data->mlx_data.img_data);
+			display_img(&game_data->map_data.hood, \
+			&game_data->mlx_data.img_data);
 	}
 	else
 		display_img(&game_data->map_data.menu, &game_data->mlx_data.img_data);

@@ -15,22 +15,21 @@
 
 void	display_img(t_data *img, t_data *background_img)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 	double	step_x;
 	double	step_y;
-	int color;
 
 	y = 0;
 	step_x = (double)img->width / WIDTH;
 	step_y = (double)img->height / HEIGHT;
-	while(y < HEIGHT)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while(x < WIDTH)
+		while (x < WIDTH)
 		{
-			color = get_pixel_color(img, (int)(x * step_x), (int)(y * step_y));
-			pixel_put(background_img, (int)x, (int)y, color);
+			pixel_put(background_img, (int)x, (int)y, \
+			get_pixel_color(img, (int)(x * step_x), (int)(y * step_y)));
 			x++;
 		}
 		y++;
