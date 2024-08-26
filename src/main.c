@@ -27,10 +27,10 @@ int	main(int argc, char **argv)
 	if (pre_parsing(argc, argv, &game_data) == -1)
 		return (1);
 	init_game_data(&game_data);
+	if (open_img(&game_data.map_data, game_data.mlx_data.mlx_ptr) == 1)
+		return (1);
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
-	game_data.p.keys.mouse.x = WIDTH / 2;
-	game_data.p.keys.mouse.y = HEIGHT / 2;
 	mlx_mouse_move(game_data.mlx_data.mlx_ptr,
 		game_data.mlx_data.mlx_win, WIDTH / 2, HEIGHT / 2);
 	if (new_image(&game_data.mlx_data) == 1)

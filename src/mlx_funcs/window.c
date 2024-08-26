@@ -13,17 +13,40 @@
 #include "const_values.h"
 #include "mlx.h"
 #include "mlx_funcs.h"
+#include "game_loop.h"
 #include <stdlib.h>
 
-int	close_window(void *mlx_struct)
+void	free_img(void *mlx_ptr, t_map_data *map_data)
 {
-	t_mlx	*mlx_data;
+	mlx_destroy_image(mlx_ptr, map_data->menu.img);
+	mlx_destroy_image(mlx_ptr, map_data->hood.img);
+	mlx_destroy_image(mlx_ptr, map_data->north.img);
+	mlx_destroy_image(mlx_ptr, map_data->south.img);
+	mlx_destroy_image(mlx_ptr, map_data->east.img);
+	mlx_destroy_image(mlx_ptr, map_data->west.img);
+	free(map_data->north.path);
+	free(map_data->south.path);
+	free(map_data->east.path);
+	free(map_data->west.path);
+}
 
-	mlx_data = (t_mlx *)mlx_struct;
-	mlx_destroy_image(mlx_data->mlx_ptr, mlx_data->img_data.img);
-	mlx_destroy_window(mlx_data->mlx_ptr, mlx_data->mlx_win);
-	mlx_destroy_display(mlx_data->mlx_ptr);
-	free(mlx_data->mlx_ptr);
+int	close_window(void *struct_data)
+{
+	t_game_data	*game_data;
+	int			i;
+
+	i = 0;
+	game_data = (t_game_data *)struct_data;
+	free_img(game_data->mlx_data.mlx_ptr, &game_data->map_data);
+	while (i < game_data->map_data.map_height && i < game_data->map_data.pb)
+		free(game_data->map_data.map[i++]);
+	free(game_data->map_data.map);
+	mlx_destroy_image(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.img_data.img);
+	mlx_destroy_window(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.mlx_win);
+	mlx_destroy_display(game_data->mlx_data.mlx_ptr);
+	free(game_data->mlx_data.mlx_ptr);
 	exit(0);
 }
 

@@ -31,6 +31,7 @@
 # define A					97
 # define S					115
 # define D					100
+# define C					99
 # define UP_ARROW			65362
 # define DOWN_ARROW			65364
 # define CTRL				65507

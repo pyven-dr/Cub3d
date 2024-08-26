@@ -28,5 +28,6 @@ int		render_frame(t_game_data *game_data);
 double	normalize_angle(double angle);
 int		mouse_move(int x, int y, t_game_data *game_data);
 void	init_game_data(t_game_data *game_data);
+int		close_window(void *game_data);
 
 #endif

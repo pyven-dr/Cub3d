@@ -38,21 +38,33 @@ int	key_player_control(int key, t_keys *keys)
 	return (0);
 }
 
+void	enable_mouse(t_keys *keys)
+{
+	if (keys->alt == 1)
+		keys->alt = 0;
+	else
+	{
+		keys->alt = 1;
+		keys->mouse.is_recentering = 0;
+		keys->mouse.x = WIDTH / 2;
+		keys->mouse.y = HEIGHT / 2;
+	}
+}
+
 int	key_press(int key, t_keys *keys)
 {
+	if (keys->menu == 1)
+		keys->menu = 0;
 	if (key == ESCAPE)
 		keys->esc = 1;
 	else if (key == ALT)
+		enable_mouse(keys);
+	else if (key == C)
 	{
-		if (keys->alt == 1)
-			keys->alt = 0;
+		if (keys->hood == 1)
+			keys->hood = 0;
 		else
-		{
-			keys->alt = 1;
-			keys->mouse.is_recentering = 0;
-			keys->mouse.x = WIDTH / 2;
-			keys->mouse.y = HEIGHT / 2;
-		}
+			keys->hood = 1;
 	}
 	else
 		key_player_control(key, keys);
