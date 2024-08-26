@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pixel_put.c                                        :+:      :+:    :+:   */
+/*   display_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 21:25:50 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/07/12 21:25:50 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/08/26 02:26:48 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/08/26 02:26:48 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "const_values.h"
 #include "mlx_funcs.h"
 
-void	pixel_put(t_data *data, int x, int y, int color)
+void	display_img(t_data *img, t_data *background_img)
 {
-	char	*dst;
+	double x;
+	double y;
+	double	step_x;
+	double	step_y;
+	int color;
 
-	if (color == (int)0xFF000000)
-		return ;
-	dst = data->addr + (y * data->line_length + x * \
-			(data->bits_per_pixel >> 3));
-	*(unsigned int *)dst = color;
+	y = 0;
+	step_x = (double)img->width / WIDTH;
+	step_y = (double)img->height / HEIGHT;
+	while(y < HEIGHT)
+	{
+		x = 0;
+		while(x < WIDTH)
+		{
+			color = get_pixel_color(img, (int)(x * step_x), (int)(y * step_y));
+			pixel_put(background_img, (int)x, (int)y, color);
+			x++;
+		}
+		y++;
+	}
 }

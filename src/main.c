@@ -28,6 +28,8 @@ int main(int argc, char **argv)
 		return (1);
 	game_data.p.keys.backward = 0;
 	game_data.p.keys.forward = 0;
+	game_data.p.keys.right = 0;
+	game_data.p.keys.left = 0;
 	game_data.p.keys.look_left = 0;
 	game_data.p.keys.look_right = 0;
 	game_data.p.keys.esc = 0;
@@ -35,16 +37,24 @@ int main(int argc, char **argv)
 	game_data.p.keys.down = 0;
 	game_data.p.keys.alt = 0;
 	game_data.p.vert_offset = 1;
+	game_data.p.keys.fly = 0;
+	game_data.p.keys.crouch = 0;
+	game_data.p.keys.menu = 1;
 	
 	game_data.p.player_size = 1;
 	game_data.p.keys.mouse.is_recentering = 0;
-	
+
+	if (open_img(&game_data.map_data, game_data.mlx_data.mlx_ptr) == 1)
+	{
+		free_parsing(&game_data);
+		return (1);
+	}
+
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
 	game_data.p.keys.mouse.x = WIDTH / 2;
 	game_data.p.keys.mouse.y = HEIGHT / 2;
 	mlx_mouse_move(game_data.mlx_data.mlx_ptr, game_data.mlx_data.mlx_win, WIDTH / 2, HEIGHT / 2);
-
 	if (new_image(&game_data.mlx_data) == 1)
 		return (1);
 	game_loop(&game_data);

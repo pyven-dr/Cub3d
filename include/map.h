@@ -26,6 +26,8 @@ typedef struct s_color
 typedef struct s_map_data
 {
 	char	**map;
+	t_data	menu;
+	t_data	hood;
 	t_data	north;
 	t_data	south;
 	t_data	east;
@@ -37,5 +39,7 @@ typedef struct s_map_data
 	int		number_player;
 	int		pb;
 }			t_map_data;
+
+int open_img(t_map_data *map_data, void *mlx_ptr);
 
 #endif

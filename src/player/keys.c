@@ -22,7 +22,7 @@ int	key_player_control(int key, t_keys *keys)
 	else if (key == A)
 		keys->left = 1;
 	else if (key == D)
-		keys->right = 1;	
+		keys->right = 1;
 	else if (key == RIGHT_ARROW)
 		keys->look_right = 1;
 	else if (key == LEFT_ARROW)
@@ -40,6 +40,8 @@ int	key_player_control(int key, t_keys *keys)
 
 int	key_press(int key, t_keys *keys)
 {
+	if (keys->menu == 1)
+		keys->menu = 0;
 	if (key == ESCAPE)
 		keys->esc = 1;
 	else if (key == ALT)
@@ -53,6 +55,13 @@ int	key_press(int key, t_keys *keys)
 			keys->mouse.x = WIDTH / 2;
 			keys->mouse.y = HEIGHT / 2;
 		}
+	}
+	else if (key == C)
+	{
+		if (keys->hood == 1)
+			keys->hood = 0;
+		else
+			keys->hood = 1;
 	}
 	else
 		key_player_control(key, keys);

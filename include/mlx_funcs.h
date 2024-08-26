@@ -36,5 +36,7 @@ void	pixel_put(t_data *data, int x, int y, int color);
 int		close_window(void *mlx_struct);
 int		create_window(t_mlx *mlx_data);
 int		new_image(t_mlx *mlx);
+int		get_pixel_color(const t_data *img_data, int x, int y);
+void	display_img(t_data *img, t_data *background_img);
 
 #endif

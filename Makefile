@@ -26,12 +26,13 @@ RENDER_SRC = render_frame.c \
 
 MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
-			   new_image.c
+			   new_image.c \
+			   display_image.c \
+			   get_pixel_color.c
 
-TEXTURES_SRC = get_pixel_color.c \
-			   draw_column.c \
+TEXTURES_SRC = draw_column.c \
 			   draw_pixel.c \
-			   get_texture_color.c \
+			   get_texture_color.c
 
 PLAYER_SRC = keys.c \
              move_player.c \
@@ -51,6 +52,7 @@ CHECK_MAP_SRC = pre_parsing.c \
 
 SRC = main.c \
 	  normalize_angle.c \
+	  open_img.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
 	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \

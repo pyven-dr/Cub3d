@@ -37,6 +37,8 @@ typedef struct s_keys
 	int	crouch;
 	int	esc;
 	int	alt;
+	int	menu;
+	int	hood;
 	t_mouse	mouse;
 }		t_keys;
 
