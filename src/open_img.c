@@ -30,18 +30,18 @@ int	open_xpm(void *mlx_ptr, t_data *nsew, char *path)
 
 int	open_img(t_map_data *map_data, void *mlx_ptr)
 {
-	if (open_xpm(mlx_ptr, &map_data->menu, "./menu.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->menu, "./assets/menu.xpm") == 1)
 	{
 		ft_putstr_fd("Error while opening the menu img\n", 2);
 		return (1);
 	}
-	if (open_xpm(mlx_ptr, &map_data->hood, "./hood.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->hood, "./assets/hood.xpm") == 1)
 	{
 		ft_putstr_fd("Error while opening the hood img\n", 2);
 		mlx_destroy_image(mlx_ptr, map_data->menu.img);
 		return (1);
 	}
-	if (open_xpm(mlx_ptr, &map_data->map_img, "./map_back.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->map_img, "./assets/map_back.xpm") == 1)
 	{
 		ft_putstr_fd("Error while opening the map_back img\n", 2);
 		mlx_destroy_image(mlx_ptr, map_data->hood.img);
