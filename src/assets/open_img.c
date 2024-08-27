@@ -10,49 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "const_values.h"
 #include "mlx.h"
 #include "mlx_funcs.h"
 #include "map.h"
 #include "libft.h"
 
-int	open_xpm(void *mlx_ptr, t_data *nsew, char *path)
+static void	close_img(t_map_data *map_data, void *mlx_ptr)
 {
-	nsew->img = mlx_xpm_file_to_image(mlx_ptr, \
-	path, &nsew->width, &nsew->height);
-	if (nsew->img == NULL)
-		return (1);
-	nsew->addr = mlx_get_data_addr(nsew->img, &nsew->bits_per_pixel, \
-	&nsew->line_length, &nsew->endian);
-	if (nsew->addr == NULL)
-		return (1);
-	return (0);
+	if (map_data->menu.img != NULL)
+		mlx_destroy_image(mlx_ptr, map_data->menu.img);
+	if (map_data->hood.img != NULL)
+		mlx_destroy_image(mlx_ptr, map_data->hood.img);
+	if (map_data->map_img.img != NULL)
+		mlx_destroy_image(mlx_ptr, map_data->map_img.img);
 }
 
 int	open_img(t_map_data *map_data, void *mlx_ptr)
 {
-	if (open_xpm(mlx_ptr, &map_data->menu, "./assets/menu.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->menu, MENU_PATH) == 1)
 	{
 		ft_putstr_fd("Error while opening the menu img\n", 2);
 		return (1);
 	}
-	if (open_xpm(mlx_ptr, &map_data->hood, "./assets/hood.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->hood, HOOD_PATH) == 1)
 	{
 		ft_putstr_fd("Error while opening the hood img\n", 2);
-		mlx_destroy_image(mlx_ptr, map_data->menu.img);
+		close_img(map_data, mlx_ptr);
 		return (1);
 	}
-	if (open_xpm(mlx_ptr, &map_data->map_img, "./assets/map_back.xpm") == 1)
+	if (open_xpm(mlx_ptr, &map_data->map_img, MAP_PATH) == 1)
 	{
 		ft_putstr_fd("Error while opening the map_back img\n", 2);
-		mlx_destroy_image(mlx_ptr, map_data->hood.img);
-		mlx_destroy_image(mlx_ptr, map_data->menu.img);
+		close_img(map_data, mlx_ptr);
 		return (1);
 	}
 	if (open_object_img(&map_data->object, mlx_ptr) == 1)
 	{
-		mlx_destroy_image(mlx_ptr, map_data->hood.img);
-		mlx_destroy_image(mlx_ptr, map_data->menu.img);
-		mlx_destroy_image(mlx_ptr, map_data->map_img.img);
+		close_img(map_data, mlx_ptr);
 		return (1);
 	}
 	return (0);

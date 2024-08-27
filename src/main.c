@@ -28,7 +28,10 @@ int	main(int argc, char **argv)
 		return (1);
 	init_game_data(&game_data);
 	if (open_img(&game_data.map_data, game_data.mlx_data.mlx_ptr) == 1)
+	{
+		free_parsing(&game_data);
 		return (1);
+	}
 	if (create_window(&game_data.mlx_data) == 1)
 		return (1);
 	mlx_mouse_move(game_data.mlx_data.mlx_ptr,

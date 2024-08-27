@@ -27,6 +27,7 @@ RENDER_SRC = render_frame.c \
 			 find_orientation.c \
 			 find_closest_inter.c \
 			 get_map_point.c \
+			 normalize_angle.c
 
 MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
@@ -58,10 +59,11 @@ MAP_SRC = draw_map.c \
 		  draw_square.c \
 		  draw_player.c
 
+ASSETS_SRC = open_img.c \
+			 open_img_obj.c \
+			 open_xpm.c
+
 SRC = main.c \
-	  normalize_angle.c \
-	  open_img.c \
-	  open_img_obj.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
 	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
@@ -69,7 +71,8 @@ SRC = main.c \
 	  $(addprefix textures/, $(TEXTURES_SRC)) \
 	  $(addprefix player/, $(PLAYER_SRC)) \
 	  $(addprefix init/, $(INIT_SRC)) \
-	  $(addprefix map/, $(MAP_SRC))
+	  $(addprefix map/, $(MAP_SRC)) \
+	  $(addprefix assets/, $(ASSETS_SRC))
 
 BUILD_DIR = .build
 

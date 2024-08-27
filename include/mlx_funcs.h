@@ -13,7 +13,6 @@
 #ifndef MLX_FUNCS_H
 # define MLX_FUNCS_H
 
-
 typedef struct s_data
 {
 	void	*img;

@@ -25,25 +25,25 @@ typedef struct s_mouse
 
 typedef struct s_keys
 {
-	int	forward;
-	int	backward;
-	int	look_left;
-	int	look_right;
-	int	right;
-	int	left;
-	int	up;
-	int	down;
-	int	fly;
-	int	crouch;
-	int	esc;
-	int	alt;
-	int	menu;
-	int	hood;
-	int	map;
-	int	object;
-	int	object_sec;
+	int		forward;
+	int		backward;
+	int		look_left;
+	int		look_right;
+	int		right;
+	int		left;
+	int		up;
+	int		down;
+	int		fly;
+	int		crouch;
+	int		esc;
+	int		alt;
+	int		menu;
+	int		hood;
+	int		map;
+	int		object;
+	int		object_sec;
 	t_mouse	mouse;
-}		t_keys;
+}			t_keys;
 
 typedef struct s_player
 {

@@ -32,6 +32,14 @@
 # define PLAYER_COLOR 0xFF0000
 # define MAP_PLAYER_SIZE 20
 
+# define MENU_PATH "./assets/menu.xpm"
+# define HOOD_PATH "./assets/hood.xpm"
+# define MAP_PATH "./assets/map_back.xpm"
+# define OBJ_IDLE_PATH "./assets/object_idle.xpm"
+# define OBJ_USE1_PATH "./assets/object_use1.xpm"
+# define OBJ_USE2_PATH "./assets/object_use2.xpm"
+# define OBJ_USE3_PATH "./assets/object_use3.xpm"
+# define OBJ_SEC_USE_PATH "./assets/object_use_sec.xpm"
 # define OBJ_FRAME_NB 10
 
 # define W				119
