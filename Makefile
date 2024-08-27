@@ -41,7 +41,8 @@ PLAYER_SRC = keys.c \
              move_player.c \
              rotate_player.c \
 			 mouse_move.c \
-			 player_size.c
+			 player_size.c \
+			 mouse_button.c
 
 CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \
@@ -59,6 +60,7 @@ MAP_SRC = draw_map.c \
 SRC = main.c \
 	  normalize_angle.c \
 	  open_img.c \
+	  open_img_obj.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
 	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \

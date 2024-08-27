@@ -40,6 +40,8 @@ typedef struct s_keys
 	int	menu;
 	int	hood;
 	int	map;
+	int	object;
+	int	object_sec;
 	t_mouse	mouse;
 }		t_keys;
 
@@ -61,4 +63,7 @@ int		key_release(int key, t_keys *keys);
 void	move_player(t_player *player, t_map_data *map);
 void	rotate_player(t_player *player);
 void	player_size(t_player *player);
+int		mouse_press(int key, int x, int y, t_keys *keys);
+int		mouse_release(int key, int x, int y, t_keys *keys);
+
 #endif
