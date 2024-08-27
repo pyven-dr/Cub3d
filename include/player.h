@@ -39,6 +39,7 @@ typedef struct s_keys
 	int	alt;
 	int	menu;
 	int	hood;
+	int	map;
 	t_mouse	mouse;
 }		t_keys;
 

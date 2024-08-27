@@ -35,6 +35,8 @@ int	key_player_control(int key, t_keys *keys)
 		keys->crouch = 1;
 	else if (key == SPACE)
 		keys->fly = 1;
+	else if (key == M)
+		keys->map = 1;
 	return (0);
 }
 
@@ -93,5 +95,7 @@ int	key_release(int key, t_keys *keys)
 		keys->left = 0;
 	else if (key == D)
 		keys->right = 0;
+	else if (key == M)
+		keys->map = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 00:37:14 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/25 22:00:43 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 00:23:38 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	render(t_game_data	*game_data)
 		player_size(&game_data->p);
 		rotate_player(&game_data->p);
 		render_frame(game_data);
+		if (game_data->p.keys.map == 1)
+			draw_map(game_data);
 		if (game_data->p.keys.hood == 1)
 			display_img(&game_data->map_data.hood, \
 			&game_data->mlx_data.img_data);
