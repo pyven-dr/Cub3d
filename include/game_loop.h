@@ -32,5 +32,6 @@ int		close_window(void *game_data);
 void	draw_map(t_game_data *game_data);
 void	draw_square(t_data *img, int x, int y, int size);
 void	draw_player(t_data *img, int square_size);
+void	display_images(t_game_data *game_data);
 
 #endif

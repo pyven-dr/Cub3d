@@ -17,18 +17,18 @@
 
 int	open_xpm(void *mlx_ptr, t_data *nsew, char *path)
 {
-	nsew->img = mlx_xpm_file_to_image(mlx_ptr,
-									  path, &nsew->width, &nsew->height);
+	nsew->img = mlx_xpm_file_to_image(mlx_ptr, \
+	path, &nsew->width, &nsew->height);
 	if (nsew->img == NULL)
 		return (1);
-	nsew->addr = mlx_get_data_addr(nsew->img, &nsew->bits_per_pixel,
-								   &nsew->line_length, &nsew->endian);
+	nsew->addr = mlx_get_data_addr(nsew->img, &nsew->bits_per_pixel, \
+	&nsew->line_length, &nsew->endian);
 	if (nsew->addr == NULL)
 		return (1);
 	return (0);
 }
 
-int open_img(t_map_data *map_data, void *mlx_ptr)
+int	open_img(t_map_data *map_data, void *mlx_ptr)
 {
 	if (open_xpm(mlx_ptr, &map_data->menu, "./menu.xpm") == 1)
 	{
