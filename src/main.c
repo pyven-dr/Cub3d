@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/27 07:03:31 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 07:12:32 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		return (1);
 	init_game_data(&game_data);
 	if (pre_parsing(argc, argv, &game_data) == -1)
-		return (1);
+		return (free_parsing(&game_data), 1);
 	if (open_img(&game_data.map_data, game_data.mlx_data.mlx_ptr) == 1)
 		return (1);
 	if (create_window(&game_data.mlx_data) == 1)
