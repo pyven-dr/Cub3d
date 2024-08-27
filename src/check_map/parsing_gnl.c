@@ -104,9 +104,7 @@ static int	control_map_gnl(int fd, t_map_data *map_data, char *line)
 int	parsing_gnl(int fd, t_map_data *map_data)
 {
 	char	*line;
-	int		j;
 
-	j = 0;
 	line = get_text_colors(fd, map_data);
 	if (control_text_color(map_data, line) == -1)
 		return (-1);

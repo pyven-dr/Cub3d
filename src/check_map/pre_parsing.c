@@ -23,7 +23,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 		return (1);
 	while (line)
 	{
-		if (line[0] == ' ' | line[0] == '1')
+		if (line[0] == ' ' || line[0] == '1')
 			map_data->map_height++;
 		free(line);
 		line = get_next_line(fd);
