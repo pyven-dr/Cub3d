@@ -16,10 +16,20 @@
 #include "game_loop.h"
 #include <stdlib.h>
 
+void	free_obj_img(void *mlx_ptr, t_object *object)
+{
+	mlx_destroy_image(mlx_ptr, object->object_idle.img);
+	mlx_destroy_image(mlx_ptr, object->object_use1.img);
+	mlx_destroy_image(mlx_ptr, object->object_use2.img);
+	mlx_destroy_image(mlx_ptr, object->object_use3.img);
+	mlx_destroy_image(mlx_ptr, object->object_use_sec.img);
+}
+
 void	free_img(void *mlx_ptr, t_map_data *map_data)
 {
 	mlx_destroy_image(mlx_ptr, map_data->menu.img);
 	mlx_destroy_image(mlx_ptr, map_data->hood.img);
+	mlx_destroy_image(mlx_ptr, map_data->map_img.img);
 	mlx_destroy_image(mlx_ptr, map_data->north.img);
 	mlx_destroy_image(mlx_ptr, map_data->south.img);
 	mlx_destroy_image(mlx_ptr, map_data->east.img);
@@ -28,6 +38,7 @@ void	free_img(void *mlx_ptr, t_map_data *map_data)
 	free(map_data->south.path);
 	free(map_data->east.path);
 	free(map_data->west.path);
+	free_obj_img(mlx_ptr, &map_data->object);
 }
 
 int	close_window(void *struct_data)
