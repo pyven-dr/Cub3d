@@ -51,7 +51,8 @@ void	display_images(t_game_data *game_data)
 			display_img(&game_data->map_data.object.object_idle, \
 			&game_data->mlx_data.img_data);
 		else
-			display_object(&game_data->map_data.object, &game_data->mlx_data.img_data);
+			display_object(&game_data->map_data.object, \
+							&game_data->mlx_data.img_data);
 	}
 	if (game_data->p.keys.hood == 1)
 		display_img(&game_data->map_data.hood, \
