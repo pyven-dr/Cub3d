@@ -14,7 +14,7 @@
 #include "mlx.h"
 #include "libft.h"
 
-static int open_object_use(t_object *object, void *mlx_ptr)
+static int	open_object_use(t_object *object, void *mlx_ptr)
 {
 	if (open_xpm(mlx_ptr, &object->object_use1, "./object_use1.xpm") == 1)
 	{
@@ -37,14 +37,13 @@ static int open_object_use(t_object *object, void *mlx_ptr)
 	return (0);
 }
 
-int open_object_img(t_object *object, void *mlx_ptr)
+int	open_object_img(t_object *object, void *mlx_ptr)
 {
 	if (open_xpm(mlx_ptr, &object->object_idle, "./object_idle.xpm") == 1)
 	{
 		ft_putstr_fd("Error while opening the object_idle img\n", 2);
 		return (1);
 	}
-
 	if (open_xpm(mlx_ptr, &object->object_use_sec, "./object_use_sec.xpm") == 1)
 	{
 		ft_putstr_fd("Error while opening the object_use_sec img\n", 2);

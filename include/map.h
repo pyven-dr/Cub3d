@@ -30,6 +30,8 @@ typedef struct s_object
 	t_data	object_use2;
 	t_data	object_use3;
 	t_data	object_use_sec;
+	int		frame_count;
+	int		current_img;
 }	t_object;
 
 typedef struct s_map_data

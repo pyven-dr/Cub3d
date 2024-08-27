@@ -14,6 +14,7 @@ IFLAGS = \
 		 -I $(MLX_DIR)
 
 GAME_LOOP_SRC = game_loop.c \
+				images.c
 
 INIT_SRC	=	init_main.c \
 				init_parsing.c

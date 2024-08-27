@@ -32,6 +32,8 @@
 # define PLAYER_COLOR 0xFF0000
 # define MAP_PLAYER_SIZE 20
 
+# define OBJ_FRAME_NB 10
+
 # define W				119
 # define A				97
 # define S				115

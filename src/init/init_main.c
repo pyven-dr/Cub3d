@@ -35,6 +35,8 @@ void	init_game_data(t_game_data *game_data)
 	game_data->p.keys.map = 0;
 	game_data->p.keys.object = 0;
 	game_data->p.keys.object_sec = 0;
+	game_data->map_data.object.frame_count = 0;
+	game_data->map_data.object.current_img = 1;
 	game_data->p.keys.mouse.is_recentering = 0;
 	game_data->p.keys.mouse.x = WIDTH / 2;
 	game_data->p.keys.mouse.y = HEIGHT / 2;

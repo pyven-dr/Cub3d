@@ -20,26 +20,8 @@ void	controls(t_mlx *mlx_data, t_game_data *game_data)
 	mlx_hook(mlx_data->mlx_win, 2, 1L << 0, key_press, &game_data->p.keys);
 	mlx_hook(mlx_data->mlx_win, 6, 1L << 6, mouse_move, game_data);
 	mlx_hook(mlx_data->mlx_win, 3, 1L << 1, key_release, &game_data->p.keys);
-	mlx_hook(mlx_data->mlx_win, 4, 1L << 2, mouse_press,&game_data->p.keys);
-	mlx_hook(mlx_data->mlx_win, 5, 1L << 3, mouse_release,&game_data->p.keys);
-}
-
-void	display_images(t_game_data *game_data)
-{
-	if (game_data->p.keys.map == 1)
-		draw_map(game_data);
-	else
-	{
-		if (game_data->p.keys.object_sec == 1)
-			display_img(&game_data->map_data.object.object_use_sec, &game_data->mlx_data.img_data);
-		else if (game_data->p.keys.object == 0)
-			display_img(&game_data->map_data.object.object_idle, &game_data->mlx_data.img_data);
-		else
-			display_img(&game_data->map_data.object.object_use1, &game_data->mlx_data.img_data);
-	}
-	if (game_data->p.keys.hood == 1)
-		display_img(&game_data->map_data.hood, \
-			&game_data->mlx_data.img_data);
+	mlx_hook(mlx_data->mlx_win, 4, 1L << 2, mouse_press, &game_data->p.keys);
+	mlx_hook(mlx_data->mlx_win, 5, 1L << 3, mouse_release, &game_data->p.keys);
 }
 
 int	render(t_game_data	*game_data)
