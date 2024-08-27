@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:25:48 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/27 02:10:26 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/24 01:20:34 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 		return (1);
 	while (line)
 	{
-		if (line[0] == ' ' || line[0] == '1')
+		if (line[0] == ' ' | line[0] == '1')
 			map_data->map_height++;
 		free(line);
 		line = get_next_line(fd);
@@ -40,7 +40,14 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 {
 	int		fd;
+	int		i;
 
+	i = 0;
+	game_data->map_data.north.img = NULL;
+	game_data->map_data.south.img = NULL;
+	game_data->map_data.east.img = NULL;
+	game_data->map_data.west.img = NULL;
+	
 	if (argc != 2)
 		return (-1);
 	init_map(&game_data->map_data);
@@ -59,7 +66,10 @@ int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 	if (close(fd) == -1)
 		return (free_parsing(game_data), -1);
 	if (control_map(game_data) == -1)
+	{
+		//dprintf(2, "map error");
 		return (free_parsing(game_data), -1);
+	}
 	if (fill_nsew_struct(game_data) == -1)
 		return (free_parsing(game_data), -1);
 	return (0);

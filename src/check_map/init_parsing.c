@@ -15,6 +15,9 @@
 #include "stdlib.h"
 #include "mlx.h"
 
+#include <stdio.h>
+
+
 void	free_parsing(t_game_data *game_data)
 {
 	int	i;
