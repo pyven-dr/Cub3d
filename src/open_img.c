@@ -41,5 +41,12 @@ int open_img(t_map_data *map_data, void *mlx_ptr)
 		mlx_destroy_image(mlx_ptr, map_data->menu.img);
 		return (1);
 	}
+	if (file_to_struct(mlx_ptr, &map_data->map_img, "./map_back.xpm") == 1)
+	{
+		ft_putstr_fd("Error while opening the map_back img\n", 2);
+		mlx_destroy_image(mlx_ptr, map_data->hood.img);
+		mlx_destroy_image(mlx_ptr, map_data->menu.img);
+		return (1);
+	}
 	return (0);
 }

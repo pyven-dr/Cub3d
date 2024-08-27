@@ -52,6 +52,10 @@ CHECK_MAP_SRC = pre_parsing.c \
 				control_cub.c \
 				check_if_textures_or_colors.c
 
+MAP_SRC = draw_map.c \
+		  draw_square.c \
+		  draw_player.c
+
 SRC = main.c \
 	  normalize_angle.c \
 	  open_img.c \
@@ -61,7 +65,8 @@ SRC = main.c \
 	  $(addprefix check_map/, $(CHECK_MAP_SRC)) \
 	  $(addprefix textures/, $(TEXTURES_SRC)) \
 	  $(addprefix player/, $(PLAYER_SRC)) \
-	  $(addprefix init/, $(INIT_SRC))
+	  $(addprefix init/, $(INIT_SRC)) \
+	  $(addprefix map/, $(MAP_SRC))
 
 BUILD_DIR = .build
 

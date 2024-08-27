@@ -28,6 +28,7 @@ typedef struct s_map_data
 	char	**map;
 	t_data	menu;
 	t_data	hood;
+	t_data	map_img;
 	t_data	north;
 	t_data	south;
 	t_data	east;

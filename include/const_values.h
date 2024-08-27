@@ -27,18 +27,24 @@
 # define MOVE_SPEED 5.5
 # define FLY_SPEED 0.1
 
-# define W					119
-# define A					97
-# define S					115
-# define D					100
-# define C					99
-# define UP_ARROW			65362
-# define DOWN_ARROW			65364
-# define CTRL				65507
-# define SPACE				32
-# define ESCAPE				65307
-# define ALT                65513
-# define RIGHT_ARROW        65363
-# define LEFT_ARROW         65361
+# define MINIMAP_RANGE 5
+# define MINIMAP_COLOR 0x000000
+# define PLAYER_COLOR 0xFF0000
+# define MAP_PLAYER_SIZE 20
+
+# define W				119
+# define A				97
+# define S				115
+# define D				100
+# define C				99
+# define M				109
+# define UP_ARROW		65362
+# define DOWN_ARROW		65364
+# define CTRL			65507
+# define SPACE			32
+# define ESCAPE			65307
+# define ALT			65513
+# define RIGHT_ARROW	65363
+# define LEFT_ARROW		65361
 
 #endif
