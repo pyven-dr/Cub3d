@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:25:48 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/26 01:04:53 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 02:10:26 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 		return (1);
 	while (line)
 	{
-		if (line[0] == ' ' | line[0] == '1')
+		if (line[0] == ' ' || line[0] == '1')
 			map_data->map_height++;
 		free(line);
 		line = get_next_line(fd);
