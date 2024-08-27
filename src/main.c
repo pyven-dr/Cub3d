@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:18:28 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/08/26 01:02:24 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 07:03:31 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "mlx.h"
 #include <stdlib.h>
 #include "const_values.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -24,9 +25,9 @@ int	main(int argc, char **argv)
 	game_data.mlx_data.mlx_ptr = mlx_init();
 	if (game_data.mlx_data.mlx_ptr == NULL)
 		return (1);
+	init_game_data(&game_data);
 	if (pre_parsing(argc, argv, &game_data) == -1)
 		return (1);
-	init_game_data(&game_data);
 	if (open_img(&game_data.map_data, game_data.mlx_data.mlx_ptr) == 1)
 		return (1);
 	if (create_window(&game_data.mlx_data) == 1)

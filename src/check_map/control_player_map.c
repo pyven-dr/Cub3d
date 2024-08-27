@@ -6,13 +6,14 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:12:25 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/23 03:20:40 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 07:11:00 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_map.h"
 #include <math.h>
 #include "const_values.h"
+#include "ft_printf.h"
 
 static int	control_player(t_game_data *g_data, int y, int x)
 
@@ -78,7 +79,7 @@ int	control_map(t_game_data *g_data)
 				if (control_player(g_data, y, x) == 1)
 					g_data->map_data.number_player++;
 				if (control_pos(g_data, x, y) == -1)
-					return (-1);
+					return (ft_printf(2, "Map is not closed\n"), -1);
 			}
 		}
 		if (x > g_data->map_data.map_width)
@@ -86,6 +87,6 @@ int	control_map(t_game_data *g_data)
 		y++;
 	}
 	if (g_data->map_data.number_player != 1)
-		return (-1);
+		return (ft_printf(2, "Player number != 1\n"), -1);
 	return (0);
 }

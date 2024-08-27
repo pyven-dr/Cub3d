@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:11:14 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/26 00:58:45 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 07:01:39 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	init_map(t_map_data *map_data)
 	map_data->east.path = NULL;
 	map_data->west.path = NULL;
 	map_data->map = NULL;
-	map_data->ceiling.hexa = 0;
+	map_data->ceiling.hexa = -1;
 	map_data->ceiling.r = 0;
 	map_data->ceiling.g = 0;
 	map_data->ceiling.b = 0;
-	map_data->floor.hexa = 0;
+	map_data->floor.hexa = -1;
 	map_data->floor.r = 0;
 	map_data->floor.g = 0;
 	map_data->floor.b = 0;

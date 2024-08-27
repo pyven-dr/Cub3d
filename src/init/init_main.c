@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 00:30:35 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/26 01:04:04 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/08/27 07:05:28 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,8 @@ void	init_game_data(t_game_data *game_data)
 	game_data->p.keys.mouse.is_recentering = 0;
 	game_data->p.keys.mouse.x = WIDTH / 2;
 	game_data->p.keys.mouse.y = HEIGHT / 2;
+	game_data->map_data.north.path = NULL;
+	game_data->map_data.east.path = NULL;
+	game_data->map_data.west.path = NULL;
+	game_data->map_data.south.path = NULL;
 }
