@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "render.h"
 #include "textures.h"
 
 static int	check_start_wall(int start_wall, t_inter *inter, double step_tex)

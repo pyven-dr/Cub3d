@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_map.h"
 #include "libft.h"
 
 int	check_cub(char *file)

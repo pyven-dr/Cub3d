@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "mlx.h"
-#include "mlx_funcs.h"
-#include "map.h"
 #include "libft.h"
+#include "map.h"
+#include "mlx.h"
 
 static void	close_img(t_map_data *map_data, void *mlx_ptr)
 {

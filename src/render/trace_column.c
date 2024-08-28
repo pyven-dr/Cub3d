@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "game_loop.h"
-#include "render.h"
 #include "textures.h"
 
 void	trace_column(t_inter inter, int col_numb, t_game_data *game_data)

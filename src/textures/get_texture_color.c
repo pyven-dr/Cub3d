@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_funcs.h"
-#include "render.h"
 #include "textures.h"
 
 int	get_texture_color(const t_data *tex_data, t_inter inter, double pos_tex)

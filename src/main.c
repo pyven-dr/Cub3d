@@ -10,13 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_funcs.h"
-#include "game_loop.h"
-#include "check_map.h"
-#include "mlx.h"
 #include <stdlib.h>
+#include "check_map.h"
 #include "const_values.h"
-#include <stdio.h>
+#include "mlx.h"
 
 int	main(int argc, char **argv)
 {

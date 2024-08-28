@@ -12,7 +12,6 @@
 
 #include "game_loop.h"
 #include "mlx.h"
-#include "mlx_funcs.h"
 
 static void	controls(t_mlx *mlx_data, t_game_data *game_data)
 {

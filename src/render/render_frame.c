@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "const_values.h"
-#include "game_loop.h"
-#include "render.h"
 #include <math.h>
+#include "const_values.h"
+#include "render.h"
 
 static double	fix_fisheye(t_inter wall, double angle, double player_angle)
 {

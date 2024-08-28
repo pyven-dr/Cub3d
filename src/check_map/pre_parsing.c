@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "check_map.h"
-#include "libft.h"
 #include "fcntl.h"
+#include "libft.h"
 
 static int	pre_count_map(int fd, t_map_data *map_data)
 {

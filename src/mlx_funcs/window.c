@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "check_map.h"
 #include "const_values.h"
 #include "mlx.h"
-#include "mlx_funcs.h"
-#include "game_loop.h"
-#include "check_map.h"
 #include <stdlib.h>
 
 int	close_window(void *struct_data)

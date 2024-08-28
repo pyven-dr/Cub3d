@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_map.h"
 #include <math.h>
+#include "check_map.h"
 #include "const_values.h"
 #include "ft_printf.h"
 

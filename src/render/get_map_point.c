@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "libft.h"
 #include "map.h"
-#include <math.h>
 
 char	get_map_point(double x, double y, t_map_data *map)
 {

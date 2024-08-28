@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "const_values.h"
 #include "game_loop.h"
 #include "mlx.h"
-#include <math.h>
 
 int	mouse_move(int x, int y, t_game_data *game_data)
 {

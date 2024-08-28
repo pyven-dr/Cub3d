@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "map.h"
 #include "mlx.h"
-#include <stdlib.h>
 
 int	open_xpm(void *mlx_ptr, t_data *nsew, char *path)
 {

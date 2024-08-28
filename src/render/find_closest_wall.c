@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "const_values.h"
-#include "game_loop.h"
-#include "render.h"
 #include <math.h>
+#include "const_values.h"
+#include "render.h"
 
 static t_inter	find_dist(t_point inter_point, t_point *pos)
 {

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
 #include "const_values.h"
+#include "player.h"
 
 void	player_size(t_player *player)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "const_values.h"
 #include "game_loop.h"
-#include <math.h>
 
 void	rotate_player(t_player *player)
 {

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "check_map.h"
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	create_rgb(int r, int g, int b)

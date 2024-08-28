@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "const_values.h"
 #include "mlx_funcs.h"
 #include "mlx.h"
-#include <stdlib.h>
 
 int	new_image(t_mlx *mlx)
 {

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
-#include "game_loop.h"
 #include "render.h"
 
 void	draw_map(t_game_data *game_data)

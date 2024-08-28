@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game_loop.h"
+#include <stdlib.h>
 #include "const_values.h"
-#include <stddef.h>
+#include "game_loop.h"
 
 static void	init_keys(t_keys *keys)
 {

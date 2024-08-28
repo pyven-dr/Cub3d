@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game_loop.h"
-#include "render.h"
 #include <math.h>
+#include "render.h"
 
 static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 {

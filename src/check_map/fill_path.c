@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_map.h"
 #include "libft.h"
 
 static void	end_line(char *line)

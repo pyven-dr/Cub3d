@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "check_map.h"
-#include "stddef.h"
-#include "stdlib.h"
 #include "mlx.h"
 
 void	free_parsing(t_game_data *g_data)

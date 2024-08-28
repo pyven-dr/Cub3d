@@ -12,8 +12,6 @@
 
 #include "const_values.h"
 #include "render.h"
-#include "game_loop.h"
-#include <math.h>
 
 static int	check_out_map(t_player *player, t_map_data *map)
 {

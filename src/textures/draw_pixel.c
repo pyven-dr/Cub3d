@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
 #include "textures.h"
 
 void	draw_pixel(t_game_data *game_data, int i, int j, t_inter inter)

@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "const_values.h"
+#include "libft.h"
 #include "map.h"
 #include "mlx.h"
-#include "libft.h"
 
 static int	open_object_use(t_object *object, void *mlx_ptr)
 {
