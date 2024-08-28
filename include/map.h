@@ -53,9 +53,10 @@ typedef struct s_map_data
 	int			pb;
 }				t_map_data;
 
-int	open_img(t_map_data *map_data, void *mlx_ptr);
-int	open_xpm(void *mlx_ptr, t_data *nsew, char *path);
-int	open_object_img(t_object *object, void *mlx_ptr);
-int	open_xpm(void *mlx_ptr, t_data *nsew, char *path);
+int		open_img(t_map_data *map_data, void *mlx_ptr);
+int		open_xpm(void *mlx_ptr, t_data *nsew, char *path);
+int		open_object_img(t_object *object, void *mlx_ptr);
+int		open_xpm(void *mlx_ptr, t_data *nsew, char *path);
+void	free_img(void *mlx_ptr, t_map_data *map_data);
 
 #endif

@@ -68,7 +68,7 @@ int	control_map(t_game_data *g_data)
 	int	x;
 
 	y = 0;
-	while (y < g_data->map_data.map_height)
+	while (y < g_data->map_data.pb)
 	{
 		x = -1;
 		while (g_data->map_data.map[y][++x])

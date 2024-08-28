@@ -50,6 +50,14 @@ static void	init_map_data(t_map_data *map_data)
 	map_data->south.img = NULL;
 	map_data->east.img = NULL;
 	map_data->west.img = NULL;
+	map_data->object.object_idle.img = NULL;
+	map_data->object.object_use1.img = NULL;
+	map_data->object.object_use2.img = NULL;
+	map_data->object.object_use3.img = NULL;
+	map_data->object.object_use_sec.img = NULL;
+	map_data->menu.img = NULL;
+	map_data->hood.img = NULL;
+	map_data->map_img.img = NULL;
 }
 
 static void	init_player(t_player *player)

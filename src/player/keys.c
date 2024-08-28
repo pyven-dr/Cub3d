@@ -13,7 +13,7 @@
 #include "const_values.h"
 #include "game_loop.h"
 
-int	key_player_control(int key, t_keys *keys)
+static int	key_player_control(int key, t_keys *keys)
 {
 	if (key == W)
 		keys->forward = 1;
@@ -40,7 +40,7 @@ int	key_player_control(int key, t_keys *keys)
 	return (0);
 }
 
-void	enable_mouse(t_keys *keys)
+static void	enable_mouse(t_keys *keys)
 {
 	if (keys->alt == 1)
 		keys->alt = 0;

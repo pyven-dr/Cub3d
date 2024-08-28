@@ -33,7 +33,8 @@ MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
 			   new_image.c \
 			   display_image.c \
-			   get_pixel_color.c
+			   get_pixel_color.c \
+			   free_img.c
 
 TEXTURES_SRC = draw_column.c \
 			   draw_pixel.c \

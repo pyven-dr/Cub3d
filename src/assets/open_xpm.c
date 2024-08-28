@@ -20,9 +20,12 @@ int	open_xpm(void *mlx_ptr, t_data *nsew, char *path)
 	path, &nsew->width, &nsew->height);
 	if (nsew->img == NULL)
 		return (1);
-	nsew->addr = mlx_get_data_addr(nsew->img, &nsew->bits_per_pixel, \
+	nsew->addr =mlx_get_data_addr(nsew->img, &nsew->bits_per_pixel, \
 	&nsew->line_length, &nsew->endian);
 	if (nsew->addr == NULL)
+	{
+		mlx_destroy_image(mlx_ptr, nsew->img);
 		return (1);
+	}
 	return (0);
 }

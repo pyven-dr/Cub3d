@@ -14,7 +14,7 @@
 #include "mlx.h"
 #include "mlx_funcs.h"
 
-void	controls(t_mlx *mlx_data, t_game_data *game_data)
+static void	controls(t_mlx *mlx_data, t_game_data *game_data)
 {
 	mlx_hook(mlx_data->mlx_win, 17, 0, close_window, mlx_data);
 	mlx_hook(mlx_data->mlx_win, 2, 1L << 0, key_press, &game_data->p.keys);
@@ -24,7 +24,7 @@ void	controls(t_mlx *mlx_data, t_game_data *game_data)
 	mlx_hook(mlx_data->mlx_win, 5, 1L << 3, mouse_release, &game_data->p.keys);
 }
 
-int	render(t_game_data	*game_data)
+static int	render(t_game_data	*game_data)
 {
 	if (game_data->p.keys.esc == 1)
 		close_window(game_data);

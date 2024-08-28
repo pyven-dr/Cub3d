@@ -32,7 +32,7 @@ int	fill_path(char *line, char **path)
 	if (line[i] && line[i + 1] && line[i] != '.' && line[i + 1] != '/')
 		return (-1);
 	*path = ft_strdup(line + i);
-	if (path == NULL)
+	if (*path == NULL)
 		return (-1);
 	end_line(*path);
 	return (0);
