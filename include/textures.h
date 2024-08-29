@@ -16,7 +16,9 @@
 # include "render.h"
 
 int		get_texture_color(const t_data *tex_data, t_inter inter, \
-							double pos_tex);
+							double pos_tex_y, double pos_tex_x);
 void	draw_column(t_game_data *game_data, int j, int wall_h, t_inter inter);
 void	draw_pixel(t_game_data *game_data, int i, int j, t_inter inter);
+void	find_pos_tex_x(t_inter *inter, t_map_data *map_data);
+
 #endif

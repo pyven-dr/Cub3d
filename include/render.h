@@ -30,7 +30,8 @@ typedef struct s_inter
 	t_point		point;
 	double		distance;
 	t_orient	orientation;
-	double		pos_texture;
+	double		texture_x;
+	double		texture_y;
 }			t_inter;
 
 t_point	find_v_wall(double ray_angle, t_player *player, t_map_data *map);

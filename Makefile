@@ -38,7 +38,7 @@ MLX_FUNCS_SRC = pixel_put.c \
 
 TEXTURES_SRC = draw_column.c \
 			   draw_pixel.c \
-			   get_texture_color.c
+			   find_pos_tex_x.c
 
 PLAYER_SRC = keys.c \
              move_player.c \

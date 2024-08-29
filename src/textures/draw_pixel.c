@@ -24,6 +24,6 @@ void	draw_pixel(t_game_data *game_data, int i, int j, t_inter inter)
 	textures[3] = &game_data->map_data.west;
 	img_data = (int *)game_data->mlx_data.img_data.addr;
 	img_width = game_data->mlx_data.img_data.line_length / sizeof(int);
-	img_data[i * img_width + j] = get_texture_color(\
-	textures[inter.orientation], inter, (int)inter.pos_texture);
+	img_data[i * img_width + j] = get_pixel_color(textures[inter.orientation], \
+	(int)inter.texture_x, (int)inter.texture_y);
 }
