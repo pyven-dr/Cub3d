@@ -40,9 +40,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 int	pre_parsing(int argc, char **argv, t_game_data *game_data)
 {
 	int		fd;
-
-	if (argc != 2)
-		return (-1);
+	
 	init_map(&game_data->map_data);
 	if (check_cub(argv[1]) == -1)
 		return (-1);

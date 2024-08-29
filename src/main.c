@@ -12,13 +12,18 @@
 
 #include <stdlib.h>
 #include "check_map.h"
-#include "const_values.h"
+#include "ft_printf.h"
 #include "mlx.h"
 
 int	main(int argc, char **argv)
 {
 	t_game_data	game_data;
 
+	if (argc != 2)
+	{
+		ft_printf(2, "Wring number of arguments\n");
+		return (1);
+	}
 	game_data.mlx_data.mlx_ptr = mlx_init();
 	if (game_data.mlx_data.mlx_ptr == NULL)
 		return (1);
@@ -36,8 +41,6 @@ int	main(int argc, char **argv)
 		free_parsing(&game_data);
 		return (1);
 	}
-	mlx_mouse_move(game_data.mlx_data.mlx_ptr,
-		game_data.mlx_data.mlx_win, WIDTH / 2, HEIGHT / 2);
 	if (new_image(&game_data.mlx_data) == 1)
 		return (1);
 	game_loop(&game_data);

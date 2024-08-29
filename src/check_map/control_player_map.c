@@ -29,8 +29,8 @@ static int	control_player(t_game_data *g_data, int y, int x)
 			g_data->p.angle = 0;
 		if (g_data->map_data.map[y][x] == 'W')
 			g_data->p.angle = M_PI;
-		g_data->p.pos.x = x * 64;
-		g_data->p.pos.y = y * 64;
+		g_data->p.pos.x = (x * 64) + 32;
+		g_data->p.pos.y = (y * 64) + 32;
 		g_data->p.fov = FOV * (M_PI / 180);
 		g_data->p.delta_x = (int)(cos(g_data->p.angle) * 1.5);
 		g_data->p.delta_y = (int)(sin(g_data->p.angle) * 1.5);

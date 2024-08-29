@@ -15,7 +15,7 @@
 
 static void	controls(t_mlx *mlx_data, t_game_data *game_data)
 {
-	mlx_hook(mlx_data->mlx_win, 17, 0, close_window, mlx_data);
+	mlx_hook(mlx_data->mlx_win, 17, 0, close_window, game_data);
 	mlx_hook(mlx_data->mlx_win, 2, 1L << 0, key_press, &game_data->p.keys);
 	mlx_hook(mlx_data->mlx_win, 6, 1L << 6, mouse_move, game_data);
 	mlx_hook(mlx_data->mlx_win, 3, 1L << 1, key_release, &game_data->p.keys);
