@@ -15,7 +15,7 @@
 
 # include "game_loop.h"
 
-int		pre_parsing(int argc, char **argv, t_game_data *game_data);
+int		pre_parsing(char **argv, t_game_data *game_data);
 void	init_map(t_map_data *map_data);
 int		control_map(t_game_data *game_data);
 int		check_cub(char *file);
