@@ -48,7 +48,7 @@ static int	control_text_color(t_map_data *map_data, char *line)
 		return (-1);
 	}
 	if (map_data->east.path == NULL || map_data->north.path == NULL
-		|| map_data->west.path == NULL || map_data->south.path == NULL
+		|| map_data->west.path == NULL || map_data->south.path == NULL || map_data->door.path == NULL
 		|| map_data->ceiling.hexa == -1 || map_data->floor.hexa == -1)
 	{
 		ft_printf(2, "Color or Textures missing\n");
@@ -68,7 +68,7 @@ static int	check_line_map(char *map)
 	{
 		if (map[i] != '1' && map[i] != '0' && map[i] != 'N' && map[i] != 'S'
 			&& map[i] != 'E' && map[i] != 'W' && map[i] != ' '
-			&& map[i] != '\n')
+			&& map[i] != '\n' && map[i] != '2')
 			return (-1);
 		i++;
 	}

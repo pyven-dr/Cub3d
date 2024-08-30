@@ -10,8 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
+#include "doors.h"
 #include "game_loop.h"
 #include "mlx.h"
+#include "render.h"
 
 static void	controls(t_mlx *mlx_data, t_game_data *game_data)
 {
@@ -32,6 +35,7 @@ static int	render(t_game_data	*game_data)
 		move_player(&game_data->p, &game_data->map_data);
 		player_size(&game_data->p);
 		rotate_player(&game_data->p);
+		check_doors(&game_data->p, &game_data->map_data);
 		render_frame(game_data);
 		display_images(game_data);
 	}

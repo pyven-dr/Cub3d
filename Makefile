@@ -64,6 +64,8 @@ ASSETS_SRC = open_img.c \
 			 open_img_obj.c \
 			 open_xpm.c
 
+DOORS_SRC = doors.c
+
 SRC = main.c \
 	  $(addprefix render/, $(RENDER_SRC)) \
 	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
@@ -73,7 +75,8 @@ SRC = main.c \
 	  $(addprefix player/, $(PLAYER_SRC)) \
 	  $(addprefix init/, $(INIT_SRC)) \
 	  $(addprefix map/, $(MAP_SRC)) \
-	  $(addprefix assets/, $(ASSETS_SRC))
+	  $(addprefix assets/, $(ASSETS_SRC)) \
+	  $(addprefix doors/, $(DOORS_SRC))
 
 BUILD_DIR = .build
 

@@ -56,5 +56,6 @@
 # define ALT			65513
 # define RIGHT_ARROW	65363
 # define LEFT_ARROW		65361
+# define SHIFT			65505
 
 #endif

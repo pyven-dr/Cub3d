@@ -49,6 +49,7 @@ void	init_map(t_map_data *map_data)
 	map_data->south.path = NULL;
 	map_data->east.path = NULL;
 	map_data->west.path = NULL;
+	map_data->door.path = NULL;
 	map_data->map = NULL;
 	map_data->ceiling.hexa = -1;
 	map_data->ceiling.r = 0;

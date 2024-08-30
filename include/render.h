@@ -22,7 +22,8 @@ typedef enum e_orient
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST
+	WEST,
+	DOOR
 }	t_orient;
 
 typedef struct s_inter

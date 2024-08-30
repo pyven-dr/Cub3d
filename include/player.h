@@ -42,6 +42,7 @@ typedef struct s_keys
 	int		map;
 	int		object;
 	int		object_sec;
+	int		door;
 	t_mouse	mouse;
 }			t_keys;
 

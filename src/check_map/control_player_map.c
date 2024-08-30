@@ -44,19 +44,19 @@ static int	control_player(t_game_data *g_data, int y, int x)
 static int	control_pos(t_game_data *g_data, int x, int y)
 {
 	if (g_data->map_data.map[y + 1][x] != '0'
-		&& g_data->map_data.map[y + 1][x] != '1'
+		&& g_data->map_data.map[y + 1][x] != '1' && g_data->map_data.map[y + 1][x] != '2'
 		&& control_player(g_data, y + 1, x) == 0)
 		return (-1);
 	if (y >= 1 && (g_data->map_data.map[y - 1][x] != '0'
-		&& g_data->map_data.map[y - 1][x] != '1'
+		&& g_data->map_data.map[y - 1][x] != '1' && g_data->map_data.map[y - 1][x] != '2'
 		&& control_player(g_data, y - 1, x) == 0))
 		return (-1);
 	if (g_data->map_data.map[y][x + 1] != '0'
-		&& g_data->map_data.map[y][x + 1] != '1'
+		&& g_data->map_data.map[y][x + 1] != '1' && g_data->map_data.map[y][x + 1] != '2'
 		&& control_player(g_data, y, x + 1) == 0)
 		return (-1);
 	if (x >= 1 && (g_data->map_data.map[y][x - 1] != '0'
-		&& g_data->map_data.map[y][x - 1] != '1'
+		&& g_data->map_data.map[y][x - 1] != '1' && g_data->map_data.map[y][x - 1] != '2'
 		&& control_player(g_data, y, x - 1) == 0))
 		return (-1);
 	return (0);
@@ -73,7 +73,7 @@ int	control_map(t_game_data *g_data)
 		x = -1;
 		while (g_data->map_data.map[y][++x])
 		{
-			if (g_data->map_data.map[y][x] == '0'
+			if (g_data->map_data.map[y][x] == '0' || g_data->map_data.map[y][x] == '2'
 				|| control_player(g_data, y, x) == 1)
 			{
 				if (control_player(g_data, y, x) == 1)

@@ -26,8 +26,7 @@ static int	is_color(char *line, char fc, t_color *color)
 static int	is_textures(char *line, char a, char b, char **path)
 {
 	if (line[0] == a && line[1] == b)
-	{
-		if (fill_path(line, path) == -1)
+	{if (fill_path(line, path) == -1)
 			return (-1);
 		return (1);
 	}
@@ -71,6 +70,11 @@ static int	check_textures(char *line, t_map_data *map_data)
 	if (return_value == -1)
 		return (-1);
 	return_value = is_textures(line, 'W', 'E', &map_data->west.path);
+	if (return_value == 1)
+		return (1);
+	if (return_value == -1)
+		return (-1);
+	return_value = is_textures(line, 'D', 'O', &map_data->door.path);
 	if (return_value == 1)
 		return (1);
 	if (return_value == -1)
