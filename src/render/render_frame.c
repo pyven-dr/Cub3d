@@ -38,7 +38,7 @@ int	render_frame(t_game_data *game_data)
 									&game_data->map_data);
 		closest_wall.distance = fix_fisheye(closest_wall, angle, \
 								game_data->p.angle);
-		trace_column(closest_wall, i, game_data);
+		trace_column(&closest_wall, i, game_data);
 		i++;
 	}
 	return (0);
