@@ -22,8 +22,10 @@ void	rotate_player(t_player *player)
 		player->angle = normalize_angle(player->angle + ROTATION_SPEED);
 	if (player->keys.look_left == 1)
 		player->angle = normalize_angle(player->angle - ROTATION_SPEED);
-	if (player->keys.up == 1)
-		player->vert_offset += HOR_ROTATION_SPEED;
-	if (player->keys.down == 1)
-		player->vert_offset -= HOR_ROTATION_SPEED;
+	player->vert_offset += HOR_ROTATION_SPEED;
+	player->vert_offset -= HOR_ROTATION_SPEED;
+	if (player->vert_offset > MAX_HOR)
+		player->vert_offset = MAX_HOR;
+	if (player->vert_offset < MIN_HOR)
+		player->vert_offset = MIN_HOR;
 }

@@ -13,18 +13,26 @@
 #include <math.h>
 #include "render.h"
 
-void	find_orientation_ver(t_inter *inter, double ray_angle)
+void	find_orientation_ver(t_inter *inter, double angle, t_map_data *map)
 {
-	if (ray_angle > M_PI_2 && ray_angle < 3 * M_PI_2)
+	if (get_map_point(inter->point.x, inter->point.y, map) == '2')
+		inter->is_door = 1;
+	else
+		inter->is_door = 0;
+	if (angle > M_PI_2 && angle < 3 * M_PI_2)
 		inter->orientation = WEST;
-	else if (ray_angle < M_PI_2 || ray_angle > 3 * M_PI_2)
+	else if (angle < M_PI_2 || angle > 3 * M_PI_2)
 		inter->orientation = EAST;
 }
 
-void	find_orientation_hor(t_inter *inter, double ray_angle)
+void	find_orientation_hor(t_inter *inter, double angle, t_map_data *map)
 {
-	if (ray_angle > M_PI)
+	if (get_map_point(inter->point.x, inter->point.y, map) == '2')
+		inter->is_door = 1;
+	else
+		inter->is_door = 0;
+	if (angle > M_PI)
 		inter->orientation = NORTH;
-	else if (ray_angle < M_PI)
+	else if (angle < M_PI)
 		inter->orientation = SOUTH;
 }

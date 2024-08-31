@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "doors.h"
 #include "game_loop.h"
 #include "mlx.h"
 
@@ -21,6 +22,7 @@ static void	controls(t_mlx *mlx_data, t_game_data *game_data)
 	mlx_hook(mlx_data->mlx_win, 3, 1L << 1, key_release, &game_data->p.keys);
 	mlx_hook(mlx_data->mlx_win, 4, 1L << 2, mouse_press, &game_data->p.keys);
 	mlx_hook(mlx_data->mlx_win, 5, 1L << 3, mouse_release, &game_data->p.keys);
+	mlx_hook(mlx_data->mlx_win, 8, 1L << 5, mouse_leave, &game_data->p.keys);
 }
 
 static int	render(t_game_data	*game_data)
@@ -32,6 +34,7 @@ static int	render(t_game_data	*game_data)
 		move_player(&game_data->p, &game_data->map_data);
 		player_size(&game_data->p);
 		rotate_player(&game_data->p);
+		check_doors(&game_data->p, &game_data->map_data);
 		render_frame(game_data);
 		display_images(game_data);
 	}

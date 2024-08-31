@@ -45,6 +45,7 @@ typedef struct s_map_data
 	t_data		south;
 	t_data		east;
 	t_data		west;
+	t_data		door;
 	t_color		floor;
 	t_color		ceiling;
 	int			map_height;

@@ -24,6 +24,8 @@
 # define COLLISION_OFFSET 10
 # define ROTATION_SPEED 0.015
 # define HOR_ROTATION_SPEED 0.05
+# define MAX_HOR			10
+# define MIN_HOR			-10
 # define MOVE_SPEED 5.5
 # define FLY_SPEED 0.1
 
@@ -56,5 +58,6 @@
 # define ALT			65513
 # define RIGHT_ARROW	65363
 # define LEFT_ARROW		65361
+# define SHIFT			65505
 
 #endif

@@ -12,6 +12,12 @@
 
 #include "player.h"
 
+int	mouse_leave(t_keys *keys)
+{
+	keys->alt = 0;
+	return (0);
+}
+
 int	mouse_press(int key, int x, int y, t_keys *keys)
 {
 	(void)x;

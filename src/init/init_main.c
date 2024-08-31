@@ -33,6 +33,7 @@ static void	init_keys(t_keys *keys)
 	keys->map = 0;
 	keys->object = 0;
 	keys->object_sec = 0;
+	keys->door = 0;
 	keys->mouse.is_recentering = 0;
 	keys->mouse.x = WIDTH / 2;
 	keys->mouse.y = HEIGHT / 2;
@@ -50,6 +51,7 @@ static void	init_map_data(t_map_data *map_data)
 	map_data->south.img = NULL;
 	map_data->east.img = NULL;
 	map_data->west.img = NULL;
+	map_data->door.img = NULL;
 	map_data->object.object_idle.img = NULL;
 	map_data->object.object_use1.img = NULL;
 	map_data->object.object_use2.img = NULL;

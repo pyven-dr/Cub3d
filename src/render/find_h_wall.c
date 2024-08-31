@@ -20,7 +20,8 @@ static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 	i = 0;
 	while (i < map->map_height)
 	{
-		if (get_map_point(inter.x, inter.y, map) == '1')
+		if (get_map_point(inter.x, inter.y, map) == '1' || \
+			get_map_point(inter.x, inter.y, map) == '2')
 			return (inter);
 		inter.x += xa;
 		inter.y += ya;

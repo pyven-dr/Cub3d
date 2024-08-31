@@ -12,28 +12,49 @@
 
 #include "render.h"
 
-void	find_pos_tex_x(t_inter *inter, t_map_data *map_data)
+static void	invert_tex(t_inter *inter, t_map_data *map)
 {
-	if (inter->orientation == NORTH)
-	{
-		inter->texture_x = (int)((inter->point.x / 64.0) * \
-		map_data->north.width) % map_data->north.width;
-	}
 	if (inter->orientation == SOUTH)
 	{
-		inter->texture_x = (int)((inter->point.x / 64.0) * \
-		map_data->south.width) % map_data->south.width;
-		inter->texture_x = (int)inter->texture_x ^ map_data->south.width - 1;
+		if (inter->is_door == 1)
+			inter->texture_x = (int)inter->texture_x ^ map->door.width - 1;
+		else
+			inter->texture_x = (int)inter->texture_x ^ map->south.width - 1;
 	}
-	if (inter->orientation == EAST)
+	else if (inter->orientation == WEST)
 	{
-		inter->texture_x = (int)((inter->point.y / 64.0) * \
-		map_data->east.width) % map_data->east.width;
+		if (inter->is_door == 1)
+			inter->texture_x = (int) inter->texture_x ^ map->door.width - 1;
+		else
+			inter->texture_x = (int)inter->texture_x ^ map->west.width - 1;
 	}
-	if (inter->orientation == WEST)
+}
+
+void	find_pos_tex_x(t_inter *inter, t_map_data *map_data)
+{
+	t_data	*img[4];
+
+	img[0] = &map_data->north;
+	img[1] = &map_data->south;
+	img[2] = &map_data->east;
+	img[3] = &map_data->west;
+	if (inter->orientation == NORTH || inter->orientation == SOUTH)
 	{
-		inter->texture_x = (int)((inter->point.y / 64.0) * \
-		map_data->west.width) % map_data->west.width;
-		inter->texture_x = (int)inter->texture_x ^ map_data->west.width - 1;
+		if (inter->is_door == 1)
+			inter->texture_x = (int)((inter->point.x / 64.0) * \
+			map_data->door.width) % map_data->door.width;
+		else
+			inter->texture_x = (int)((inter->point.x / 64.0) * \
+			img[inter->orientation]->width) % img[inter->orientation]->width;
 	}
+	if (inter->orientation == EAST || inter->orientation == WEST)
+	{
+		if (inter->is_door == 1)
+			inter->texture_x = (int)((inter->point.y / 64.0) * \
+			map_data->door.width) % map_data->door.width;
+		else
+			inter->texture_x = (int)((inter->point.y / 64.0) * \
+			img[inter->orientation]->width) % img[inter->orientation]->width;
+	}
+	invert_tex(inter, map_data);
 }

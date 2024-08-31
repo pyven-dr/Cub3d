@@ -41,5 +41,7 @@ int	fill_nsew_struct(t_game_data *game_data)
 		return (-1);
 	if (file_to_struct(game_data, &game_data->map_data.west) == -1)
 		return (-1);
+	if (file_to_struct(game_data, &game_data->map_data.door) == -1)
+		return (-1);
 	return (0);
 }

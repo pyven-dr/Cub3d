@@ -42,6 +42,7 @@ typedef struct s_keys
 	int		map;
 	int		object;
 	int		object_sec;
+	int		door;
 	t_mouse	mouse;
 }			t_keys;
 
@@ -65,5 +66,6 @@ void	rotate_player(t_player *player);
 void	player_size(t_player *player);
 int		mouse_press(int key, int x, int y, t_keys *keys);
 int		mouse_release(int key, int x, int y, t_keys *keys);
+int		mouse_leave(t_keys *keys);
 
 #endif

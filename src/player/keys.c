@@ -37,6 +37,8 @@ static int	key_player_control(int key, t_keys *keys)
 		keys->fly = 1;
 	else if (key == M)
 		keys->map = 1;
+	else if (key == SHIFT)
+		keys->door = 1;
 	return (0);
 }
 
@@ -97,5 +99,7 @@ int	key_release(int key, t_keys *keys)
 		keys->right = 0;
 	else if (key == M)
 		keys->map = 0;
+	else if (key == SHIFT)
+		keys->door = 0;
 	return (0);
 }

@@ -16,7 +16,7 @@
 # include "render.h"
 
 void	draw_column(t_game_data *game_data, int j, int wall_h, t_inter *inter);
-void	draw_pixel(t_game_data *game_data, int i, int j, t_inter *inter);
+void	draw_pixel(t_game_data *g_data, int i, int j, t_inter *inter);
 void	find_pos_tex_x(t_inter *inter, t_map_data *map_data);
 
 #endif

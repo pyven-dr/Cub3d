@@ -43,20 +43,25 @@ static int	control_player(t_game_data *g_data, int y, int x)
 
 static int	control_pos(t_game_data *g_data, int x, int y)
 {
-	if (g_data->map_data.map[y + 1][x] != '0'
-		&& g_data->map_data.map[y + 1][x] != '1'
+	if (x == 0 || y == 0)
+		return (-1);
+	if (y == g_data->map_data.map_height - 1
+		|| x == g_data->map_data.map_width - 1)
+		return (-1);
+	if ((g_data->map_data.map[y + 1][x] < '0'
+		|| g_data->map_data.map[y + 1][x] > '2')
 		&& control_player(g_data, y + 1, x) == 0)
 		return (-1);
-	if (y >= 1 && (g_data->map_data.map[y - 1][x] != '0'
-		&& g_data->map_data.map[y - 1][x] != '1'
+	if (y >= 1 && ((g_data->map_data.map[y - 1][x] < '0'
+			|| g_data->map_data.map[y - 1][x] > '2')
 		&& control_player(g_data, y - 1, x) == 0))
 		return (-1);
-	if (g_data->map_data.map[y][x + 1] != '0'
-		&& g_data->map_data.map[y][x + 1] != '1'
+	if ((g_data->map_data.map[y][x + 1] < '0'
+		|| g_data->map_data.map[y][x + 1] > '2')
 		&& control_player(g_data, y, x + 1) == 0)
 		return (-1);
-	if (x >= 1 && (g_data->map_data.map[y][x - 1] != '0'
-		&& g_data->map_data.map[y][x - 1] != '1'
+	if (x >= 1 && ((g_data->map_data.map[y][x - 1] < '0'
+			|| g_data->map_data.map[y][x - 1] > '2')
 		&& control_player(g_data, y, x - 1) == 0))
 		return (-1);
 	return (0);
@@ -67,13 +72,14 @@ int	control_map(t_game_data *g_data)
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < g_data->map_data.pb)
+	y = -1;
+	while (++y < g_data->map_data.pb)
 	{
 		x = -1;
 		while (g_data->map_data.map[y][++x])
 		{
 			if (g_data->map_data.map[y][x] == '0'
+				|| g_data->map_data.map[y][x] == '2'
 				|| control_player(g_data, y, x) == 1)
 			{
 				if (control_player(g_data, y, x) == 1)
@@ -84,7 +90,6 @@ int	control_map(t_game_data *g_data)
 		}
 		if (x > g_data->map_data.map_width)
 			g_data->map_data.map_width = x;
-		y++;
 	}
 	if (g_data->map_data.number_player != 1)
 		return (ft_printf(2, "Player number != 1\n"), -1);

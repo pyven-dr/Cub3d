@@ -22,6 +22,6 @@ char	get_map_point(double x, double y, t_map_data *map)
 		|| (int)floor(x) >> 6 < 0)
 		return (3);
 	if ((int)floor(y) << 6 < 0 || (int)floor(x) << 6 < 0)
-		return (3);
+		return (-1);
 	return (map->map[((int)floor(y) >> 6)][((int)floor(x) >> 6)]);
 }

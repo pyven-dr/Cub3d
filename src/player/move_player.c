@@ -13,19 +13,29 @@
 #include "const_values.h"
 #include "render.h"
 
+static int	is_wall(double x, double y, t_map_data *map_data)
+{
+	char	point;
+
+	point = get_map_point(x, y, map_data);
+	if (point == '1' || point == '2')
+		return (1);
+	return (0);
+}
+
 static int	check_out_map(t_player *player, t_map_data *map)
 {
-	if (get_map_point(player->pos.x, player->pos.y + COLLISION_OFFSET, \
-		map) == '1')
+	if (is_wall(player->pos.x, player->pos.y + COLLISION_OFFSET, \
+		map) == 1)
 		return (1);
-	if (get_map_point(player->pos.x, player->pos.y - COLLISION_OFFSET, \
-		map) == '1')
+	if (is_wall(player->pos.x, player->pos.y - COLLISION_OFFSET, \
+		map) == 1)
 		return (1);
-	if (get_map_point(player->pos.x + COLLISION_OFFSET, player->pos.y, \
-		map) == '1')
+	if (is_wall(player->pos.x + COLLISION_OFFSET, player->pos.y, \
+		map) == 1)
 		return (1);
-	if (get_map_point(player->pos.x - COLLISION_OFFSET, player->pos.y, \
-		map) == '1')
+	if (is_wall(player->pos.x - COLLISION_OFFSET, player->pos.y, \
+		map) == 1)
 		return (1);
 	return (0);
 }
