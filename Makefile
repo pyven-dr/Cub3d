@@ -96,7 +96,7 @@ MLX_DIR = $(LIBS_DIR)/minilibx-linux
 
 MLX = libmlx.a
 
-NAME = cub3d
+NAME = cub3D
 
 .PHONY: all
 all: $(NAME)
