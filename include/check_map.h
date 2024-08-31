@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 00:51:11 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/26 00:52:26 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 00:59:05 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int		pre_parsing(char **argv, t_game_data *game_data);
 void	init_map(t_map_data *map_data);
 int		control_map(t_game_data *game_data);
 int		check_cub(char *file);
-int		convert_color(char *line, t_color *color);
+int	    is_color(char *line, char fc, t_color *color);
 int		parsing_gnl(int fd, t_map_data *map_data);
 int		fill_nsew_struct(t_game_data *game_data);
 int		check_textures_colors(char *line, t_map_data *map_data);
+int     check_textures_NO_SO_EA(char *line, t_map_data *map_data);
+int	    check_textures_WE_DO(char *line, t_map_data *map_data);
 int		fill_path(char *line, char **path);
 void	free_parsing(t_game_data *game_data);
 #endif

@@ -51,6 +51,7 @@ CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \
 				fill_path.c \
 				fill_nsew_struct.c \
+				convert_textures.c \
 				convert_color.c \
 				control_player_map.c \
 				control_cub.c \

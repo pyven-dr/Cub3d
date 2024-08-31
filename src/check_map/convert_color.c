@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:15:29 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/28 01:41:59 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 00:55:51 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*fill_color(char *line, int *color)
 	return (line);
 }
 
-int	convert_color(char *line, t_color *color)
+static int	convert_color(char *line, t_color *color)
 {
 	if (color->hexa != -1)
 		return (-1);
@@ -59,5 +59,18 @@ int	convert_color(char *line, t_color *color)
 	if (!line || *line != '\n')
 		return (-1);
 	color->hexa = create_rgb(color->r, color->g, color->b);
+	return (0);
+}
+
+int	is_color(char *line, char fc, t_color *color)
+{
+	while (*line == ' ')
+		line++;
+	if (*line++ == fc)
+	{
+		if (convert_color(line, color) == -1)
+			return (-1);
+		return (1);
+	}
 	return (0);
 }
