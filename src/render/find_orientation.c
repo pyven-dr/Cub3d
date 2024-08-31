@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
 #include <math.h>
+#include "render.h"
 
 void	find_orientation_ver(t_inter *inter, double ray_angle)
 {

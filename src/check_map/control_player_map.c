@@ -6,12 +6,12 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:12:25 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/27 05:26:40 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 00:47:14 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_map.h"
 #include <math.h>
+#include "check_map.h"
 #include "const_values.h"
 #include "ft_printf.h"
 
@@ -29,8 +29,8 @@ static int	control_player(t_game_data *g_data, int y, int x)
 			g_data->p.angle = 0;
 		if (g_data->map_data.map[y][x] == 'W')
 			g_data->p.angle = M_PI;
-		g_data->p.pos.x = x * 64;
-		g_data->p.pos.y = y * 64;
+		g_data->p.pos.x = (x * 64) + 32;
+		g_data->p.pos.y = (y * 64) + 32;
 		g_data->p.fov = FOV * (M_PI / 180);
 		g_data->p.delta_x = (int)(cos(g_data->p.angle) * 1.5);
 		g_data->p.delta_y = (int)(sin(g_data->p.angle) * 1.5);
@@ -68,7 +68,7 @@ int	control_map(t_game_data *g_data)
 	int	x;
 
 	y = 0;
-	while (y < g_data->map_data.map_height)
+	while (y < g_data->map_data.pb)
 	{
 		x = -1;
 		while (g_data->map_data.map[y][++x])
@@ -79,7 +79,7 @@ int	control_map(t_game_data *g_data)
 				if (control_player(g_data, y, x) == 1)
 					g_data->map_data.number_player++;
 				if (control_pos(g_data, x, y) == -1)
-					return (ft_printf(2, "Map is not closed"), -1);
+					return (ft_printf(2, "Map is not closed\n"), -1);
 			}
 		}
 		if (x > g_data->map_data.map_width)
@@ -87,6 +87,6 @@ int	control_map(t_game_data *g_data)
 		y++;
 	}
 	if (g_data->map_data.number_player != 1)
-		return (ft_printf(2, "Player number != 1"), -1);
+		return (ft_printf(2, "Player number != 1\n"), -1);
 	return (0);
 }

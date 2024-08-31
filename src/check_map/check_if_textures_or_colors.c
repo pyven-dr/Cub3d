@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 02:45:39 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/27 05:46:01 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 00:40:53 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static int	is_color(char *line, char fc, t_color *color)
 {
-	if (line[0] == fc)
+	while (*line == ' ')
+		line++;
+	if (*line++ == fc)
 	{
-		if (convert_color(line + 1, color) == -1)
+		if (convert_color(line, color) == -1)
 			return (-1);
 		return (1);
 	}
@@ -25,7 +27,9 @@ static int	is_color(char *line, char fc, t_color *color)
 
 static int	is_textures(char *line, char a, char b, char **path)
 {
-	if (line[0] == a && line[1] == b)
+	while (*line == ' ')
+		line++;
+	if (*line == a && *(line + 1) == b)
 	{
 		if (fill_path(line, path) == -1)
 			return (-1);

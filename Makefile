@@ -1,10 +1,10 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -O3 -g3
 
 DFLAGS = -MD -MP
 
-LFLAGS = -Lmlx -lmlx -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LFLAGS = -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -L/usr/X11R6/lib -lXext -lX11 -lz -lm
 
 INCLUDE_DIR = include
 
@@ -14,9 +14,10 @@ IFLAGS = \
 		 -I $(MLX_DIR)
 
 GAME_LOOP_SRC = game_loop.c \
-				keys.c \
-				move_player.c \
-				rotate_player.c
+				images.c
+
+INIT_SRC = init_main.c \
+		   init_parsing.c
 
 RENDER_SRC = render_frame.c \
 			 find_closest_wall.c \
@@ -24,25 +25,55 @@ RENDER_SRC = render_frame.c \
 			 find_h_wall.c \
 			 find_v_wall.c \
 			 find_orientation.c \
-			 draw_pixels.c \
-			 find_closest_inter.c
+			 find_closest_inter.c \
+			 get_map_point.c \
+			 normalize_angle.c
 
 MLX_FUNCS_SRC = pixel_put.c \
 			   window.c \
-			   new_image.c
+			   new_image.c \
+			   display_image.c \
+			   get_pixel_color.c \
+			   free_img.c
+
+TEXTURES_SRC = draw_column.c \
+			   draw_pixel.c \
+			   find_pos_tex_x.c
+
+PLAYER_SRC = keys.c \
+             move_player.c \
+             rotate_player.c \
+			 mouse_move.c \
+			 player_size.c \
+			 mouse_button.c
 
 CHECK_MAP_SRC = pre_parsing.c \
 				parsing_gnl.c \
-				init_parsing.c \
+				fill_path.c \
 				fill_nsew_struct.c \
 				convert_color.c \
 				control_player_map.c \
 				control_cub.c \
-				check_if_textures_or_colors.c \
-				fill_path.c
+				check_if_textures_or_colors.c
+
+MAP_SRC = draw_map.c \
+		  draw_square.c \
+		  draw_player.c
+
+ASSETS_SRC = open_img.c \
+			 open_img_obj.c \
+			 open_xpm.c
 
 SRC = main.c \
-	  $(addprefix check_map/, $(CHECK_MAP_SRC))
+	  $(addprefix render/, $(RENDER_SRC)) \
+	  $(addprefix game_loop/, $(GAME_LOOP_SRC)) \
+	  $(addprefix mlx_funcs/, $(MLX_FUNCS_SRC)) \
+	  $(addprefix check_map/, $(CHECK_MAP_SRC)) \
+	  $(addprefix textures/, $(TEXTURES_SRC)) \
+	  $(addprefix player/, $(PLAYER_SRC)) \
+	  $(addprefix init/, $(INIT_SRC)) \
+	  $(addprefix map/, $(MAP_SRC)) \
+	  $(addprefix assets/, $(ASSETS_SRC))
 
 BUILD_DIR = .build
 
@@ -68,7 +99,7 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
-	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX)
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(MLX_DIR)/$(MLX) $(LFLAGS)
 
 -include $(DEP)
 

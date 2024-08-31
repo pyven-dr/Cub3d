@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:17:08 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/27 06:49:52 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 00:48:16 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ static int	check_line_map(char *map)
 	while (map[i])
 	{
 		if (map[i] != '1' && map[i] != '0' && map[i] != 'N' && map[i] != 'S'
-			&& map[i] != 'E' && map[i] != 'W' && map[i] != ' ')
+			&& map[i] != 'E' && map[i] != 'W' && map[i] != ' '
+			&& map[i] != '\n')
 			return (-1);
 		i++;
 	}
@@ -103,9 +104,7 @@ static int	control_map_gnl(int fd, t_map_data *map_data, char *line)
 int	parsing_gnl(int fd, t_map_data *map_data)
 {
 	char	*line;
-	int		j;
 
-	j = 0;
 	line = get_text_colors(fd, map_data);
 	if (control_text_color(map_data, line) == -1)
 		return (-1);

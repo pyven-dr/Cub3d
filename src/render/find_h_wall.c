@@ -10,33 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
 #include <math.h>
+#include "render.h"
 
-static t_point	find_inter(t_point inter, t_map *map, double xa, double ya)
+static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 {
 	int	i;
 
 	i = 0;
 	while (i < map->map_height)
 	{
-		inter.map_point = ((int)(inter.y) >> 6) * map->map_width + \
-							((int)(inter.x) >> 6);
-		if (inter.map_point >= 0 && inter.map_point < map->map_width * \
-			map->map_height - 1 && map->map[inter.map_point] == 1)
+		if (get_map_point(inter.x, inter.y, map) == '1')
 			return (inter);
 		inter.x += xa;
 		inter.y += ya;
 		i++;
 	}
-	if (inter.x < 0)
-		inter.x = map->map_width * 64 * 2;
 	if (inter.y < 0)
 		inter.y = map->map_height * 64 * 2;
+	if (inter.x < 0)
+		inter.x = map->map_width * 64 * 2;
 	return (inter);
 }
 
-t_point	find_h_wall(double ray_angle, t_player *player, t_map *map)
+t_point	find_h_wall(double ray_angle, t_player *player, t_map_data *map)
 {
 	t_point	inter;
 	double	xa;
@@ -46,21 +43,21 @@ t_point	find_h_wall(double ray_angle, t_player *player, t_map *map)
 	atan = -1 / tan(ray_angle);
 	if (ray_angle > M_PI)
 	{
-		inter.y = (((int)player->pos->y >> 6) << 6) - 0.0001;
+		inter.y = (((int)player->pos.y >> 6) << 6) - 0.0001;
 		ya = -64;
 	}
 	else if (ray_angle < M_PI)
 	{
-		inter.y = (((int)player->pos->y >> 6) << 6) + 64;
+		inter.y = (((int)player->pos.y >> 6) << 6) + 64;
 		ya = 64;
 	}
 	else
 	{
-		inter.x = player->pos->x;
-		inter.y = player->pos->y;
+		inter.x = player->pos.x;
+		inter.y = player->pos.y;
 		return (inter);
 	}
-	inter.x = (player->pos->y - inter.y) * atan + player->pos->x;
+	inter.x = (player->pos.y - inter.y) * atan + player->pos.x;
 	xa = -ya * atan;
 	return (find_inter(inter, map, xa, ya));
 }

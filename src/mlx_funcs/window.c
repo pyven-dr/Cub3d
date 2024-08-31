@@ -10,35 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "check_map.h"
 #include "const_values.h"
 #include "mlx.h"
-#include "struct.h"
 #include <stdlib.h>
 
-int	close_window(void *mlx_struct)
+int	close_window(void *struct_data)
 {
-	t_mlx	*mlx_data;
+	t_game_data	*game_data;
 
-	mlx_data = (t_mlx *)mlx_struct;
-	mlx_destroy_image(mlx_data->mlx_ptr, mlx_data->img_data->img);
-	mlx_destroy_window(mlx_data->mlx_ptr, mlx_data->mlx_win);
-	mlx_destroy_display(mlx_data->mlx_ptr);
-	free(mlx_data->mlx_ptr);
+	game_data = (t_game_data *)struct_data;
+	free_img(game_data->mlx_data.mlx_ptr, &game_data->map_data);
+	mlx_destroy_image(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.img_data.img);
+	mlx_destroy_window(game_data->mlx_data.mlx_ptr, \
+				game_data->mlx_data.mlx_win);
+	free_parsing(game_data);
 	exit(0);
 }
 
 int	create_window(t_mlx *mlx_data)
 {
-	mlx_data->mlx_ptr = mlx_init();
-	if (mlx_data->mlx_ptr == NULL)
-		return (1);
 	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx_ptr, WIDTH, \
-									HEIGHT, WIN_NAME);
+								HEIGHT, WIN_NAME);
 	if (mlx_data->mlx_win == NULL)
-	{
-		mlx_destroy_display(mlx_data->mlx_ptr);
-		free(mlx_data->mlx_ptr);
 		return (1);
-	}
 	return (0);
 }

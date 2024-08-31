@@ -10,12 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "const_values.h"
+#include "mlx_funcs.h"
 
 void	pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	if (x > WIDTH || y > HEIGHT)
+		return ;
+	if (color == (int)0xFF000000)
+		return ;
+	dst = data->addr + (y * data->line_length + x * \
+			(data->bits_per_pixel >> 3));
 	*(unsigned int *)dst = color;
 }
