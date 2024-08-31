@@ -34,7 +34,10 @@ static double	get_step_tex(t_map_data *map_data, t_inter *inter, int wall_h)
 	textures[1] = &map_data->south;
 	textures[2] = &map_data->east;
 	textures[3] = &map_data->west;
-	step_tex = (double)textures[inter->orientation]->width / wall_h;
+	if (inter->is_door == 1)
+		step_tex = (double)map_data->door.width / wall_h;
+	else
+		step_tex = (double)textures[inter->orientation]->width / wall_h;
 	return (step_tex);
 }
 

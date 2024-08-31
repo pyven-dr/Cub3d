@@ -12,18 +12,22 @@
 
 #include "textures.h"
 
-void	draw_pixel(t_game_data *game_data, int i, int j, t_inter *inter)
+void	draw_pixel(t_game_data *g_data, int i, int j, t_inter *inter)
 {
 	int		*img_data;
 	int		img_width;
-	t_data	*textures[4];
+	t_data	*img[4];
 
-	textures[0] = &game_data->map_data.north;
-	textures[1] = &game_data->map_data.south;
-	textures[2] = &game_data->map_data.east;
-	textures[3] = &game_data->map_data.west;
-	img_data = (int *)game_data->mlx_data.img_data.addr;
-	img_width = game_data->mlx_data.img_data.line_length / sizeof(int);
-	img_data[i * img_width + j] = get_pixel_color(textures[inter->orientation], \
-	(int)inter->texture_x, (int)inter->texture_y);
+	img[0] = &g_data->map_data.north;
+	img[1] = &g_data->map_data.south;
+	img[2] = &g_data->map_data.east;
+	img[3] = &g_data->map_data.west;
+	img_data = (int *)g_data->mlx_data.img_data.addr;
+	img_width = g_data->mlx_data.img_data.line_length / sizeof(int);
+	if (inter->is_door == 1)
+		img_data[i * img_width + j] = get_pixel_color(\
+		&g_data->map_data.door, (int)inter->texture_x, (int)inter->texture_y);
+	else
+		img_data[i * img_width + j] = get_pixel_color(\
+		img[inter->orientation], (int)inter->texture_x, (int)inter->texture_y);
 }

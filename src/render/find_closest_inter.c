@@ -20,21 +20,21 @@ t_inter	find_clos_inter(t_inter ver, t_inter hor, t_map_data *map, double angle)
 		if (get_map_point(hor.point.x + 32, hor.point.y, map) != '1' || \
 			get_map_point(hor.point.x - 32, hor.point.y, map) != '1')
 		{
-			find_orientation_ver(&ver, angle);
+			find_orientation_ver(&ver, angle, map);
 			return (ver);
 		}
 		if (get_map_point(hor.point.x, hor.point.y + 32, map) != '1' || \
 			get_map_point(hor.point.x, hor.point.y - 32, map) != '1')
 		{
-			find_orientation_hor(&hor, angle);
+			find_orientation_hor(&hor, angle, map);
 			return (hor);
 		}
 	}
 	if (ver.distance < hor.distance)
 	{
-		find_orientation_ver(&ver, angle);
+		find_orientation_ver(&ver, angle, map);
 		return (ver);
 	}
-	find_orientation_hor(&hor, angle);
+	find_orientation_hor(&hor, angle, map);
 	return (hor);
 }
