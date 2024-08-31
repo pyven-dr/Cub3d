@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "check_map.h"
+#include "map.h"
 
 static int	is_textures(char *line, char a, char b, char **path)
 {
@@ -46,7 +47,7 @@ int	check_textures_NO_SO_EA(char *line, t_map_data *map_data)
 		return (-1);
 	return (0);
 }
-int	check_textures_WE_DA(char *line, t_map_data *map_data)
+int	check_textures_WE_DO(char *line, t_map_data *map_data)
 {
 	int	return_value;
 
