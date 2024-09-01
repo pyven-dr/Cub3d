@@ -18,7 +18,7 @@ static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 	int	i;
 
 	i = 0;
-	while (i < map->map_height)
+	while (i < map->pb)
 	{
 		if (get_map_point(inter.x, inter.y, map) == '1' || \
 			get_map_point(inter.x, inter.y, map) == '2')
@@ -28,7 +28,7 @@ static t_point	find_inter(t_point inter, t_map_data *map, double xa, double ya)
 		i++;
 	}
 	if (inter.y < 0)
-		inter.y = map->map_height * 64 * 2;
+		inter.y = map->pb * 64 * 2;
 	if (inter.x < 0)
 		inter.x = map->map_width * 64 * 2;
 	return (inter);
