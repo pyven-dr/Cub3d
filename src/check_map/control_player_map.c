@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 01:12:25 by tcoze             #+#    #+#             */
-/*   Updated: 2024/08/27 07:11:00 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 02:58:52 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	control_pos(t_game_data *g_data, int x, int y)
 {
 	if (x == 0 || y == 0)
 		return (-1);
-	if (y == g_data->map_data.map_height - 1
+	if (y == g_data->map_data.pb - 1
 		|| x == g_data->map_data.map_width - 1)
 		return (-1);
 	if ((g_data->map_data.map[y + 1][x] < '0'
