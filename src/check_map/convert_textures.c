@@ -6,7 +6,7 @@
 /*   By: tcoze <tcoze@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 00:53:20 by tcoze             #+#    #+#             */
-/*   Updated: 2024/09/01 00:58:59 by tcoze            ###   ########.fr       */
+/*   Updated: 2024/09/01 04:08:26 by tcoze            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_textures(char *line, char a, char b, char **path)
 	return (0);
 }
 
-int	check_textures_NO_SO_EA(char *line, t_map_data *map_data)
+int	check_textures_no_so_ea(char *line, t_map_data *map_data)
 {
 	int	return_value;
 
@@ -47,7 +47,8 @@ int	check_textures_NO_SO_EA(char *line, t_map_data *map_data)
 		return (-1);
 	return (0);
 }
-int	check_textures_WE_DO(char *line, t_map_data *map_data)
+
+int	check_textures_we_do(char *line, t_map_data *map_data)
 {
 	int	return_value;
 
@@ -57,7 +58,7 @@ int	check_textures_WE_DO(char *line, t_map_data *map_data)
 	if (return_value == -1)
 		return (-1);
 	return_value = is_textures(line, 'D', 'O', &map_data->door.path);
-    if (return_value == 1)
+	if (return_value == 1)
 		return (1);
 	if (return_value == -1)
 		return (-1);
