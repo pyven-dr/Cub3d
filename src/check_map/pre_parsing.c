@@ -31,6 +31,7 @@ static int	pre_count_map(int fd, t_map_data *map_data)
 	if (close(fd) == -1)
 		return (free(line), -1);
 	map_data->map = malloc(sizeof(char *) * (map_data->map_height + 2));
+	ft_bzero(map_data->map, map_data->map_height + 1);
 	if (!map_data->map)
 		return (free(line), -1);
 	map_data->map[map_data->map_height + 1] = NULL;

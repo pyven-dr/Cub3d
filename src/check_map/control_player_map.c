@@ -48,9 +48,9 @@ static int	control_pos(t_game_data *g_data, int x, int y)
 	if (y == g_data->map_data.pb - 1
 		|| x == g_data->map_data.map_width - 1)
 		return (-1);
-	if ((g_data->map_data.map[y + 1][x] < '0'
+	if (x < (int)ft_strlen(g_data->map_data.map[y + 1]) || ((g_data->map_data.map[y + 1][x] < '0'
 		|| g_data->map_data.map[y + 1][x] > '2')
-		&& control_player(g_data, y + 1, x) == 0)
+		&& control_player(g_data, y + 1, x) == 0))
 		return (-1);
 	if (y >= 1 && ((g_data->map_data.map[y - 1][x] < '0'
 			|| g_data->map_data.map[y - 1][x] > '2')

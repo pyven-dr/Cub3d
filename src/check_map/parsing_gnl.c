@@ -111,7 +111,10 @@ int	parsing_gnl(int fd, t_map_data *map_data)
 
 	line = get_text_colors(fd, map_data);
 	if (control_text_color(map_data, line) == -1)
+	{
+		free(line);
 		return (-1);
+	}
 	if (control_map_gnl(fd, map_data, line) == -1)
 		return (-1);
 	return (1);
